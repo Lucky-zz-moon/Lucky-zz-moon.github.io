@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/04/12/为什么域名可以在浏览器中访问，而ip地址不行/"/>
+  <link rel="canonical" href="http://example.com/2025/04/13/访问url失败是什么原因/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>为什么域名可以在浏览器中访问，而IP地址不行 - luckyzz</title>
+  <title>访问URL失败是什么原因 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么域名可以在浏览器中访问，而IP地址不行">
-<meta property="og:url" content="http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/index.html">
+<meta property="og:title" content="访问URL失败是什么原因">
+<meta property="og:url" content="http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="背景介绍我们在访问一个网页时，url 中的主机是域名，但是域名是便于用户记忆和使用，在实际访问中是是需要将域名转化成其对应的 ip 地址访问，那么是否可以直接使用 ip 地址访问服务器，而不是通过域名去访问呢？ 获取 ip 地址以访问百度为例，使用*** nslookup*** 命令找到百度的权威域名服务器，在权威域名服务器中存在百度的域名和 ip 地址的映射关系。   任意在一个权威域名服务器中">
+<meta property="og:description" content="字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？当时只回答了三种可能，分别是URL格式错误、网络不稳定、域名和ip的映射关系改变，面试完后认真复盘总结了更全面问题的可能性。 思考角度：从HTTP的状态码角度分析原因 返回4××的状态码 表示服务器的请求端出现了错误，可能是URL的格式写错了，也可能是请求的资源根本不存在  返回5××的状态码 可能是当前服务器被大量请求冲垮、服务器启动">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-12T07:55:40.000Z">
-<meta property="article:modified_time" content="2025-04-15T04:06:58.207Z">
+<meta property="article:published_time" content="2025-04-13T03:21:07.000Z">
+<meta property="article:modified_time" content="2025-04-13T03:21:43.548Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2517,7 +2517,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/12/为什么域名可以在浏览器中访问，而IP地址不行/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/13/访问URL失败是什么原因/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2538,7 +2538,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        为什么域名可以在浏览器中访问，而IP地址不行
+        访问URL失败是什么原因
       </h1>
       <div class='new-meta-box'>
         
@@ -2559,10 +2559,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-12T15:55:40+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-13T11:21:07+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 12, 2025</p>
+    <p>发布于：Apr 13, 2025</p>
   </a>
 </div>
 
@@ -2585,37 +2585,41 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>我们在访问一个网页时，url 中的主机是域名，但是域名是便于用户记忆和使用，在实际访问中是是需要将域名转化成其对应的 ip 地址访问，那么是否可以直接使用 ip 地址访问服务器，而不是通过域名去访问呢？</p>
-<h3 id="获取-ip-地址"><a href="#获取-ip-地址" class="headerlink" title="获取 ip 地址"></a>获取 ip 地址</h3><p>以访问百度为例，使用*** nslookup*** 命令找到百度的权威域名服务器，在权威域名服务器中存在百度的域名和 ip 地址的映射关系。</p>
-<img src="../image/blog1/1.png" class="lazyload" data-srcset="../image/blog1/1.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1" style="zoom:80%;" />
-
-<p>任意在一个权威域名服务器中找到baidu.com的 ip 地址，可以发现权威域名服务器中存在两个（39.156.66.10,110.242.68.66）ip地址，也就是说一个域名对应了多个ip地址</p>
-<img src="../image/blog1/2.png" class="lazyload" data-srcset="../image/blog1/2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="1" style="zoom: 67%;" />
-
-
-
-<p>发现在浏览器中输入域名去访问百度服务器是可以的，但是确无法通过ip地址去访问这是为什么呢？域名创造的核心思想难道不是说避免用户记住复杂的ip地址，只要记住好记的域名吗？这其中存在什么样的机制？为什么设置这些机制呢？</p>
-<img src="../image/blog1/3.png" class="lazyload" data-srcset="../image/blog1/3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="3" style="zoom: 50%;" />
-
-
-
-
-
-<img src="../image/blog1/4.png" class="lazyload" data-srcset="../image/blog1/4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="4" style="zoom: 50%;" />
-
-
-
-<h2 id="wireshark抓包分析"><a href="#wireshark抓包分析" class="headerlink" title="wireshark抓包分析"></a>wireshark抓包分析</h2><p>在浏览器中输入<a target="_blank" rel="noopener" href="https://39.156.66.10的方式访问百度网页,抓包分析,首先进行tcp的三次握手建立连接,因为使用了https/">https://39.156.66.10的方式访问百度网页，抓包分析，首先进行TCP的三次握手建立连接，因为使用了HTTPS</a> 协议，所以还需要进行TSL握手，但是当客户端 192.168.1.6 发送hello给百度时，百度并没有发送包含其数字证书等信息的包，而是直接发送 RST 包断开连接，后续因为客户端一直没有收到ACK就触发了重传机制，当达到重传次数设定值时，客户端也就断开连接了。这说明无法通过ip地址去访问百度页面<img src="../image/blog1/5.png" class="lazyload" data-srcset="../image/blog1/5.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="5" style="zoom:67%;" /></p>
-<h2 id="分析原因"><a href="#分析原因" class="headerlink" title="分析原因"></a>分析原因</h2><ol>
-<li><p><strong>请求方法不允许</strong></p>
-<p>服务器仅可以通过域名访问，不可以通过ip直接访问，前面使用 ip 地址直接访问的时候返回了 405错误，表示服务器不允许请求者使用这种方法访问。</p>
+    <h2 id="字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？"><a href="#字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？" class="headerlink" title="字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？"></a>字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？</h2><p>当时只回答了三种可能，分别是URL格式错误、网络不稳定、域名和ip的映射关系改变，面试完后认真复盘总结了更全面问题的可能性。</p>
+<h3 id="思考角度：从HTTP的状态码角度分析原因"><a href="#思考角度：从HTTP的状态码角度分析原因" class="headerlink" title="思考角度：从HTTP的状态码角度分析原因"></a>思考角度：从HTTP的状态码角度分析原因</h3><ol>
+<li><p><strong>返回4××的状态码</strong></p>
+<p>表示服务器的请求端出现了错误，可能是URL的格式写错了，也可能是请求的资源根本不存在</p>
 </li>
-<li><p><strong>负载均衡</strong></p>
-<p>大型公司的服务器不止一个，但是服务器域名只有一个，存在一个域名到多个ip地址的映射，主要用于解决负载均衡的问题，由CDN进行分配。</p>
+<li><p><strong>返回5××的状态码</strong></p>
+<p>可能是当前服务器被大量请求冲垮、服务器启动了限流机制、服务器正在维护关闭了对外的服务</p>
 </li>
-<li><p><strong>反向代理技术</strong></p>
-<p>向百度这种大型公司，一定是存在一个服务器集群以解决高并发请求的问题，内部服务器使用的是私网地址，通过使用公网 ip 地址将服务端的请求转发给内部服务器，而我们通过 nslookup 命令查找到的 baidu.com域名对应的 ip 地址是反向代理服务器的地址，反向代理服务器收到客户端的数据包时根据HTTP头部的host或者遵循自己制定的规则，将请求分配给内部的服务器，内部服务器构造好HTTP响应包时，通过反向代理服务器再发送出去。这样自然就无法直接通过 ip 地址在浏览器中访问了。公网ip、私网ip传输简要图如下。</p>
-<img src="../image/blog1/image-20250412185451941.png" class="lazyload" data-srcset="../image/blog1/image-20250412185451941.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250412185451941" style="zoom:33%;" /></li>
+</ol>
+<h3 id="思考角度：从输入URL到页面展示过程中每一个环节可能出现的问题"><a href="#思考角度：从输入URL到页面展示过程中每一个环节可能出现的问题" class="headerlink" title="思考角度：从输入URL到页面展示过程中每一个环节可能出现的问题"></a>思考角度：从输入URL到页面展示过程中每一个环节可能出现的问题</h3><ol>
+<li><p><strong>用户输入错误</strong></p>
+<p>请求URL格式错误</p>
+</li>
+<li><p><strong>浏览器故障</strong></p>
+<p>需要重启浏览器</p>
+</li>
+<li><p><strong>缓存还是旧版本的问题</strong></p>
+<p>​    在输入URL后，浏览器首先会在浏览器缓存中找域名对应的 ip，如果浏览器缓存中不存在则操作系统会在其缓存中找 ip，若操作系统缓存中依旧没有，那么在 hosts文件中找，若在这三个过程中任意一个过程找到缓存，那么会给浏览器返回ip，如果受访网页重新对域名和ip地址做了映射，那么在缓存中的映射就是错的，无法通过缓存返回的 ip 建立连接。</p>
+<p>​    解决方法就是：清除缓存</p>
+</li>
+<li><p><strong>防火墙设置</strong></p>
+<p>首先通过 <strong>nslookup</strong> 命令查找域名对应的 ip 地址</p>
+<p>然后在防火墙设置中查看“出站规则”中是否对要访问的 ip 启用了禁止</p>
+</li>
+<li><p><strong>DNS服务器的问题</strong></p>
+<p>​    DNS被劫持：DNS中的映射表被恶意篡改，将原本正确的 ip 地址改为别的 ip，使得网址不能访问或者访问到了别的网址</p>
+<p>​    解决方法：可以不通过本地DNS服务器，直接访问公共的DNS服务器解决</p>
+</li>
+<li><p><strong>网站服务器问题</strong></p>
+<p>①网站正在遭受大量的请求访问，此时网站可能出现崩塌或者开启限流机制，就像0点秒杀大促的情况，怎么也登不上系统</p>
+<p>②网站正在升级或者维护，关闭了对外的服务</p>
+</li>
+<li><p><strong>网络受到安全攻击</strong></p>
+<p>用户发送的请求包被劫持，用户发送的包根本就没有被服务端收到</p>
+</li>
 </ol>
 
   </div>
@@ -2641,10 +2645,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-15T12:06:58+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-13T11:21:43+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 15, 2025</p>
+    <p>更新于：Apr 13, 2025</p>
   </a>
 </div>
 
@@ -2663,7 +2667,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/&title=为什么域名可以在浏览器中访问，而IP地址不行 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/&title=访问URL失败是什么原因 - luckyzz&summary="
           
           >
           
@@ -2675,7 +2679,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/&title=为什么域名可以在浏览器中访问，而IP地址不行 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/&title=访问URL失败是什么原因 - luckyzz&summary="
           
           >
           
@@ -2687,7 +2691,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/&title=为什么域名可以在浏览器中访问，而IP地址不行 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/&title=访问URL失败是什么原因 - luckyzz&summary="
           
           >
           
@@ -2720,12 +2724,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>访问URL失败是什么原因</p>
-          <p class='content'>字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？当时只回答了三种可能，分别是URL格式错误、网络不稳定、域名和ip的映射关系改变，面试完后认真复盘总结了更全面问题的可能性。
-思考角...</p>
+        <a class='prev' href='/2025/04/13/%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E7%B3%BB%E7%BB%9F/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>如何构建高可用系统</p>
+          <p class='content'>概念高可用和高可靠常常分不清，高可用是指使用一些技术手段让整个系统能够在规定时间段内提供连续不间断的服务。
+背景​	在互联网发展初期，企业规模不大，业务也不大，会使用单体架构。但是单体架构存在很...</p>
         </a>
       
+      
+        <a class='next' href='/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/'>
+          <p class='title'>为什么域名可以在浏览器中访问，而IP地址不行<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>背景介绍我们在访问一个网页时，url 中的主机是域名，但是域名是便于用户记忆和使用，在实际访问中是是需要将域名转化成其对应的 ip 地址访问，那么是否可以直接使用 ip 地址访问服务器，而不是通...</p>
+        </a>
       
     </div>
   
@@ -2740,7 +2749,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2782,7 +2791,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="toc-text">背景介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96-ip-%E5%9C%B0%E5%9D%80"><span class="toc-text">获取 ip 地址</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wireshark%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-text">wireshark抓包分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%9E%90%E5%8E%9F%E5%9B%A0"><span class="toc-text">分析原因</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E8%BE%93%E5%85%A5URL%EF%BC%8C%E4%BD%86%E6%98%AF%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5%E7%9A%84%E5%8F%AF%E8%83%BD%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5%EF%BC%9F"><span class="toc-text">字节一面：输入URL，但是访问失败的可能原因是什么？如何排查？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E8%A7%92%E5%BA%A6%EF%BC%9A%E4%BB%8EHTTP%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81%E8%A7%92%E5%BA%A6%E5%88%86%E6%9E%90%E5%8E%9F%E5%9B%A0"><span class="toc-text">思考角度：从HTTP的状态码角度分析原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83%E8%A7%92%E5%BA%A6%EF%BC%9A%E4%BB%8E%E8%BE%93%E5%85%A5URL%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%AF%8F%E4%B8%80%E4%B8%AA%E7%8E%AF%E8%8A%82%E5%8F%AF%E8%83%BD%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">思考角度：从输入URL到页面展示过程中每一个环节可能出现的问题</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3352,7 +3361,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/12/为什么域名可以在浏览器中访问，而IP地址不行/","name":"为什么域名可以在浏览器中访问，而IP地址不行"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"为什么域名可以在浏览器中访问，而IP地址不行","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/","wordCount":0,"datePublished":"2025-04-12T07:55:40.000Z","dateModified":"2025-04-15T04:06:58.207Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/13/访问URL失败是什么原因/","name":"访问URL失败是什么原因"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"访问URL失败是什么原因","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/","wordCount":0,"datePublished":"2025-04-13T03:21:07.000Z","dateModified":"2025-04-13T03:21:43.548Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

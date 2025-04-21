@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/04/16/怎么防止单点故障/"/>
+  <link rel="canonical" href="http://example.com/2025/04/21/死锁怎么排查/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>怎么防止单点故障 - luckyzz</title>
+  <title>死锁怎么排查 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="怎么防止单点故障">
-<meta property="og:url" content="http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/index.html">
+<meta property="og:title" content="死锁怎么排查">
+<meta property="og:url" content="http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="背景在交易所工作的这段日子，学习交易系统的时候，总是强调主备服务器，什么是主备服务器？为什么要做主备服务器？ 单点故障单点故障是指系统中每个组件或者某一个节点出现问题无法正常提供服务了，可能会导致整个系统瘫痪。系统设计需要时刻考虑单点故障问题，实现系统的可靠性和可用性。系统设计过程中避免单点故障的核心思想就是【冗余】。 构建冗余的系统架构构建冗余的系统架构，需要从硬件和软件两个方面考虑 硬件冗余">
+<meta property="og:description" content="背景一个进程中的多个线程是共享进程空间的数据的，当线程并发执行时，会出现线程安全问题，也就是多个线程对共享数据进行修改时导致数据不一致的问题。为了解决线程并发问题需要对共享资源进行互斥访问，通过互斥锁实现。如果获取锁的顺序不当，很可能会造成死锁。那发生死锁的时候怎么去排查呢？ 通过创造产生死锁的4个必要条件模拟死锁的发生系统产生死锁的四个必要条件 · 互斥 · 请求保持 · 不可剥夺 · 环路等待">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-16T08:12:13.000Z">
-<meta property="article:modified_time" content="2025-04-16T09:50:06.959Z">
+<meta property="article:published_time" content="2025-04-21T12:31:33.000Z">
+<meta property="article:modified_time" content="2025-04-21T13:01:48.962Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2429,7 +2429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/16/怎么防止单点故障/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/21/死锁怎么排查/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2450,7 +2450,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        怎么防止单点故障
+        死锁怎么排查
       </h1>
       <div class='new-meta-box'>
         
@@ -2469,10 +2469,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" itemprop="url"><span itemprop="name">系统架构</span></a>
+        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
       </span>
     
   </div>
@@ -2481,10 +2481,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-16T16:12:13+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-21T20:31:33+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 16, 2025</p>
+    <p>发布于：Apr 21, 2025</p>
   </a>
 </div>
 
@@ -2507,31 +2507,26 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在交易所工作的这段日子，学习交易系统的时候，总是强调主备服务器，什么是主备服务器？为什么要做主备服务器？</p>
-<h2 id="单点故障"><a href="#单点故障" class="headerlink" title="单点故障"></a>单点故障</h2><p>单点故障是指系统中每个组件或者某一个节点出现问题无法正常提供服务了，可能会导致整个系统瘫痪。系统设计需要时刻考虑单点故障问题，实现系统的可靠性和可用性。系统设计过程中避免单点故障的核心思想就是【冗余】。</p>
-<h2 id="构建冗余的系统架构"><a href="#构建冗余的系统架构" class="headerlink" title="构建冗余的系统架构"></a>构建冗余的系统架构</h2><p>构建冗余的系统架构，需要从硬件和软件两个方面考虑</p>
-<h3 id="硬件冗余"><a href="#硬件冗余" class="headerlink" title="硬件冗余"></a>硬件冗余</h3><ol>
-<li><p>服务器冗余：部署多台服务器，形成主备服务器。</p>
-<p>在交易所中：实现一个业务的服务器会设置2~3台服务器，每台服务器都正常运行自己的业务逻辑，且每台服务器的运行结果都一样，保证了只要有一个服务器还在工作都不会影响整个系统。</p>
-<p>在大型的互联网公司中，部署的服务器集群可能更复杂，因为这些服务器在应用层需要处理客户端的请求，需要应对高并发的情况，那么这些服务器的处理和交易的不同是，交易所每台服务器上的数据是一致的，不论运行哪一台服务器都能得到相同的结果，而大型互联网公司的服务器数据是水平切片的，需要将请求分发到不同的服务器，这还涉及负载均衡。</p>
-</li>
-<li><p>存储冗余</p>
-<p>建立多个数据库副本</p>
-</li>
-<li><p>网络冗余</p>
-<p>创建双网或多网，在每个网络中都发送数据，防止一条网络通路断开，可以立刻换另一个网络。在交易系统中，也通过双网设计的方法保证数据不丢失。</p>
-</li>
-</ol>
-<h3 id="软件冗余"><a href="#软件冗余" class="headerlink" title="软件冗余"></a>软件冗余</h3><ol>
-<li><p>应用冗余</p>
-<p>在服务器集群中，每个单体服务器上运行多个应用实例，防止单个进程崩溃导致这个服务器崩溃。</p>
-</li>
-<li><p>数据冗余</p>
-<p>复制数据，数据库主从复制，防止单个数据宕机导致整个数据的丢失。</p>
-</li>
-</ol>
-<h3 id="灾备策略"><a href="#灾备策略" class="headerlink" title="灾备策略"></a>灾备策略</h3><p>构建多地多中心的系统架构，防止自然灾害等意外情况发生导致整个系统瘫痪。</p>
-<p>包括异地多活、异地数据备份等</p>
+    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>一个进程中的多个线程是共享进程空间的数据的，当线程并发执行时，会出现线程安全问题，也就是多个线程对共享数据进行修改时导致数据不一致的问题。为了解决线程并发问题需要对共享资源进行互斥访问，通过互斥锁实现。如果获取锁的顺序不当，很可能会造成死锁。那发生死锁的时候怎么去排查呢？</p>
+<h2 id="通过创造产生死锁的4个必要条件模拟死锁的发生"><a href="#通过创造产生死锁的4个必要条件模拟死锁的发生" class="headerlink" title="通过创造产生死锁的4个必要条件模拟死锁的发生"></a>通过创造产生死锁的4个必要条件模拟死锁的发生</h2><p><strong>系统产生死锁的四个必要条件</strong></p>
+<p>· 互斥</p>
+<p>· 请求保持</p>
+<p>· 不可剥夺</p>
+<p>· 环路等待</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;thread&gt;</span><br><span class="line">#include&lt;mutex&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">mutex mtxA;</span><br><span class="line">mutex mtxB;</span><br><span class="line">mutex mtxC;</span><br><span class="line">void taskA() &#123;</span><br><span class="line">    lock_guard&lt;mutex&gt; lockA(mtxA);</span><br><span class="line">    cout &lt;&lt; &quot;thread A get lockA!&quot; &lt;&lt; endl;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(1));</span><br><span class="line">    lock_guard&lt;mutex&gt; lockB(mtxB);</span><br><span class="line">    cout &lt;&lt; &quot;thread A get lockA and lockB!&quot; &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;thread A release lockA and lockB!&quot; &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">void taskB() &#123;</span><br><span class="line">    lock_guard&lt;mutex&gt; lockB(mtxB);</span><br><span class="line">    cout &lt;&lt; &quot;thread B get lockB!&quot; &lt;&lt; endl;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(1));</span><br><span class="line">    lock_guard&lt;mutex&gt; lockA(mtxA);</span><br><span class="line">    cout &lt;&lt; &quot;thread B get lockB and lockA!&quot; &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;thread B release lockB and lockA!&quot; &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">void taskC() &#123;</span><br><span class="line">    lock_guard&lt;mutex&gt; lockC(mtxC);</span><br><span class="line">    cout &lt;&lt; &quot;thread C get lockC!&quot; &lt;&lt; endl;</span><br><span class="line">    this_thread::sleep_for(chrono::seconds(1));</span><br><span class="line">    lock_guard&lt;mutex&gt; lockA(mtxA);</span><br><span class="line">    cout &lt;&lt; &quot;thread C get lockC and lockA!&quot; &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; &quot;thread C release lockC and lockB!&quot; &lt;&lt; endl;</span><br><span class="line">&#125;        </span><br><span class="line">int main() &#123;</span><br><span class="line">    thread t1(taskA);</span><br><span class="line">    thread t2(taskB);</span><br><span class="line">    thread t3(taskC);</span><br><span class="line">    t1.join();</span><br><span class="line">    t2.join();</span><br><span class="line">    t3.join();</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>查看系统中所有线程的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -H</span><br></pre></td></tr></table></figure>
+
+
+
+<p>查看查看 pid &#x3D; ××× 进程中的所有线程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top -H -p ×××</span><br></pre></td></tr></table></figure>
+
 
   </div>
   
@@ -2556,10 +2551,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-16T17:50:06+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-21T21:01:48+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 16, 2025</p>
+    <p>更新于：Apr 21, 2025</p>
   </a>
 </div>
 
@@ -2578,7 +2573,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/&title=怎么防止单点故障 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/&title=死锁怎么排查 - luckyzz&summary="
           
           >
           
@@ -2590,7 +2585,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/&title=怎么防止单点故障 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/&title=死锁怎么排查 - luckyzz&summary="
           
           >
           
@@ -2602,7 +2597,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/&title=怎么防止单点故障 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/&title=死锁怎么排查 - luckyzz&summary="
           
           >
           
@@ -2635,16 +2630,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>服务降级、服务熔断、服务限流</p>
+      
+        <a class='next' href='/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/'>
+          <p class='title'>服务降级、服务熔断、服务限流<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>服务降级为什么要降级：当服务器出现负载过高的情况时，由于系统资源有限，服务器请求不过来，可能会导致系统崩盘。为了保障系统的稳定性并保证核心业务的运行，需要进行服务降级。
 服务降级的核心思想：保留...</p>
-        </a>
-      
-      
-        <a class='next' href='/2025/04/15/%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/'>
-          <p class='title'>什么是正向代理服务器，什么是反向代理服务器<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>背景当我在学习负载均衡相关的内容时，了解到负载均衡可以由软件负载均衡服务器实现，典型的是Nginx，Nginx是什么呢？ Nginx是高性能的HTTP和反向代理服务器。提问：为什么叫反向代理服务...</p>
         </a>
       
     </div>
@@ -2660,7 +2650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2702,7 +2692,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C"><span class="toc-text">单点故障</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%86%97%E4%BD%99%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-text">构建冗余的系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E5%86%97%E4%BD%99"><span class="toc-text">硬件冗余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E5%86%97%E4%BD%99"><span class="toc-text">软件冗余</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%BE%E5%A4%87%E7%AD%96%E7%95%A5"><span class="toc-text">灾备策略</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%88%9B%E9%80%A0%E4%BA%A7%E7%94%9F%E6%AD%BB%E9%94%81%E7%9A%844%E4%B8%AA%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%E6%A8%A1%E6%8B%9F%E6%AD%BB%E9%94%81%E7%9A%84%E5%8F%91%E7%94%9F"><span class="toc-text">通过创造产生死锁的4个必要条件模拟死锁的发生</span></a></li></ol>
     </div>
   </section>
 
@@ -3272,7 +3262,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/系统架构/","name":"系统架构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/16/怎么防止单点故障/","name":"怎么防止单点故障"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"怎么防止单点故障","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/","wordCount":0,"datePublished":"2025-04-16T08:12:13.000Z","dateModified":"2025-04-16T09:50:06.959Z","articleSection":"系统架构","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/21/死锁怎么排查/","name":"死锁怎么排查"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"死锁怎么排查","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/","wordCount":0,"datePublished":"2025-04-21T12:31:33.000Z","dateModified":"2025-04-21T13:01:48.962Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

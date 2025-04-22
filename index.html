@@ -1624,7 +1624,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745308813324),
+    lastupdate: new Date(1745315359596),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2467,7 +2467,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           <div class='post-wrapper'>
             <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/22/如何检查内存泄漏/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/22/Linux-C-Valgrind-检查内存泄漏/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2485,19 +2485,25 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
     <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/22/%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"  itemprop="url">
-        如何检查内存泄漏
+      <a href="/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"  itemprop="url">
+        Linux C++: Valgrind 检查内存泄漏
       </a>
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
+    
+      
+        背景内存泄漏一般指的是堆内存泄漏。在写代码的时候，通过C++运算符或者库函数（malloc等）分配内存，使用完后总是忘记释放内存，导致操作系统失去对这块内存的控制，也就是内存泄漏。
+如果不进行内存泄漏的处理，当系统中运行的程序越来越多，内存泄漏也就会越来越多，即使实际上物理内存足够大，但是一旦内存泄漏越来越多，可用内存就越来越少，严重可能会导致系统崩溃。
+Valgrind工具安装step1：...
+      
     
   </div>
   
     <div class='meta-v3' line_style='solid'>
       <div>
         
-        <time itemprop="dateCreated datePublished" datetime="2025-04-22T15:43:57+08:00">2025-04-22</time>
+        <time itemprop="dateCreated datePublished" datetime="2025-04-22T16:08:25+08:00">2025-04-22</time>
         
           <span class="dot"></span>
           <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
@@ -2510,7 +2516,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       </div>
       
         <div>
-          <a class='readmore' href='/2025/04/22/%E5%A6%82%E4%BD%95%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/' itemprop="url">
+          <a class='readmore' href='/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/' itemprop="url">
             Read More
           </a>
         </div>

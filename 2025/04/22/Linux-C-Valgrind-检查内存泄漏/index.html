@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-22T08:08:25.000Z">
-<meta property="article:modified_time" content="2025-04-22T11:01:43.881Z">
+<meta property="article:modified_time" content="2025-04-22T11:18:55.321Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745319713293),
+    lastupdate: new Date(1745320759658),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2513,7 +2513,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include &lt;unistd.h&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line"></span><br><span class="line">    while(true)&#123;</span><br><span class="line">        int* p = new int[10000];</span><br><span class="line">        memset(p, 0, 10000 * sizeof(int));</span><br><span class="line">        sleep(1);</span><br><span class="line">    &#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>该代码一直在申请10000B字节，因为每次申请时都会覆盖掉申请内存的起始地址，所以该进程在运行时会一直发生内存泄漏。</p>
-<p>发生内存泄漏的进程有一个特点，就是改进程在运行的过程中，其物理空间和虚拟空间会一直增加，可以通过“Linux的ps  aux| grep 监测进程名” 获得监测进程的pid，然后通过 watch 命令动态查看监测进程其内存的使用情况</p>
+<p>发生内存泄漏的进程有一个特点，就是改进程在运行的过程中，其物理空间和虚拟空间会一直增加，可以通过Linux的 “ps  aux| grep 监测进程名” 获得监测进程的pid，然后通过 watch 命令动态查看监测进程其内存的使用情况</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps aux|grep 进程名</span><br><span class="line"></span><br><span class="line">每 0.5s 更新一次</span><br><span class="line">watch -n 0.5 &quot;ps -p &lt;pid&gt;  -o pid,rss,vsz,%mem,cmd&quot;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../image/%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/image-20250422185103711.png" class="lazyload" data-srcset="/../image/%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/image-20250422185103711.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250422185103711"></p>
@@ -2557,6 +2557,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="定位具体行泄漏原因"><a href="#定位具体行泄漏原因" class="headerlink" title="定位具体行泄漏原因"></a>定位具体行泄漏原因</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g++ -g -o test oom.cpp</span><br><span class="line">valgrind --leak-check=full ./test</span><br></pre></td></tr></table></figure>
 
 <p><img src="/../image/%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/image-20250422172542424.png" class="lazyload" data-srcset="/../image/%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/image-20250422172542424.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250422172542424"></p>
+<p>我们可以看到，导致内存泄漏的是在代码的第5行，因为 new int[5]导致的。</p>
 <h2 id="如何解决内存泄漏"><a href="#如何解决内存泄漏" class="headerlink" title="如何解决内存泄漏"></a>如何解决内存泄漏</h2><ol>
 <li><p><strong>可以手动释放分配的内存</strong></p>
 <p>new 和 delete 搭配, new[] 和 delete[] 搭配。</p>
@@ -2568,6 +2569,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><p><strong>使用智能指针</strong></p>
 <p>智能指针实际上就是普通指针的封装，在离开作用域时会对申请的资源进行销毁</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;memory&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    shared_ptr&lt;int[]&gt; p(new int[5]);  // 自动使用 delete[]</span><br><span class="line">    return 0;  // 自动释放，无内存泄漏</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 </li>
 <li><p><strong>使用RALL技术</strong></p>
 <p>实际上智能指针 shared_ptr也属于RALL技术，资源的生命周期和对象的生命周期一致，在更复杂的开发过程中，可以将资源的申请和释放分装成一个类，在这个类当中写好构造和析构，当类创建对象时，资源也被创建，当对象被销毁时，资源也被释放，从而避免了内存泄漏</p>
@@ -2597,7 +2600,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-22T19:01:43+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-22T19:18:55+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 22, 2025</p>
@@ -2675,6 +2678,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   
     <div class="prev-next">
+      
+        <a class='prev' href='/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/'>
+          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的</p>
+          <p class='content'>背景</p>
+        </a>
       
       
         <a class='next' href='/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/'>
@@ -3307,7 +3315,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/22/Linux-C-Valgrind-检查内存泄漏/","name":"Linux C++: Valgrind 检查内存泄漏"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux C++: Valgrind 检查内存泄漏","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/","wordCount":0,"datePublished":"2025-04-22T08:08:25.000Z","dateModified":"2025-04-22T11:01:43.881Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/22/Linux-C-Valgrind-检查内存泄漏/","name":"Linux C++: Valgrind 检查内存泄漏"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"Linux C++: Valgrind 检查内存泄漏","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/","wordCount":0,"datePublished":"2025-04-22T08:08:25.000Z","dateModified":"2025-04-22T11:18:55.321Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

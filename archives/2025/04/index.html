@@ -1624,7 +1624,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745666248700),
+    lastupdate: new Date(1745676238117),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2481,6 +2481,17 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     </h2>
   
   <div class='md article-desc' itemprop="articleBody">
+    
+      
+        上一篇博客说到了 redis 的事务机制，知道了 redis 的事务机制可以保证一组命令可以原子执行，但是不保证这组命令全部执行成功。redis 中也使用了 LUA 脚本保证原子性。
+先来看一下 redis 官方对LUA脚本做的解释：LUA是一种脚本语言，通过EVAL命令执行LUA脚本，且LUA脚本具备原子性
+
+执行脚本
+EVAL
+
+EVAL 的语法
+1EVAL script numkeys...
+      
     
   </div>
   

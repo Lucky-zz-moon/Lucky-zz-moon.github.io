@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/04/22/字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的/"/>
+  <link rel="canonical" href="http://example.com/2025/04/26/redis-的事务是什么？和-mysql的事务有什么区别/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的 - luckyzz</title>
+  <title>redis 的事务是什么？和 MySql的事务有什么区别 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的">
-<meta property="og:url" content="http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/index.html">
+<meta property="og:title" content="redis 的事务是什么？和 MySql的事务有什么区别">
+<meta property="og:url" content="http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="背景">
+<meta property="og:description" content="字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？MySQL 事务mysql的事务主要要4个特点，也就是ACID，这是面试常问到的点 Atomicity（原子性）：事务中的操作要么全部执行，要么全部不执行 Consistency(一致性)：事务执行前后，数据库中数据在逻辑上都是正确的。常举的例子是，A给B转100块，执行前A的账户有a元，B的账户有b元，执行后A的账">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-22T11:12:05.000Z">
-<meta property="article:modified_time" content="2025-04-22T11:14:44.062Z">
+<meta property="article:published_time" content="2025-04-26T08:26:19.000Z">
+<meta property="article:modified_time" content="2025-04-26T10:16:44.179Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2429,7 +2429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/22/字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/26/redis-的事务是什么？和-MySql的事务有什么区别/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2450,7 +2450,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的
+        redis 的事务是什么？和 MySql的事务有什么区别
       </h1>
       <div class='new-meta-box'>
         
@@ -2469,10 +2469,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
+        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
       </span>
     
   </div>
@@ -2481,10 +2481,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-22T19:12:05+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-26T16:26:19+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 22, 2025</p>
+    <p>发布于：Apr 26, 2025</p>
   </a>
 </div>
 
@@ -2507,7 +2507,66 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2>
+    <h2 id="字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？"><a href="#字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？" class="headerlink" title="字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？"></a>字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？</h2><h3 id="MySQL-事务"><a href="#MySQL-事务" class="headerlink" title="MySQL 事务"></a>MySQL 事务</h3><p>mysql的事务主要要4个特点，也就是ACID，这是面试常问到的点</p>
+<p>Atomicity（原子性）：事务中的操作要么全部执行，要么全部不执行</p>
+<p>Consistency(一致性)：事务执行前后，数据库中数据在逻辑上都是正确的。常举的例子是，A给B转100块，执行前A的账户有a元，B的账户有b元，执行后A的账户是a-100， b的账户 b+100，这就是一致性。</p>
+<p>Isolation(独立性)：数据库中的事务的执行是相互不干扰的</p>
+<p>Durability(持久性)：事务执行完后，结果是永久生效的，就算断电后重启也是生效的</p>
+<h2 id="Redis事务"><a href="#Redis事务" class="headerlink" title="Redis事务"></a>Redis事务</h2><p>Redis官方文档对事务的描述如下图所示</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426164142815.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426164142815.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426164142815"></p>
+<p>总结：Redis的事务指的是使用核心命令，例如 MULTI, EXEC,DSICARD, WATCH，让一组命令在一个单步中顺序执行。</p>
+<p>让我们来一个一个看每个命令的作用</p>
+<h3 id="MULTI"><a href="#MULTI" class="headerlink" title="MULTI"></a>MULTI</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426164831477.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426164831477.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426164831477"></p>
+<p>官方文档的描述是：MULTI标记了一组命令的开始，它标记了一个事务的执行入口，这组命令按照加入的顺序进行排放，使用了MULTI命令后，后续的命令不会被执行，直到执行EXEC命令时，这组命令就会按照顺序执行</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426174342994.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426174342994.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426174342994"></p>
+<p>可以看出，当我们输入MULTI时，后续输入的命令不会被立刻执行，而是放进了队列里，成功将命令放进队列时会返回  QUEUED 字符串标志</p>
+<h3 id="EXEC"><a href="#EXEC" class="headerlink" title="EXEC"></a>EXEC</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426165330323.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426165330323.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426165330323"></p>
+<p>官方文档描述：调用EXEC命令时，Redis会按照顺序执行MULTI之后入队的所有命令。</p>
+<p>如果使用了WATCH命令，相当于实现一个【乐观锁】，监控一个或多个键值的变化。这些键值没有被改变才能执行事务，否则不执行事务</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426174511574.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426174511574.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426174511574"></p>
+<h3 id="WATCH"><a href="#WATCH" class="headerlink" title="WATCH"></a>WATCH</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426165921989.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426165921989.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426165921989"></p>
+<p>官方文档描述：调用  WATCH 命令监听多个键值的变化，作为判断能否执行事务的条件。如果在执行事务前或期间监听的键值对发生变化，那么放弃执行事务</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426175408525.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426175408525.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426175408525"></p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426175553534.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426175553534.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426175553534"></p>
+<h3 id="UNWATCH"><a href="#UNWATCH" class="headerlink" title="UNWATCH"></a>UNWATCH</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426170300069.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426170300069.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426170300069"></p>
+<p>官方文档描述：<strong>清空当前连接中所有被 <code>WATCH</code> 监听的键</strong>，取消对这些键的乐观锁监控。</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426181342721.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426181342721.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426181342721"></p>
+<h3 id="DISCARD"><a href="#DISCARD" class="headerlink" title="DISCARD"></a>DISCARD</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426170422025.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426170422025.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426170422025"></p>
+<p>官方文档描述：</p>
+<ol>
+<li><strong>清空事务队列</strong><br>取消当前连接中所有通过 <code>MULTI</code> 入队的命令，使连接<strong>退出事务状态</strong>，恢复正常执行模式。</li>
+<li><strong>自动释放 <code>WATCH</code> 监听</strong><br>如果事务开始前调用了 <code>WATCH</code>，<code>DISCARD</code> 会<strong>自动清除所有被监听的键</strong>（效果等同于 <code>UNWATCH</code>）</li>
+</ol>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426181511097.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426181511097.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426181511097"></p>
+<p>MULTI创建一个队列，输入一组命令，然后输入 DISCARD， 当执行 EXEC 时，返回错误提示信息：没有可执行的事务。</p>
+<h2 id="除了Redis这些特有的命令，Redis的事务的最大特点是什么？"><a href="#除了Redis这些特有的命令，Redis的事务的最大特点是什么？" class="headerlink" title="除了Redis这些特有的命令，Redis的事务的最大特点是什么？"></a>除了Redis这些特有的命令，Redis的事务的最大特点是什么？</h2><h3 id="Redis如何处理事务执行过程中发生的错误"><a href="#Redis如何处理事务执行过程中发生的错误" class="headerlink" title="Redis如何处理事务执行过程中发生的错误"></a>Redis如何处理事务执行过程中发生的错误</h3><p>还是来看一下官方文档</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426171331084.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426171331084.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426171331084"></p>
+<p>官方文档表述：在执行一个事务的时候，可能会在两个地方发生错误</p>
+<p><strong>第一处：调用MULTI命令时， 命令入队列错误（可能因为语法、参数等错误）。</strong></p>
+<p>redis 2.6.5之前的版本和之后的版本，对于第一处错误有不同的处理方式，2.6.5之后的版本会对入队列的命令进行一个检测，如果检测到有错误，会拒绝执行事务，调用EXEC命令时返回错误。</p>
+<p>redis2.6.5之前的版本，在入队列时检测错误，如果有错误，由客户端决定是否是继续执行事务还是放弃事务</p>
+<p><strong>第二处：执行EXEC时命令执行错误</strong></p>
+<p>redis的特点是，队列中的命令执行失败了，并不会影响它后面命令的执行，这和MySql有很大的区别</p>
+<h2 id="Redis有回滚吗？为什么？"><a href="#Redis有回滚吗？为什么？" class="headerlink" title="Redis有回滚吗？为什么？"></a>Redis有回滚吗？为什么？</h2><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426172314292.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426172314292.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426172314292"></p>
+<p>官方文档解释：Redis是不支持回滚操作的，这是为了保证Redis的简单性和高性能。</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426173820962.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250426173820962.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426173820962"></p>
+<p>尝试一下创建一个事务，这个事务包含4条命令，第三条命令是错误的，他们都成功入队列了，当执行EXEC时，可以发现，第三条命令失败了，但是第四条命令可以执行成功。验证了redis事务中的命令执行失败并不会影响其它命令的执行。</p>
+<p><strong>得出结论： redis的事务不保证命令全部执行正确，它只保证一系列命令执行的原子性。</strong></p>
+<p><strong>我们来分析一下，为什么redis不支持回滚操作</strong>？</p>
+<p><strong>redis 的设计思想：简单、高效！事务回滚是复杂的，违背设计原则</strong></p>
+<ol>
+<li><p>redis 的问题设计初衷是简单高效，事务回滚会增加复杂性</p>
+</li>
+<li><p>redis 的单线程模型让命令执行是串行的，天然不需要处理多线程并发带来的事务回滚操作</p>
+</li>
+<li><p>事务中的错误通常是语法错误，应该在开发阶段解决，而不是在运行时回滚</p>
+</li>
+<li><p>事务回滚必然要维护旧的数据状态，但是redis 是简单高效的缓存，不是强一致性的数据库</p>
+</li>
+<li><p>redis 是内存数据库，选择牺牲回滚能力换取更高的吞吐能力</p>
+</li>
+</ol>
+
   </div>
   
   
@@ -2531,10 +2590,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-22T19:14:44+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-26T18:16:44+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 22, 2025</p>
+    <p>更新于：Apr 26, 2025</p>
   </a>
 </div>
 
@@ -2553,7 +2612,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/&title=字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/&title=redis 的事务是什么？和 MySql的事务有什么区别 - luckyzz&summary="
           
           >
           
@@ -2565,7 +2624,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/&title=字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/&title=redis 的事务是什么？和 MySql的事务有什么区别 - luckyzz&summary="
           
           >
           
@@ -2577,7 +2636,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/&title=字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/&title=redis 的事务是什么？和 MySql的事务有什么区别 - luckyzz&summary="
           
           >
           
@@ -2610,16 +2669,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/04/23/%E5%AD%97%E8%8A%82%E4%BA%8C%E9%9D%A2%EF%BC%9ARedis-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%94%E5%86%85%E5%AD%98%E6%89%93%E6%BB%A1%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>字节二面：Redis 如果没有设置过期时间，且内存打满时会怎么处理</p>
+      
+        <a class='next' href='/2025/04/23/%E5%AD%97%E8%8A%82%E4%BA%8C%E9%9D%A2%EF%BC%9ARedis-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%94%E5%86%85%E5%AD%98%E6%89%93%E6%BB%A1%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/'>
+          <p class='title'>字节二面：Redis 如果没有设置过期时间，且内存打满时会怎么处理<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>背景最近在面试字节后端，面试官对 八股进行了深入的拷打，问了 Redis 的过期删除时间有什么机制，并延伸了当 redis 没有设置过期时间，且已知写redis知道redis写满，会发生什么？当...</p>
-        </a>
-      
-      
-        <a class='next' href='/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/'>
-          <p class='title'>Linux C++: Valgrind 检查内存泄漏<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>背景内存泄漏一般指的是堆内存泄漏。在写代码的时候，通过C++运算符或者库函数（malloc等）分配内存，使用完后总是忘记释放内存，导致操作系统失去对这块内存的控制，也就是内存泄漏。
-如果不进行内...</p>
         </a>
       
     </div>
@@ -2635,7 +2688,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2677,7 +2730,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%BA%86%E8%A7%A3Redis%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%90%97%EF%BC%9F%E5%AE%83%E7%9A%84%E5%91%BD%E4%BB%A4%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F%E5%AE%83%E5%92%8CMySQL%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%BA%8B%E5%8A%A1"><span class="toc-text">MySQL 事务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E4%BA%8B%E5%8A%A1"><span class="toc-text">Redis事务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MULTI"><span class="toc-text">MULTI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXEC"><span class="toc-text">EXEC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WATCH"><span class="toc-text">WATCH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UNWATCH"><span class="toc-text">UNWATCH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DISCARD"><span class="toc-text">DISCARD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%A4%E4%BA%86Redis%E8%BF%99%E4%BA%9B%E7%89%B9%E6%9C%89%E7%9A%84%E5%91%BD%E4%BB%A4%EF%BC%8CRedis%E7%9A%84%E4%BA%8B%E5%8A%A1%E7%9A%84%E6%9C%80%E5%A4%A7%E7%89%B9%E7%82%B9%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">除了Redis这些特有的命令，Redis的事务的最大特点是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%BA%8B%E5%8A%A1%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%91%E7%94%9F%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-text">Redis如何处理事务执行过程中发生的错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E6%9C%89%E5%9B%9E%E6%BB%9A%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Redis有回滚吗？为什么？</span></a></li></ol>
     </div>
   </section>
 
@@ -3247,7 +3300,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/22/字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的/","name":"字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/","wordCount":0,"datePublished":"2025-04-22T11:12:05.000Z","dateModified":"2025-04-22T11:14:44.062Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/26/redis-的事务是什么？和-MySql的事务有什么区别/","name":"redis 的事务是什么？和 MySql的事务有什么区别"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 的事务是什么？和 MySql的事务有什么区别","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/","wordCount":0,"datePublished":"2025-04-26T08:26:19.000Z","dateModified":"2025-04-26T10:16:44.179Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

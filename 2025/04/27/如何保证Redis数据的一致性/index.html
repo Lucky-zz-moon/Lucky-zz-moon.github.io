@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/04/16/服务降级、服务熔断、服务限流/"/>
+  <link rel="canonical" href="http://example.com/2025/04/27/如何保证redis数据的一致性/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>服务降级、服务熔断、服务限流 - luckyzz</title>
+  <title>如何保证Redis数据的一致性 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务降级、服务熔断、服务限流">
-<meta property="og:url" content="http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/index.html">
+<meta property="og:title" content="如何保证Redis数据的一致性">
+<meta property="og:url" content="http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="服务降级为什么要降级：当服务器出现负载过高的情况时，由于系统资源有限，服务器请求不过来，可能会导致系统崩盘。为了保障系统的稳定性并保证核心业务的运行，需要进行服务降级。 服务降级的核心思想：保留核心服务功能，降低非核心功能或者直接关闭非核心功能，主打一个“断臂求生”。 功能  保障核心业务：在系统资源有限的情况下，优先保障核心业务 增加系统的可用性：避免服务器因为负载过高而崩盘，将有限的资源紧着核">
+<meta property="og:description" content="背景在前面两篇博客中写到 Redis 实现原子性的两种方式：事务、LUA脚本。在学习 LUA 脚本时，对 LUA 脚本能否完全保证redis的原子性做了分析，得出结论： LUA脚本保证原子性取决于Redis的部署架构，在单体和主从架构中是可以保证原子性的，但是在集群的分片部署中却不一定，也给出了解决方案。 提出问题那么在主从架构和集群部署中，如何保证redis的消息不丢失？如何保证主从架构的一致性">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-16T12:54:47.000Z">
-<meta property="article:modified_time" content="2025-04-16T15:32:31.944Z">
+<meta property="article:published_time" content="2025-04-27T02:11:36.000Z">
+<meta property="article:modified_time" content="2025-04-27T06:17:46.264Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2429,7 +2429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/16/服务降级、服务熔断、服务限流/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/如何保证Redis数据的一致性/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2450,7 +2450,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        服务降级、服务熔断、服务限流
+        如何保证Redis数据的一致性
       </h1>
       <div class='new-meta-box'>
         
@@ -2469,10 +2469,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
+    <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" itemprop="url"><span itemprop="name">系统架构</span></a>
+        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
       </span>
     
   </div>
@@ -2481,10 +2481,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-16T20:54:47+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-27T10:11:36+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 16, 2025</p>
+    <p>发布于：Apr 27, 2025</p>
   </a>
 </div>
 
@@ -2507,56 +2507,69 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h2 id="服务降级"><a href="#服务降级" class="headerlink" title="服务降级"></a>服务降级</h2><p>为什么要降级：当服务器出现负载过高的情况时，由于系统资源有限，服务器请求不过来，可能会导致系统崩盘。为了保障系统的稳定性并保证核心业务的运行，需要进行服务降级。</p>
-<p>服务降级的核心思想：保留核心服务功能，降低非核心功能或者直接关闭非核心功能，主打一个“断臂求生”。</p>
-<p><strong>功能</strong></p>
-<ol>
-<li>保障核心业务：在系统资源有限的情况下，优先保障核心业务</li>
-<li>增加系统的可用性：避免服务器因为负载过高而崩盘，将有限的资源紧着核心业务使用</li>
-</ol>
-<h2 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h2><p>为什么要熔断：当一个系统中某些服务器出现问题，可能会影响整个系统的运行，因为系统中的服务器不是独立于整体的，它也会有输出数据或请求数据和系统中的其它组件有交互。当某个服务器出现异常时及时隔离自己而保障系统。</p>
-<p>服务熔断的核心思想：当某个服务器出现故障时，快速失败或者采取其它解决方法，避免自己的故障影响整个系统，主打一个“顾全大局”</p>
-<p><strong>功能</strong></p>
-<ol>
-<li>阻止单个服务器故障蔓延：防止单个服务器故障影响到系统中的其它组件，进而影响整个系统</li>
-<li>快速失败和恢复 ：快速失败后释放资源，恢复正常后提供服务</li>
-<li>增加系统的稳定性：隔离故障的服务器，保证其它服务器正常运行</li>
-</ol>
-<p><strong>启动服务熔断的过程</strong></p>
-<ol>
-<li>正常服务阶段：熔断器是关闭的，所有请求都正常</li>
-<li>监控阶段：监控异常服务的指标，例如响应失败次数，响应时长等，指标超过阈值后会开启熔断</li>
-<li>半开启状态：熔断开启后经过一段时间，允许接收少量请求，检查请求是否被执行，目的是为了试探服务器有没有好，如果好了则进入正常状态，关闭熔断；如果没好，则继续打开熔断</li>
-<li>备用机制：在服务器熔断期间，所有的请求都会收到程序设定结果，要么返回默认失败结果，要么跳过执行，要么请别的实例或服务器执行</li>
-</ol>
-<h2 id="服务限流"><a href="#服务限流" class="headerlink" title="服务限流"></a>服务限流</h2><p>为什么要限流：单个服务器的处理能力有限，无法响应突发大量的服务请求，服务器若不采取措施，大量的请求服务会冲垮服务器</p>
-<p>限流的核心思想：限制处理请求的速率防止系统资源被耗尽，“别着急，排好队，一个一个来”</p>
-<p><strong>功能</strong></p>
-<ol>
-<li>防止系统过载：防止短时间内大量的流量冲垮服务器</li>
-<li>保障系统的稳定性：让系统能够在瞬间高并发的情况下不死机，只是响应速度慢了，并不是不处理请求，功能依然正常</li>
-</ol>
-<p><strong>限流算法</strong></p>
-<ol>
-<li><p>固定窗口计数器算法：规定在一个规定的时间窗口能能处理的最大请求数量</p>
-<p>优点：简单</p>
-<p><img src="/../image/%E5%9B%BA%E5%AE%9A%E7%AA%97%E5%8F%A3%E8%AE%A1%E6%95%B0%E5%99%A8%E7%AE%97%E6%B3%95.drawio.png" class="lazyload" data-srcset="/../image/%E5%9B%BA%E5%AE%9A%E7%AA%97%E5%8F%A3%E8%AE%A1%E6%95%B0%E5%99%A8%E7%AE%97%E6%B3%95.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="固定窗口计数器算法.drawio"></p>
-<p>缺点：无法应对瞬间高并发场景，如果在每个时间窗口的请求次数接近于限流此时且都集中在的最后1s和最开始1s，系统可能会崩溃</p>
-<p><img src="C:/Users/张秋月/Downloads/固定窗口计数器算法_高并发.drawio.png" class="lazyload" data-srcset="C:/Users/张秋月/Downloads/固定窗口计数器算法_高并发.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="固定窗口计数器算法_高并发.drawio"></p>
-</li>
-<li><p>滑动窗口计数器算法</p>
-<p>是对固定窗口算法的改进，将固定窗口分割成多个窗口，在每个小窗口内规定最大的请求数量</p>
-<p><img src="/../image/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%A1%E6%95%B0%E5%99%A8%E7%AE%97%E6%B3%95.drawio.png" class="lazyload" data-srcset="/../image/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E8%AE%A1%E6%95%B0%E5%99%A8%E7%AE%97%E6%B3%95.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="滑动窗口计数器算法.drawio"></p>
-</li>
-<li><p>漏桶算法</p>
-<p>设定一个漏桶，每当来一个请求时，就将请求放入漏桶中，如果漏桶满了，服务端就丢掉请求；漏桶会按照一定的速率取出一个请求给服务端执行</p>
-<p><img src="/../image/%E6%BC%8F%E6%A1%B6%E7%AE%97%E6%B3%95.drawio.png" class="lazyload" data-srcset="/../image/%E6%BC%8F%E6%A1%B6%E7%AE%97%E6%B3%95.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="漏桶算法.drawio"></p>
-</li>
-<li><p>令牌桶算法</p>
-<p>服务端按照一定的速率生成令牌，将令牌放到一个固定容量的桶中，防止令牌过度堆积，每当来一个请求就取一个令牌，只有获得了令牌的请求才能被服务器执行，没有获得令牌的请求会被延迟或者拒绝处理</p>
-</li>
-</ol>
-<p><img src="/../image/%E4%BB%A4%E7%89%8C%E7%AE%97%E6%B3%95.drawio.png" class="lazyload" data-srcset="/../image/%E4%BB%A4%E7%89%8C%E7%AE%97%E6%B3%95.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="令牌算法.drawio"></p>
+    <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在前面两篇博客中写到 Redis 实现原子性的两种方式：事务、LUA脚本。在学习 LUA 脚本时，对 LUA 脚本能否完全保证redis的原子性做了分析，得出结论： LUA脚本保证原子性取决于Redis的部署架构，在单体和主从架构中是可以保证原子性的，但是在集群的分片部署中却不一定，也给出了解决方案。</p>
+<h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>那么在主从架构和集群部署中，如何保证redis的消息不丢失？如何保证主从架构的一致性呢？</p>
+<h2 id="主从架构"><a href="#主从架构" class="headerlink" title="主从架构"></a>主从架构</h2><img src="../image/如何保证Redis数据的一致性/redis单机部署-第 2 页.drawio.png" class="lazyload" data-srcset="../image/如何保证Redis数据的一致性/redis单机部署-第 2 页.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="redis单机部署-第 2 页.drawio" style="zoom:67%;" />
+
+<blockquote>
+<p>高可用</p>
+</blockquote>
+<p>Redis的主从架构使用的是 【一主多从】模式，且主从服务器采用的是【读写分离】的方式，即客户端只对主服务器进行读写，对从服务器读，最新数据由主服务器向从服务器进行同步</p>
+<blockquote>
+<p>异步复制</p>
+</blockquote>
+<p>Redis主节点每次收到写命令后，先写到内部缓冲区中，然后异步发送给从节点。主服务器收到新的写命令后会发给从服务器，但是主服务器不会等从服务器执行完命令后再返回结果给客户端，而是主服务器在本地执行完命令后不等从服务器返回结果直接返回客户端结果了。如果从服务器还没执行主服务器同步过来的命令，主从服务器之间的数据就会不一致了**。**</p>
+<p><strong><font color=red>所以主从服务器的数据无法时时刻刻保持一致。</font></strong></p>
+<h3 id="异步复制的三个阶段"><a href="#异步复制的三个阶段" class="headerlink" title="异步复制的三个阶段"></a>异步复制的三个阶段</h3><p>先来看一下 Redis 官网对复制机制的描述</p>
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427103623906.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427103623906.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250427103623906"></p>
+<p>该段文字表述了，在主从复制过程中的三个过程机制</p>
+<p>1.<font color=blue><strong>【基于TCP长连接的命令传播】</strong></font>，主从服务redis连接良好时，主服务器向从服务器传输命令。</p>
+<p>2.<font color=blue><strong>【网络不稳定连接中断】</strong></font>，从服务器尝试重新连接主服务器，并获取在断开期间错过的命令</p>
+<p>3.<font color=blue><strong>【首次同步】</strong></font>，主服务器使用bgsave命令生成子进程生成RDB文件【异步】发送给从服务器，从服务器收到RDB文件时清空当前数据后载入</p>
+<p><strong><font color=red>总结</font></strong></p>
+<p>在首次连接同步阶段，从服务器获取主服务器的 RDB全量数据，连接过程中从服务器接收主服务器的写命令，连接过程若不稳定，从服务器请求错过的增量命令</p>
+<p><strong><font color=red>注意</font></strong></p>
+<p>Redis复制在主端是非阻塞的，因为主服务端是生成一个子进程生成RDB文件异步发送给从服务器，这个子进程是 bgsave命令生成的</p>
+<h2 id="主从复制过程的原理"><a href="#主从复制过程的原理" class="headerlink" title="主从复制过程的原理"></a>主从复制过程的原理</h2><p>我先来搭建一个一主二从的redis结构</p>
+<p>step1：创建一个replica文件夹， 然后将redis安装目录的bin文件中的内容复制到replica文件夹下的三个文件夹中，分别是master ,  slavel1, slave2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /home/zqy/桌面/</span><br><span class="line">makdir  replica</span><br><span class="line">cp -r /home/zqy/桌面/redis/bin  /home/zqy/桌面/replica/master </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>step2：修改slave1 和 slave2的配置文件 ，redis.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /home/zqy/桌面/replica/slave1/redis.conf</span><br><span class="line">replicaof 192.168.93.10 6379</span><br><span class="line">port 6380</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>step3：修改slave2的配置文件 ，redis.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /home/zqy/桌面/replica/slave2/redis.conf</span><br><span class="line">replicaof 192.168.93.10 6379</span><br><span class="line">port 6381</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>step4：创建启动脚本  startup.sh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /home/zqy/桌面/replica/master</span><br><span class="line">./redis-server redis.conf</span><br><span class="line">cd /home/zqy/桌面/replica/slave1</span><br><span class="line">./redis-server redis.conf</span><br><span class="line">cd /home/zqy/桌面/replica/slave2</span><br><span class="line">./redis-server redis.conf</span><br></pre></td></tr></table></figure>
+
+
+
+<p>step5：启动脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果启动失败，可以进入 slave1和slave2文件夹中单独启动，启动语句是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-server redis.conf </span><br></pre></td></tr></table></figure>
+
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427140324340.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427140324340.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250427140324340"></p>
+<p>从图中可以看出，因为创建主从redis都是在本机上进行的，所以ip不变，通过端口区分不同的redis服务器</p>
+<p>step6：进入主redis， 查看它的从节点们的信息，数量是否正确</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./redis-cli -p 6379</span><br><span class="line">info replication</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427140902703.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427140902703.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250427140902703"></p>
+<h3 id="在主从连接的时候发生了什么"><a href="#在主从连接的时候发生了什么" class="headerlink" title="在主从连接的时候发生了什么"></a>在主从连接的时候发生了什么</h3><p><img src="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427141735676.png" class="lazyload" data-srcset="C:/Users/张秋月/AppData/Roaming/Typora/typora-user-images/image-20250427141735676.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250427141735676"></p>
 
   </div>
   
@@ -2581,10 +2594,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-16T23:32:31+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-27T14:17:46+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 16, 2025</p>
+    <p>更新于：Apr 27, 2025</p>
   </a>
 </div>
 
@@ -2603,7 +2616,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/&title=服务降级、服务熔断、服务限流 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/&title=如何保证Redis数据的一致性 - luckyzz&summary="
           
           >
           
@@ -2615,7 +2628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/&title=服务降级、服务熔断、服务限流 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/&title=如何保证Redis数据的一致性 - luckyzz&summary="
           
           >
           
@@ -2627,7 +2640,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/&title=服务降级、服务熔断、服务限流 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/&title=如何保证Redis数据的一致性 - luckyzz&summary="
           
           >
           
@@ -2660,16 +2673,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>死锁怎么排查</p>
-          <p class='content'>背景一个进程中的多个线程是共享进程空间的数据的，当线程并发执行时，会出现线程安全问题，也就是多个线程对共享数据进行修改时导致数据不一致的问题。为了解决线程并发问题需要对共享资源进行互斥访问，通过...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/'>
-          <p class='title'>怎么防止单点故障<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>背景在交易所工作的这段日子，学习交易系统的时候，总是强调主备服务器，什么是主备服务器？为什么要做主备服务器？
-单点故障单点故障是指系统中每个组件或者某一个节点出现问题无法正常提供服务了，可能会导...</p>
+        <a class='next' href='/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/'>
+          <p class='title'>redis 如何实现原子性<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>上一篇博客说到了 redis 的事务机制，知道了 redis 的事务机制可以保证一组命令可以原子执行，但是不保证这组命令全部执行成功。redis 中也使用了 LUA 脚本保证原子性。
+先来看一下...</p>
         </a>
       
     </div>
@@ -2685,7 +2693,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2727,7 +2735,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7"><span class="toc-text">服务降级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD"><span class="toc-text">服务熔断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81"><span class="toc-text">服务限流</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84"><span class="toc-text">主从架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%A4%8D%E5%88%B6%E7%9A%84%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">异步复制的三个阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-text">主从复制过程的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%B8%BB%E4%BB%8E%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%97%B6%E5%80%99%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-text">在主从连接的时候发生了什么</span></a></li></ol>
     </div>
   </section>
 
@@ -3297,7 +3305,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/系统架构/","name":"系统架构"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/16/服务降级、服务熔断、服务限流/","name":"服务降级、服务熔断、服务限流"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"服务降级、服务熔断、服务限流","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/","wordCount":0,"datePublished":"2025-04-16T12:54:47.000Z","dateModified":"2025-04-16T15:32:31.944Z","articleSection":"系统架构","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/27/如何保证Redis数据的一致性/","name":"如何保证Redis数据的一致性"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何保证Redis数据的一致性","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/","wordCount":0,"datePublished":"2025-04-27T02:11:36.000Z","dateModified":"2025-04-27T06:17:46.264Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

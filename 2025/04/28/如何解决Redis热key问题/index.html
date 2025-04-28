@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="http://example.com/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/04/28/如何解决redis热key问题/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>luckyzz</title>
-  <meta name="keywords" content="">
+  <title>如何解决Redis热key问题 - luckyzz</title>
+  <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="luckyzz">
-<meta property="og:url" content="http://example.com/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何解决Redis热key问题">
+<meta property="og:url" content="http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="luckyzz">
+<meta property="og:description" content="提出问题在写前面两个博客的时候，都提到了redis的架构（单体、主从、集群分片），针对不同的架构分析了 Redis 的原子性、数据的一致性，显然架构越复杂，保障数据的一致性和和原子性就越复杂，那复杂架构可以解决单体架构和主从架构不能解决的什么问题？这让我想到在面试腾讯的时候，面试官问我的一个问题，Redis怎么解决热 Key 问题？ 场景在高并发场景中，百万用户同时抢购一万张满减购物券，redis">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-04-27T23:28:13.000Z">
+<meta property="article:modified_time" content="2025-04-28T03:16:37.722Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2052,7 +2056,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2355,7 +2359,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="full" class='cover-wrapper  search' style="display: ;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uy.wzznft.com/i/2025/04/20/u7xkow.jpg"></div>
 
@@ -2414,7 +2418,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   </div>
 </div>
 
-        <div id="scroll-down" style="display: ;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
+        <div id="scroll-down" style="display: none;"><i class="fa fa-chevron-down scroll-down-effects"></i></div>
       </div>
     
   
@@ -2424,61 +2428,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-  
-  <section class="post-list">
-    
-      
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
   <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/28/如何解决Redis热key问题/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
@@ -2488,672 +2438,252 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <meta itemprop="description" content="">
   </span>
   
-  
+
+
   
     <span hidden>
       <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
     </span>
   
-  
+  <div class="article-meta" id="top">
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/"  itemprop="url">
+    
+    
+      <h1 class="title" itemprop="name headline">
         如何解决Redis热key问题
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
     
-      
-        提出问题在写前面两个博客的时候，都提到了redis的架构（单体、主从、集群分片），针对不同的架构分析了 Redis 的原子性、数据的一致性，显然架构越复杂，保障数据的一致性和和原子性就越复杂，那复杂架构可以解决单体架构和主从架构不能解决的什么问题？这让我想到在面试腾讯的时候，面试官问我的一个问题，Redis怎么解决热 Key 问题？
-场景在高并发场景中，百万用户同时抢购一万张满减购物券，re...
-      
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
+      </span>
     
   </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-28T07:28:13+08:00">2025-04-28</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
-            </span>
+
+
           
         
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-28T07:28:13+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Apr 28, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>在写前面两个博客的时候，都提到了redis的架构（单体、主从、集群分片），针对不同的架构分析了 Redis 的原子性、数据的一致性，显然架构越复杂，保障数据的一致性和和原子性就越复杂，那复杂架构可以解决单体架构和主从架构不能解决的什么问题？这让我想到在面试腾讯的时候，面试官问我的一个问题，Redis怎么解决热 Key 问题？</p>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在高并发场景中，百万用户同时抢购一万张满减购物券，redis可能会被巨大的流量冲跨，怎么解决这种问题？（这让我想到双十一期间的时候，每天早上10点和晚上8点抢购神仙水，500块一瓶的神仙水谁会不抢呢哈哈哈，但是我抢了三天也没抢到。可见参与的人数有多么多）</p>
+<h2 id="热key是什么"><a href="#热key是什么" class="headerlink" title="热key是什么"></a>热key是什么</h2><p>单个redis的写入瓶颈是 20000次&#x2F;秒，读取瓶颈是100000次&#x2F;秒，在某一个时间段内，对某个key的读写频率超过某个设定的值，导致redis节点的CPU、内存、网络带宽等资源被大量消耗，影响了redis的性能和稳定性。</p>
+<h2 id="产生热-key-的原因"><a href="#产生热-key-的原因" class="headerlink" title="产生热 key 的原因"></a>产生热 key 的原因</h2><ol>
+<li>秒杀大促：双11、618、整点秒杀等</li>
+<li>热点数据：热点新闻、热门评论等</li>
+<li>代码逻辑问题：代码逻辑不正确，存在死循环等问题</li>
+</ol>
+<h2 id="如果不对热key处理会引发什么问题"><a href="#如果不对热key处理会引发什么问题" class="headerlink" title="如果不对热key处理会引发什么问题"></a>如果不对热key处理会引发什么问题</h2><ol>
+<li><p>单个redis宕机或性能下降：redis 虽然是基于内存的数据库，其读写耗时远远低于直接访问磁盘上的数据库，但是redis也是存在瓶颈的，查了相关资料得知，单个redis的写入瓶颈是 20000次&#x2F;秒，读取瓶颈是100000次&#x2F;秒，当百万请求瞬间请求 单个redis时， 一定会将它冲垮，严重时会导致系统崩溃。</p>
+</li>
+<li><p>Redis 集群性能下降</p>
+<p>如果高并发请求都落在单个redis上，高流量会冲垮这个redis，在 redis 集群中可能有其他的业务，他们需要的数据均匀的分片在了各个redis上，那么redis宕机也会影响其它的业务，需要对分片的数据进行迁移等操作。</p>
+</li>
+<li><p>缓存击穿</p>
+<p>当某些热key恰好过期了，对它进行访问会造成缓存击穿的问题，磁盘数据库扛不住会宕机，严重导致缓存雪崩。</p>
+</li>
+</ol>
+<h2 id="如何有效解决热-key-问题"><a href="#如何有效解决热-key-问题" class="headerlink" title="如何有效解决热 key 问题"></a>如何有效解决热 key 问题</h2><p><font color=red> <strong>热 key 问题解决的核心思想</strong></font></p>
+<p><font color=red><strong>1. redis 崩溃无非是它承受远远超于它能力上限的请求，解决这个问题那就把超过的流量分出去</strong></font></p>
+<p><font color=red><strong>2. 热key问题本质就是高并发的问题，如何避免让高并发的流量冲垮系统，需要设置多层抵御防线：前端设计（限流，校验。。。）、后端设计（限流，降级，熔断，布隆过滤器。。。）</strong></font></p>
+<blockquote>
+<p><font color=blue><strong>读多写少场景——分片</strong></font></p>
+</blockquote>
+<p>redis 架构中有一个集群分片架构，这个架构中存在多个主从结构，每个主节点只负责一部分数据，多个主节点负责的数据的集合才是数据整体，这就是 数据分片。</p>
+<p>我们将热点数据均匀地也可以按照一定的比例存放在 redis 集群中，用户请求时根据CRC16 hash(key) % 16384 哈希选择使用哪个redis</p>
+<blockquote>
+<p><font color=blue><strong>写多读少场景——复制全量副本</strong></font></p>
+</blockquote>
+<p>对于读多写少的场景，我们创建多个热点数据的副本，然后在每个 redis 上存储热key，根据请求用户的ID 哈希选择使用哪个redis读， 为了进一步提高性能， 可以使用读写分离的方式，降低每个数据分片的请求压力，甚至可以不断地增加从节点，但是问题在于从节点增多导致集群架构的复杂度增加，监控和运维成本增加。</p>
+<p>注意：采用数据分片，需要更改key，但是内容不变，因为redis集群槽中的数据是根据对key进行哈希来映射的。</p>
+<blockquote>
+<p><font color=blue><strong>智能缓存淘汰策略</strong></font></p>
+</blockquote>
+<p>选择合适的缓存淘汰算法，根据键的访问频率和时间等指标淘汰不常用的键，为热key腾出更多的空间，让热key留在内存中的时间更久</p>
+<blockquote>
+<p><font color=blue><strong>随机失效时间</strong></font></p>
+</blockquote>
+<p>给热key加上随机失效时间，避免同时失效时产生又有高并发的请求，导致缓存雪崩</p>
+<blockquote>
+<p><font color=blue><strong>缓存预热</strong></font></p>
+</blockquote>
+<p>在系统启动或者业务的高峰期来临之前，提前将热key加载到缓存中，减少数据库的查询压力和响应时间</p>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
       
-        <div>
-          <a class='readmore' href='/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/' itemprop="url">
-            Read More
-          </a>
-        </div>
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
       
     </div>
   
+  
+    
 
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T11:16:37+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Apr 28, 2025</p>
+  </a>
 </div>
 
-          </div>
         
       
         
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/27/如何保证Redis数据的一致性/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/&title=如何解决Redis热key问题 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/&title=如何解决Redis热key问题 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/&title=如何解决Redis热key问题 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
   
   
+
   
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/'>
+          <p class='title'>如何保证Redis数据的一致性<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>背景在前面两篇博客中写到 Redis 实现原子性的两种方式：事务、LUA脚本。在学习 LUA 脚本时，对 LUA 脚本能否完全保证redis的原子性做了分析，得出结论： LUA脚本保证原子性取决...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+      <meta itemprop="discussionUrl" content="/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/index.html#comments">
     </span>
-  
-  
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/"  itemprop="url">
-        如何保证Redis数据的一致性
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景在前面两篇博客中写到 Redis 实现原子性的两种方式：事务、LUA脚本。在学习 LUA 脚本时，对 LUA 脚本能否完全保证redis的原子性做了分析，得出结论： LUA脚本保证原子性取决于Redis的部署架构，在单体和主从架构中是可以保证原子性的，但是在集群的分片部署中却不一定，也给出了解决方案。
-提出问题那么在主从架构和集群部署中，如何保证redis的消息不丢失？如何保证主从架构的...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-27T10:11:36+08:00">2025-04-27</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
+    <div id="layoutHelper-comments"></div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/26/redis-如何实现原子性/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/"  itemprop="url">
-        redis 如何实现原子性
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        上一篇博客说到了 redis 的事务机制，知道了 redis 的事务机制可以保证一组命令可以原子执行，但是不保证这组命令全部执行成功。redis 中也使用了 LUA 脚本保证原子性。
-先来看一下 redis 官方对LUA脚本做的解释：LUA是一种脚本语言，通过EVAL命令执行LUA脚本，且LUA脚本具备原子性
+  </article>
 
-执行脚本
-EVAL
 
-EVAL 的语法
-1EVAL script numkeys...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-26T19:05:09+08:00">2025-04-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
 
-</div>
 
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/26/redis-的事务是什么？和-MySql的事务有什么区别/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"  itemprop="url">
-        redis 的事务是什么？和 MySql的事务有什么区别
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？MySQL 事务mysql的事务主要要4个特点，也就是ACID，这是面试常问到的点
-Atomicity（原子性）：事务中的操作要么全部执行，要么全部不执行
-Consistency(一致性)：事务执行前后，数据库中数据在逻辑上都是正确的。常举的例子是，A给B转100块，执行前A的账户有a元，B的账户有b元，执行后...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-26T16:26:19+08:00">2025-04-26</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/23/字节二面：Redis-如果没有设置过期时间，且内存打满时会怎么处理/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/23/%E5%AD%97%E8%8A%82%E4%BA%8C%E9%9D%A2%EF%BC%9ARedis-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%94%E5%86%85%E5%AD%98%E6%89%93%E6%BB%A1%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/"  itemprop="url">
-        字节二面：Redis 如果没有设置过期时间，且内存打满时会怎么处理
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景最近在面试字节后端，面试官对 八股进行了深入的拷打，问了 Redis 的过期删除时间有什么机制，并延伸了当 redis 没有设置过期时间，且已知写redis知道redis写满，会发生什么？当时回答的是会启动换入换出操作，面试官好像不太满意。面试复盘实验一下，看看这种情况到底会发生什么。
-Redis 安装（Linux环境）step1：下载指定redis的版本包
-1wget https://...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-23T10:47:45+08:00">2025-04-23</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/23/%E5%AD%97%E8%8A%82%E4%BA%8C%E9%9D%A2%EF%BC%9ARedis-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%94%E5%86%85%E5%AD%98%E6%89%93%E6%BB%A1%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/22/字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/"  itemprop="url">
-        字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-22T19:12:05+08:00">2025-04-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/22/Linux-C-Valgrind-检查内存泄漏/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"  itemprop="url">
-        Linux C++: Valgrind 检查内存泄漏
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景内存泄漏一般指的是堆内存泄漏。在写代码的时候，通过C++运算符或者库函数（malloc等）分配内存，使用完后总是忘记释放内存，导致操作系统失去对这块内存的控制，也就是内存泄漏。
-如果不进行内存泄漏的处理，当系统中运行的程序越来越多，内存泄漏也就会越来越多，即使实际上物理内存足够大，但是一旦内存泄漏越来越多，可用内存就越来越少，严重可能会导致系统崩溃。
-如何定位可能发生内存泄漏的进程模拟一...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-22T16:08:25+08:00">2025-04-22</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/21/死锁怎么排查/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/"  itemprop="url">
-        死锁怎么排查
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景一个进程中的多个线程是共享进程空间的数据的，当线程并发执行时，会出现线程安全问题，也就是多个线程对共享数据进行修改时导致数据不一致的问题。为了解决线程并发问题需要对共享资源进行互斥访问，通过互斥锁实现。如果获取锁的顺序不当，很可能会造成死锁。那发生死锁的时候怎么去排查呢？
-通过创造产生死锁的4个必要条件模拟死锁的发生系统产生死锁的四个必要条件
-· 互斥
-· 请求保持
-· 不可剥夺
-· 环...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-21T20:31:33+08:00">2025-04-21</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/16/服务降级、服务熔断、服务限流/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/"  itemprop="url">
-        服务降级、服务熔断、服务限流
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        服务降级为什么要降级：当服务器出现负载过高的情况时，由于系统资源有限，服务器请求不过来，可能会导致系统崩盘。为了保障系统的稳定性并保证核心业务的运行，需要进行服务降级。
-服务降级的核心思想：保留核心服务功能，降低非核心功能或者直接关闭非核心功能，主打一个“断臂求生”。
-功能
-
-保障核心业务：在系统资源有限的情况下，优先保障核心业务
-增加系统的可用性：避免服务器因为负载过高而崩盘，将有限的资源...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-16T20:54:47+08:00">2025-04-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" itemprop="url"><span itemprop="name">系统架构</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/16/怎么防止单点故障/">
-  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="luckyzz">
-  </span>
-  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
-    <meta itemprop="name" content="luckyzz">
-    <meta itemprop="description" content="">
-  </span>
-  
-  
-  
-    <span hidden>
-      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-    </span>
-  
-  
-    
-    <h2 class="article-title"  itemprop="name headline">
-      <a href="/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/"  itemprop="url">
-        怎么防止单点故障
-      </a>
-    </h2>
-  
-  <div class='md article-desc' itemprop="articleBody">
-    
-      
-        背景在交易所工作的这段日子，学习交易系统的时候，总是强调主备服务器，什么是主备服务器？为什么要做主备服务器？
-单点故障单点故障是指系统中每个组件或者某一个节点出现问题无法正常提供服务了，可能会导致整个系统瘫痪。系统设计需要时刻考虑单点故障问题，实现系统的可靠性和可用性。系统设计过程中避免单点故障的核心思想就是【冗余】。
-构建冗余的系统架构构建冗余的系统架构，需要从硬件和软件两个方面考虑
-硬件...
-      
-    
-  </div>
-  
-    <div class='meta-v3' line_style='solid'>
-      <div>
-        
-        <time itemprop="dateCreated datePublished" datetime="2025-04-16T16:12:13+08:00">2025-04-16</time>
-        
-          <span class="dot"></span>
-          <a class="category-link" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/">系统架构</a>
-          
-            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-              <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" itemprop="url"><span itemprop="name">系统架构</span></a>
-            </span>
-          
-        
-      </div>
-      
-        <div>
-          <a class='readmore' href='/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/' itemprop="url">
-            Read More
-          </a>
-        </div>
-      
-    </div>
-  
-
-</div>
-
-          </div>
-        
-      
-    
-  </section>
-  
-    
-      <br>
-      <div class="prev-next">
-        
-        <p class="current">
-          1 / 2
-        </p>
-        
-          <a class="next" rel="next" href="/page/2/">
-            <section class="post next white-box shadow floatable blur">
-              &nbsp;Next&nbsp;<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-            </section>
-          </a>
-        
-      </div>
-    
-  
 
 
 </div>
@@ -3164,149 +2694,48 @@ Redis 安装（Linux环境）step1：下载指定redis的版本包
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">luckyzz</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"
-            active-action="action-categoriesE4B8ADE997B4E4BBB6"
-            ><div class='name'>中间件</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            active-action="action-categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"
-            active-action="action-categoriesE7B3BBE7BB9FE69EB6E69E84"
-            ><div class='name'>系统架构</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
-            active-action="action-categoriesE8AEA1E7AE97E69CBAE7BD91E7BB9C"
-            ><div class='name'>计算机网络</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/%E6%A0%87%E7%AD%BE1/" style="font-size: 14px; color: #999">标签1</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%87%BA%E9%97%AE%E9%A2%98"><span class="toc-text">提出问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF"><span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%83%ADkey%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">热key是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E7%83%AD-key-%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">产生热 key 的原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%AF%B9%E7%83%ADkey%E5%A4%84%E7%90%86%E4%BC%9A%E5%BC%95%E5%8F%91%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">如果不对热key处理会引发什么问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E8%A7%A3%E5%86%B3%E7%83%AD-key-%E9%97%AE%E9%A2%98"><span class="toc-text">如何有效解决热 key 问题</span></a></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -3341,7 +2770,7 @@ Redis 安装（Linux环境）step1：下载指定redis的版本包
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3350,15 +2779,15 @@ Redis 安装（Linux环境）step1：下载指定redis的版本包
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="full";
-      cover_wrapper.style.display="";
-      scroll_down.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
+      scroll_down.style.display="none";
     
   
 </script>
@@ -3855,7 +3284,7 @@ Redis 安装（Linux环境）step1：下载指定redis的版本包
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/28/如何解决Redis热key问题/","name":"如何解决Redis热key问题"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"如何解决Redis热key问题","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/","wordCount":0,"datePublished":"2025-04-27T23:28:13.000Z","dateModified":"2025-04-28T03:16:37.722Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

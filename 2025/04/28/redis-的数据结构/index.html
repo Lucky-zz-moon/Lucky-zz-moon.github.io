@@ -41,11 +41,11 @@
 <meta property="og:title" content="redis 的数据结构">
 <meta property="og:url" content="http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="redis的数据结构&gt; string先来看一下 Redis 的官方文档是怎么对 string 数据结构解释的：string 可以存储任何数据，包括二进制、文本、序列化等，限制是值不能超过512MB 使用场景  作为缓存可以缓存html页面、对象等  常规计数（适用于计算访问次数、点赞、库存数量等）INCR：将字符串的值解析为整数，并且+1DECR：将字符串的值解析为整数，并且-1INCRBY">
+<meta property="og:description" content="redis的数据结构&gt; string先来看一下 Redis 的官方文档是怎么对 string 数据结构解释的：string 可以存储任何数据，包括二进制、文本、序列化等，限制是值不能超过512MB string的底层数据结构 底层数据结构主要是 SDS（简单动态字符串） 12345struct sdshdr&#123;    int free; &#x2F;&#x2F; buf[]数组未使用字节的数量    i">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-28T12:00:20.000Z">
-<meta property="article:modified_time" content="2025-04-28T12:04:49.482Z">
+<meta property="article:modified_time" content="2025-04-28T12:17:34.037Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745841917135),
+    lastupdate: new Date(1745842698430),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2508,6 +2508,23 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
     <h1 id="redis的数据结构"><a href="#redis的数据结构" class="headerlink" title="redis的数据结构"></a>redis的数据结构</h1><h2 id="string"><a href="#string" class="headerlink" title="&gt; string"></a>&gt; string</h2><p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/88d96face1ee025fffe70c3435cf84a.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/88d96face1ee025fffe70c3435cf84a.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="88d96face1ee025fffe70c3435cf84a"><br>先来看一下 Redis 的官方文档是怎么对 string 数据结构解释的：string 可以存储任何数据，包括二进制、文本、序列化等，限制是值不能超过512MB</p>
+<p><strong>string的底层数据结构</strong></p>
+<p>底层数据结构主要是 SDS（简单动态字符串）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct sdshdr&#123;</span><br><span class="line">    int free; // buf[]数组未使用字节的数量</span><br><span class="line">    int len; // buf[]数组所保存的字符串的长度</span><br><span class="line">    char buf[]; // 保存字符串的数组 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>使用SDS有更高的效率</li>
+</ol>
+<p>   C语言原生字符串中是不会保存字符串长度值的，获取字符串长度值就需要遍历一遍字符串，时间复杂度O(n)。SDS数据结构中有个变量单独保存了SDS字符串的长度，所以获取字符串长度的时间复杂度是O(1)。</p>
+<ol start="2">
+<li>SDS采用了空间预分配策略</li>
+</ol>
+<p>   在SDS字符串增长时，先判断SDS数据结构中的free字段是否满足，若不满足，采用空间预分配扩展空间，不仅会为SDS分配修改所必要的空间，还会为SDS分配额外的未使用空间free，减少因为字符串增长而导致的空间重新分配次数的增加</p>
+<ol start="3">
+<li>惰性空间释放策略</li>
+</ol>
+<p>   在SDS字符串减小时，不直接回收内存，而是记录在free中，等待下次增长时直接使用</p>
+<p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20250428201005761.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20250428201005761.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250428201005761"></p>
 <p><strong>使用场景</strong></p>
 <ol>
 <li><p>作为缓存<br>可以缓存html页面、对象等</p>
@@ -2527,7 +2544,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h2 id="List"><a href="#List" class="headerlink" title="&gt; List"></a>&gt; List</h2><p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3b20e025f69ebf14f799813ef4b821e.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3b20e025f69ebf14f799813ef4b821e.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="3b20e025f69ebf14f799813ef4b821e"><br>Redis 的官方文档对 List 数据结构解释：List 是一个按照插入顺序排序的字符串列表（是链表不是数组)，这个列表实现了栈和队列的特性</p>
 <p><strong>使用场景</strong></p>
 <ol>
-<li>消息队列<br>消息队列对消息的存取要满足消息的<font color=blue>有序性</font>，list 对链表的头尾操作满足了消息有序性的存储和消费</li>
+<li>消息队列<br>消息队列对消息的存取要满足消息的<font color=blue><strong>有序性</strong></font>，list 对链表的头尾操作满足了消息有序性的存储和消费</li>
 <li>记住用户在社交网络上发布的最新动态</li>
 </ol>
 <p><strong>常用命令</strong><br>LPUSH：list队头添加新元素<br>RPUSH：list队尾添加新元素<br>LPOP：从队头取元素<br>RPOP：从队尾取元素<br><font color= blue>BLPOP：</font>阻塞式从队尾取数据，因为消费者往队尾放一个元素时没有通知消费者取，需要消费者不停地调用LPOP从队头取数据，这样就会空耗CPU，使用BLPOP命令没有读到数据时，消费者自动阻塞释放CPU，直到队列中有数据时再读新数据</p>
@@ -2588,7 +2605,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T20:04:49+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T20:17:34+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 28, 2025</p>
@@ -3298,7 +3315,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/28/redis-的数据结构/","name":"redis 的数据结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 的数据结构","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2025-04-28T12:00:20.000Z","dateModified":"2025-04-28T12:04:49.482Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/28/redis-的数据结构/","name":"redis 的数据结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 的数据结构","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2025-04-28T12:00:20.000Z","dateModified":"2025-04-28T12:17:34.037Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

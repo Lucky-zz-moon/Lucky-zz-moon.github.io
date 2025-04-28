@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-04-28T12:00:20.000Z">
-<meta property="article:modified_time" content="2025-04-28T12:17:34.037Z">
+<meta property="article:modified_time" content="2025-04-28T12:52:54.259Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1745842698430),
+    lastupdate: new Date(1745844811195),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2553,6 +2553,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>即使 list 中的数据量非常大，也能保证在队头和队尾进行数据存储的时候时间复杂度是O(1)</li>
 <li>但是链表在查询的时候时间复杂度要高于数组，数组通过索引下标就可以直接访问数据了，那为什么不用数组呢？这是因为对于数据库来说，快速将数据插入到较长的 list 数据结构中是更加重要的</li>
 </ol>
+<p>![redis数据结构-第 2 页.drawio](..&#x2F;image&#x2F;Redis的数据结构&#x2F;redis数据结构-第 2 页.drawio.png)</p>
 <h2 id="SET"><a href="#SET" class="headerlink" title="SET"></a>SET</h2><p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/55a444cbdcd050d0610c7b1669c07a6.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/55a444cbdcd050d0610c7b1669c07a6.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="55a444cbdcd050d0610c7b1669c07a6"><br>Redis 的官方文档对 SET 数据结构解释：SET 是一个无序且键值唯一的集合</p>
 <p><strong>使用场景</strong></p>
 <ol>
@@ -2567,6 +2568,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </ol>
 <p><strong>常用命令</strong><br>HMSET：设置 hash 字段<br>HGET：返回给定字段的值</p>
 <p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/9867a1f2edabaef13cdacafc183b18d.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/9867a1f2edabaef13cdacafc183b18d.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="9867a1f2edabaef13cdacafc183b18d"></p>
+<p>![redis数据结构-第 3 页.drawio](..&#x2F;image&#x2F;Redis的数据结构&#x2F;redis数据结构-第 3 页.drawio.png)</p>
 <h2 id="sort-sets"><a href="#sort-sets" class="headerlink" title="sort sets"></a>sort sets</h2><p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/b2958c73aceaafca43d4d34498c35d5.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/b2958c73aceaafca43d4d34498c35d5.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="b2958c73aceaafca43d4d34498c35d5"><br>Redis 的官方文档对 sort sorts 数据结构解释：sort sorts 关联了一个分数排序，每个value至少有两个元素，一个是排序值，另一个是元素值，当排序值相同的时候，按照元素值的字典序进行排序</p>
 <p><strong>使用场景</strong><br>需要对唯一元素进行排序的场景</p>
 <ol>
@@ -2574,6 +2576,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li>姓名按照字典序排序</li>
 </ol>
 <p><strong>常用命令</strong><br>ZADD：在有序集合中添加元素（需要额外设置排序分数）<br>ZSCORE：查看某个元素的排序值<br>ZREVRANGE：查找排序在某个区间的元素</p>
+<p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20250428203033952.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/image-20250428203033952.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250428203033952"></p>
+<p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.drawio.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="redis数据结构.drawio"></p>
 <h2 id="bitmaps"><a href="#bitmaps" class="headerlink" title="bitmaps"></a>bitmaps</h2><p><img src="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/d178ae3c7eb8071d627caf036bd2c58.png" class="lazyload" data-srcset="/../image/Redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/d178ae3c7eb8071d627caf036bd2c58.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="d178ae3c7eb8071d627caf036bd2c58"><br>Redis 的官方文档对 bitmap 数据结构解释：bitmap 是一连串的二进制数组，按位进行操作</p>
 <p><strong>使用场景</strong></p>
 <ol>
@@ -2605,7 +2609,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T20:17:34+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-28T20:52:54+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Apr 28, 2025</p>
@@ -3315,7 +3319,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/28/redis-的数据结构/","name":"redis 的数据结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 的数据结构","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2025-04-28T12:00:20.000Z","dateModified":"2025-04-28T12:17:34.037Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/28/redis-的数据结构/","name":"redis 的数据结构"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 的数据结构","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/","wordCount":0,"datePublished":"2025-04-28T12:00:20.000Z","dateModified":"2025-04-28T12:52:54.259Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

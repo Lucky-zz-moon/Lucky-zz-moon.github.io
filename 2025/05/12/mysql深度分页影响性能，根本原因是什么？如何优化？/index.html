@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-12T02:43:18.000Z">
-<meta property="article:modified_time" content="2025-05-12T14:29:39.688Z">
+<meta property="article:modified_time" content="2025-05-12T23:55:38.249Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747060306465),
+    lastupdate: new Date(1747094229542),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2510,9 +2510,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在字节一面中，面试官给了一个深度分页的sql语句，给出优化方案，当时没有回答出来，面试后查询各种资料，终于理解了深度分页对mysql性能的影响，并且自己也做了一个小实验，理解了深度分页的原因以及它的优化方案。</p>
 <h2 id="limit-查询"><a href="#limit-查询" class="headerlink" title="limit  查询"></a>limit  查询</h2><p>limit 是查询语句的子句，用来限制查询结果的行数，配合 offset 实现分页查询</p>
 <p> limit 的语法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select colum1，colum2...from table where “条件语句” limit [offset]  [N];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select colum1，colum2...from table where “条件语句” limit [offset]  [Row_count];</span><br></pre></td></tr></table></figure>
 
-<p>上面这条查询语句的作用是：查询满足条件的记录，只显示从偏移量为[offset]开始的往下的N条记录。</p>
+<p>上面这条查询语句的作用是：查询满足条件的记录，只显示从偏移量为[offset]开始的往下的Row_count条记录。</p>
 <h2 id="mysql架构"><a href="#mysql架构" class="headerlink" title="mysql架构"></a>mysql架构</h2><p><font color=blue><strong>当offset 很大时，为什么会影响 mysql 的性能呢？为了了解这个问题，首先必须要知道 mysql 的查询架构。</strong></font></p>
 <p><strong>mysql 的架构主要分为两层，分别是 server 层 和 存储引擎层</strong></p>
 <p><strong>server层</strong></p>
@@ -2524,6 +2524,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>​	存储mysql的数据，mysql 默认使用的存储引擎是 innoDB ，而 innoDB 对聚簇索引和二级索引的组织结构都是 B+ 树</p>
 <p>借鉴一下小林coding  网站中对“mysql查询一条数据的过程”的描述图</p>
 <p><img src="/../image/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/image-20250512113838057.png" class="lazyload" data-srcset="/../image/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/image-20250512113838057.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250512113838057"></p>
+<p><strong>limit 的实现是在server层</strong></p>
+<p>·  如果limit没有搭配 offset， 执行器读取到 Row_count条记录后就会停止读取过程</p>
+<p>·  如果limit搭配了 offset， 执行器会跳过前面 offset 行数据，然后继续读 Row_count行数据后停止</p>
 <h2 id="mysql的索引查询"><a href="#mysql的索引查询" class="headerlink" title="mysql的索引查询"></a>mysql的索引查询</h2><p>在讨论limit分页降低mysql查询时，需要先了解 mysql 的查询过程</p>
 <p>mysql的存储引擎默认使用的是 innoDB , innoDB 索引结构默认使用的是B+树，B+ 树是一个矮胖的结构，且天然支持二分查找，能够保证即使 mysql 中数据量很大的情况下，也能通过 3~4次的I&#x2F;O 查询查到数据。</p>
 <p>创建一个数据表，show table看一下表结构如下</p>
@@ -2649,10 +2652,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-12T22:29:39+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-13T07:55:38+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：May 12, 2025</p>
+    <p>更新于：May 13, 2025</p>
   </a>
 </div>
 
@@ -3359,7 +3362,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/mysql/","name":"mysql"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/12/mysql深度分页影响性能，根本原因是什么？如何优化？/","name":"mysql深度分页影响性能，根本原因是什么？如何优化？"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"mysql深度分页影响性能，根本原因是什么？如何优化？","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/","wordCount":0,"datePublished":"2025-05-12T02:43:18.000Z","dateModified":"2025-05-12T14:29:39.688Z","articleSection":"mysql","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/mysql/","name":"mysql"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/12/mysql深度分页影响性能，根本原因是什么？如何优化？/","name":"mysql深度分页影响性能，根本原因是什么？如何优化？"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"mysql深度分页影响性能，根本原因是什么？如何优化？","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/","wordCount":0,"datePublished":"2025-05-12T02:43:18.000Z","dateModified":"2025-05-12T23:55:38.249Z","articleSection":"mysql","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-05-14T01:42:32.000Z">
-<meta property="article:modified_time" content="2025-05-16T03:45:30.182Z">
+<meta property="article:modified_time" content="2025-05-16T04:11:52.460Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747367265895),
+    lastupdate: new Date(1747368746830),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2757,6 +2757,49 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <li><strong>线程工厂</strong>：Java提供ThreadFactory接口，C++通常直接创建线程</li>
 <li><strong>队列选择</strong>：Java提供多种BlockingQueue实现，C++需要自己实现队列逻辑</li>
 </ol>
+<blockquote>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3></blockquote>
+<p><span style="color:red; background-color:yello; font-size:15pt"><strong>线程池为什么需要核心线程数和最大线程数的区分</strong></span></p>
+<p>线程池区分<strong>核心线程数</strong>和<strong>最大线程数</strong>主要是为了在<strong>资源利用率</strong>和<strong>系统稳定性</strong>之间找到平衡。这种设计允许线程池根据任务负载动态调整资源分配，避免资源浪费或系统过载。</p>
+<p><strong>避免频繁创建 &#x2F; 销毁线程</strong>（<strong>应对突发任务高峰</strong>）</p>
+<p>线程的创建和销毁是有开销的（涉及内核调度、内存分配等）。对于长期存在的任务，如果每次都创建新线程，会导致额外的性能损耗</p>
+<p>核心线程数定义了线程池的<strong>常驻线程数量</strong>。即使这些线程空闲，也不会被销毁，而是保持活跃状态等待新任务。这样，当有新任务提交时，核心线程可以立即处理，减少了任务的响应延迟</p>
+<p><strong>应对突发任务高峰（最大线程数存在的意义）</strong></p>
+<p>在任务高峰期，核心线程可能不足以快速处理所有任务，导致任务在队列中堆积，影响响应时间。</p>
+<p>当任务队列已满且核心线程都在忙碌时，线程池会创建<strong>额外线程</strong>（直到达到最大线程数）来处理积压的任务。这些额外线程在任务处理完后，如果空闲时间超过设定的<code>keepAliveTime</code>，会被回收，从而释放系统资源。</p>
+<p><strong>防止资源耗尽</strong></p>
+<p>如果无限制地创建线程，会导致系统资源耗尽（如内存溢出、CPU 上下文切换开销过大），甚至引发系统崩溃。</p>
+<p>最大线程数作为<strong>上限约束</strong>，确保线程池不会创建过多线程。当线程数达到最大线程数且任务队列已满时，新任务会触发拒绝策略（如抛出异常、丢弃任务或由调用线程自行执行）。</p>
+<p><strong>灵活适配不同类型的任务</strong></p>
+<ul>
+<li><strong>CPU 密集型任务</strong>：<br>核心线程数可设置为接近 CPU 核心数（如<code>N+1</code>，其中<code>N</code>为 CPU 核心数），避免过多线程导致上下文切换开销。最大线程数可与核心线程数相同，因为增加额外线程不会提升性能。</li>
+<li><strong>IO 密集型任务</strong>：<br>核心线程数可设置较小（如<code>N/2</code>），但最大线程数可设置较大（如<code>2N</code>），以处理大量 IO 等待任务。当部分线程在等待 IO 时，额外线程可继续处理其他任务，提高 CPU 利用率</li>
+</ul>
+<p><strong>小结</strong></p>
+<table>
+<thead>
+<tr>
+<th>核心线程数</th>
+<th>最大线程数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保持系统处理稳定处理基础负载</td>
+<td>应对突发高峰，提升吞吐量</td>
+</tr>
+<tr>
+<td>减少线程的创建&#x2F;销毁</td>
+<td>防止资源耗尽</td>
+</tr>
+<tr>
+<td>适用于长期稳定的任务流</td>
+<td>适用于短期、爆发的任务流</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 
   </div>
   
@@ -2781,7 +2824,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-16T11:45:30+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-16T12:11:52+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：May 16, 2025</p>
@@ -2921,7 +2964,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%87%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-text">发展出线程池的背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9C%BA%E5%88%B6"><span class="toc-text">线程池机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">线程池的使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">线程池的核心参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%85%B3%E9%94%AE%E9%83%A8%E5%88%86"><span class="toc-text">C++线程池关键部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-text">线程池的工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%BF%87%E7%A8%8B"><span class="toc-text">C++实现线程池过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%B1%BB%E6%9E%84%E9%80%A0%E7%9A%84%E5%A4%A7%E6%A1%86%E6%9E%B6"><span class="toc-text">线程池类构造的大框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E5%87%BD%E6%95%B0"><span class="toc-text">任务提交函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">C++ 线程池的优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%8B%E8%AF%95"><span class="toc-text">C++线程池测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C-Java-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">C++实现线程池和 Java 实现线程池的区别</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%87%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-text">发展出线程池的背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9C%BA%E5%88%B6"><span class="toc-text">线程池机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">线程池的使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">线程池的核心参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%85%B3%E9%94%AE%E9%83%A8%E5%88%86"><span class="toc-text">C++线程池关键部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-text">线程池的工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%BF%87%E7%A8%8B"><span class="toc-text">C++实现线程池过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%B1%BB%E6%9E%84%E9%80%A0%E7%9A%84%E5%A4%A7%E6%A1%86%E6%9E%B6"><span class="toc-text">线程池类构造的大框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E5%87%BD%E6%95%B0"><span class="toc-text">任务提交函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">C++ 线程池的优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%8B%E8%AF%95"><span class="toc-text">C++线程池测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C-Java-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">C++实现线程池和 Java 实现线程池的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%9D%E8%80%83"><span class="toc-text">思考</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -3491,7 +3534,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C++"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/14/深入理解C-线程池/","name":"深入理解C++线程池"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解C++线程池","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/","wordCount":0,"datePublished":"2025-05-14T01:42:32.000Z","dateModified":"2025-05-16T03:45:30.182Z","articleSection":"C++","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C++"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/14/深入理解C-线程池/","name":"深入理解C++线程池"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解C++线程池","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/","wordCount":0,"datePublished":"2025-05-14T01:42:32.000Z","dateModified":"2025-05-16T04:11:52.460Z","articleSection":"C++","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

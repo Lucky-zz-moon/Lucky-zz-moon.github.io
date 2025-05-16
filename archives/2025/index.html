@@ -1624,7 +1624,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747368746830),
+    lastupdate: new Date(1747397175944),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2486,8 +2486,8 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         发展出线程池的背景
 网络通信情景下
 
-多进程模型：服务器要支持多个客户端的话，最简单的方式就是为每个客户端创建一个进程处理请求，当服务完成后再销毁进程。因为进程包含一套资源，在创建和销毁的时候需要分配资源和回收资源。极端情况下，当有大量的请求来，系统中给PCB的描述符还不够呢！ CPU 将大量的精力用于频繁的创建和销毁进程，还有多少精力给真正需要服务的请求呢？
-多线程模型：因为进程包含一套资...
+**多进程模型：**服务器要支持多个客户端的话，最简单的方式就是为每个客户端创建一个进程处理请求，当服务完成后再销毁进程。因为进程包含一套资源，在创建和销毁的时候需要分配资源和回收资源，极端情况下，当有大量的请求来，系统中给PCB的描述符还不够呢！ CPU 将大量的精力用于频繁的创建和销毁进程，还有多少精力给真正需要服务的请求呢？
+注意：服务端支持多客户...
       
     
   </div>

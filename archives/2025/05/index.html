@@ -1624,7 +1624,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1747143461269),
+    lastupdate: new Date(1747367265895),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2432,9 +2432,78 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow floatable blur"  itemscope itemtype="http://schema.org/Article" >
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/深入理解C-线程池/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="luckyzz">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="luckyzz">
+    <meta itemprop="description" content="">
+  </span>
+  
+  
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  
+    
+    <h2 class="article-title"  itemprop="name headline">
+      <a href="/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/"  itemprop="url">
+        深入理解C++线程池
+      </a>
+    </h2>
+  
+  <div class='md article-desc' itemprop="articleBody">
+    
+      
+        发展出线程池的背景
+网络通信情景下
+
+多进程模型：服务器要支持多个客户端的话，最简单的方式就是为每个客户端创建一个进程处理请求，当服务完成后再销毁进程。因为进程包含一套资源，在创建和销毁的时候需要分配资源和回收资源。极端情况下，当有大量的请求来，系统中给PCB的描述符还不够呢！ CPU 将大量的精力用于频繁的创建和销毁进程，还有多少精力给真正需要服务的请求呢？
+多线程模型：因为进程包含一套资...
+      
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+        <time itemprop="dateCreated datePublished" datetime="2025-05-14T09:42:32+08:00">2025-05-14</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/C/">C++</a>
+          
+            <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+              <a href="/categories/C/" itemprop="url"><span itemprop="name">C++</span></a>
+            </span>
+          
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/' itemprop="url">
+            Read More
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -2600,6 +2669,11 @@ limit  查询limit 是查询语句的子句，用来限制查询结果的行数�
 
     <div class='content'>
       <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/C/" href="/categories/C/"
+            active-action="action-categoriesC"
+            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/mysql/" href="/categories/mysql/"

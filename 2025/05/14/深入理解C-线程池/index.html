@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/archives/page/2/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/05/14/深入理解c-线程池/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,15 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>Archive - luckyzz</title>
+  <title>深入理解C++线程池 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="luckyzz">
-<meta property="og:url" content="http://example.com/archives/page/2/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解C++线程池">
+<meta property="og:url" content="http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/index.html">
 <meta property="og:site_name" content="luckyzz">
+<meta property="og:description" content="发展出线程池的背景 网络通信情景下  多进程模型：服务器要支持多个客户端的话，最简单的方式就是为每个客户端创建一个进程处理请求，当服务完成后再销毁进程。因为进程包含一套资源，在创建和销毁的时候需要分配资源和回收资源。极端情况下，当有大量的请求来，系统中给PCB的描述符还不够呢！ CPU 将大量的精力用于频繁的创建和销毁进程，还有多少精力给真正需要服务的请求呢？ 多线程模型：因为进程包含一套资源，而">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+<meta property="article:published_time" content="2025-05-14T01:42:32.000Z">
+<meta property="article:modified_time" content="2025-05-16T03:45:30.182Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2052,7 +2056,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <!-- Custom Files bodyBegin end-->
     <!-- front-matter body_begin begin -->
     <!-- front-matter body_begin end -->
-    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur " style='opacity: 0' >
+    <header itemscope itemtype="http://schema.org/WPHeader" id="l_header" class="l_header auto shadow floatable blur show" style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -2355,7 +2359,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="half" class='cover-wrapper  search' style="display: ;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uy.wzznft.com/i/2025/04/20/u7xkow.jpg"></div>
 
@@ -2424,335 +2428,471 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         <div class="body-wrapper">
           
 <div id="l_main" class=''>
-	
-	  <article id="arc" class="post article white-box reveal shadow floatable blur">
-			
-			
-				
-				
-					
-						
-						<h2>2025</h2>
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-									<time>05-14</time>
-									
-										深入理解C++线程池
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/">
-									<time>05-12</time>
-									
-										mysql深度分页影响性能，根本原因是什么？如何优化？
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/28/redis-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-									<time>04-28</time>
-									
-										redis 的数据结构
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/28/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3Redis%E7%83%ADkey%E9%97%AE%E9%A2%98/">
-									<time>04-28</time>
-									
-										如何解决Redis热key问题
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/">
-									<time>04-27</time>
-									
-										如何保证Redis数据的一致性
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/">
-									<time>04-26</time>
-									
-										redis 如何实现原子性
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
-									<time>04-26</time>
-									
-										redis 的事务是什么？和 MySql的事务有什么区别
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/23/%E5%AD%97%E8%8A%82%E4%BA%8C%E9%9D%A2%EF%BC%9ARedis-%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AE%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4%EF%BC%8C%E4%B8%94%E5%86%85%E5%AD%98%E6%89%93%E6%BB%A1%E6%97%B6%E4%BC%9A%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86/">
-									<time>04-23</time>
-									
-										字节二面：Redis 如果没有设置过期时间，且内存打满时会怎么处理
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/22/%E5%AD%97%E8%8A%82%E4%B8%80%E9%9D%A2%EF%BC%9A%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%8C%E4%B9%90%E8%A7%82%E9%94%81%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84/">
-									<time>04-22</time>
-									
-										字节一面：乐观锁和悲观锁的区别，乐观锁是怎么实现的
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/22/Linux-C-Valgrind-%E6%A3%80%E6%9F%A5%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/">
-									<time>04-22</time>
-									
-										Linux C++: Valgrind 检查内存泄漏
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/21/%E6%AD%BB%E9%94%81%E6%80%8E%E4%B9%88%E6%8E%92%E6%9F%A5/">
-									<time>04-21</time>
-									
-										死锁怎么排查
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/16/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD%E3%80%81%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81/">
-									<time>04-16</time>
-									
-										服务降级、服务熔断、服务限流
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/16/%E6%80%8E%E4%B9%88%E9%98%B2%E6%AD%A2%E5%8D%95%E7%82%B9%E6%95%85%E9%9A%9C/">
-									<time>04-16</time>
-									
-										怎么防止单点故障
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/15/%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-									<time>04-15</time>
-									
-										什么是正向代理服务器，什么是反向代理服务器
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/15/%E9%AB%98%E5%B9%B6%E5%8F%91%E6%83%85%E5%86%B5%E4%B8%8B%E5%A6%82%E4%BD%95%E5%81%9A%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">
-									<time>04-15</time>
-									
-										高并发情况下如何做负载均衡
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/14/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E6%98%AF%E4%BB%80%E4%B9%88/">
-									<time>04-14</time>
-									
-										虚拟内存是什么
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%98%AF%E5%A6%82%E4%BD%95%E7%AE%A1%E7%90%86%E5%86%85%E5%AD%98%E7%9A%84/">
-									<time>04-13</time>
-									
-										操作系统是如何管理内存的
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/13/%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E9%AB%98%E5%8F%AF%E7%94%A8%E7%B3%BB%E7%BB%9F/">
-									<time>04-13</time>
-									
-										如何构建高可用系统
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/13/%E8%AE%BF%E9%97%AEURL%E5%A4%B1%E8%B4%A5%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E5%9B%A0/">
-									<time>04-13</time>
-									
-										访问URL失败是什么原因
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-				
-				
-					
-						<div class='timenode'>
-								<a class="meta" href="/2025/04/12/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9F%9F%E5%90%8D%E5%8F%AF%E4%BB%A5%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%AE%BF%E9%97%AE%EF%BC%8C%E8%80%8CIP%E5%9C%B0%E5%9D%80%E4%B8%8D%E8%A1%8C/">
-									<time>04-12</time>
-									
-										为什么域名可以在浏览器中访问，而IP地址不行
-									
-									
-									
-									
-								</a>
-						</div>
-				
-			
-	  </article>
-	
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/05/14/深入理解C-线程池/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="luckyzz">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="luckyzz">
+    <meta itemprop="description" content="">
+  </span>
+  
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
+    
+    
+    
+      <h1 class="title" itemprop="name headline">
+        深入理解C++线程池
+      </h1>
+      <div class='new-meta-box'>
+        
+          
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/C/">C++</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/C/" itemprop="url"><span itemprop="name">C++</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-05-14T09:42:32+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：May 14, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
+      </div>
+    
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h2 id="发展出线程池的背景"><a href="#发展出线程池的背景" class="headerlink" title="发展出线程池的背景"></a>发展出线程池的背景</h2><blockquote>
+<p>网络通信情景下</p>
+</blockquote>
+<p>多进程模型：服务器要支持多个客户端的话，最简单的方式就是为每个客户端创建一个进程处理请求，当服务完成后再销毁进程。因为进程包含一套资源，在创建和销毁的时候需要分配资源和回收资源。极端情况下，当有大量的请求来，系统中给PCB的描述符还不够呢！ CPU 将大量的精力用于频繁的创建和销毁进程，还有多少精力给真正需要服务的请求呢？</p>
+<p>多线程模型：因为进程包含一套资源，而线程是轻量级进程，创建和销毁线程消耗的资源肯定是比进程要小，但是当请求量太大时，频繁创建和销毁线程也是挺要命的。</p>
+<blockquote>
+<p>单机主机多任务</p>
+</blockquote>
+<p>现在的处理器是多核处理器，也就支持多任务，单机中处理任务也是支持多进程模型和多线程模型的，实现真正的并行</p>
+<p>多进程模型：为每个任务创建一个进程处理</p>
+<p>多线程线程模型：为每个线程创建一个线程处理</p>
+<h2 id="线程池机制"><a href="#线程池机制" class="headerlink" title="线程池机制"></a>线程池机制</h2><p><span style="color:blue; background-color:; font-size:14pt"><strong>定义</strong>：</span>预先创建一批线程，当有任务来时，线程池依据设定好的调度算法，为任务分配一个空闲线程，避免了因为等待线程创建浪费的时间，得以让任务能够被立刻被执行，任务执行完后，线程没有被销毁，而是重新放到了线程池中，等待下一次任务的到来。</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>核心思想</strong></span>：复用线程提高响应速度，降低时延</p>
+<blockquote>
+<h3 id="线程池的使用场景"><a href="#线程池的使用场景" class="headerlink" title="线程池的使用场景"></a>线程池的使用场景</h3></blockquote>
+<p>网络服务器：每当有一个请求来，就在线程池中取一个线程取处理这个请求，请求处理完后，这个线程又会回到线程池中，等待下一个任务的到来，这样提高了响应的时间，也减少了资源的消耗，这就是reactor和practor的网络模型</p>
+<p>游戏开发：游戏开发包含大量的计算，包括图形渲染、数据计算等多任务，多线程配合多核使得游戏更加流畅。</p>
+<p>数据库连接池：</p>
+<blockquote>
+<h3 id="线程池的核心参数"><a href="#线程池的核心参数" class="headerlink" title="线程池的核心参数"></a>线程池的核心参数</h3></blockquote>
+<ol>
+<li><p><strong>核心线程数(corePoolSize)</strong></p>
+<ul>
+<li><p>线程池中保持的最小线程数量</p>
+</li>
+<li><p>即使线程空闲也不会被回收</p>
+</li>
+<li><p>新任务会优先使用核心线程处理</p>
+</li>
+</ul>
+</li>
+<li><p><strong>最大线程数(maxPoolSize)</strong></p>
+<ul>
+<li><p>线程池允许创建的最大线程数量</p>
+</li>
+<li><p>每次在线程池中取线程时，都会先判断线程是否空闲，如果没有空闲线程，就会创建新的线程，但是程序中存在的线程数据量最大不能超过 maxPoolSize</p>
+</li>
+</ul>
+</li>
+<li><p><strong>工作队列(workQueue)</strong></p>
+<ul>
+<li>用于保存新任务，由任务调度取出</li>
+</ul>
+</li>
+<li><p><strong>线程空闲时间(keepAliveTime)</strong></p>
+<ul>
+<li><p>非核心线程空闲时的存活时间</p>
+</li>
+<li><p>超过此时间且线程数大于corePoolSize时，线程会被回收</p>
+</li>
+</ul>
+</li>
+<li><p><strong>uint</strong></p>
+<p>keepAliveTime 的计量单位</p>
+</li>
+<li><p><strong>线程工厂（threadFactory）</strong></p>
+<ul>
+<li><p>用于创建新线程的工厂</p>
+</li>
+<li><p>可以自定义线程名称、优先级等</p>
+</li>
+</ul>
+</li>
+<li><p><strong>拒绝策略（handler）</strong></p>
+<ul>
+<li>当线程池和工作队列都饱和时的对新任务的处理策略</li>
+<li>常见策略：<ul>
+<li>AbortPolicy：默认策略，抛出RejectedExecutionException</li>
+<li>CallerRunsPolicy：由调用线程执行该任务</li>
+<li>DiscardPolicy：直接丢弃任务</li>
+<li>DiscardOldestPolicy：丢弃队列中最旧的任务并重试</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<h3 id="C-线程池关键部分"><a href="#C-线程池关键部分" class="headerlink" title="C++线程池关键部分"></a>C++线程池关键部分</h3></blockquote>
+<p><span style="color:blue; background-color:yello; font-size:14pt"><strong>1.线程队列—— std::vector&lt;std::thread&gt; workers</strong></span></p>
+<p>这个是一个线程队列，循环创建corePoolSize个核心线程，并将其添加到vector容器中，每个线程都去执行 work() 函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;std::thread&gt; threads;</span><br><span class="line">for (size_t i = 0; i &lt; corePoolSize; ++i) &#123;</span><br><span class="line">    threads.emplace_back([this] &#123; this-&gt;worker(); &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><span style="color:blue; background-color:yello; font-size:14pt"><strong>2. 任务队列——std::queue&lt;std::function&lt;void()&gt;  tasks</strong></span></p>
+<p>这是一个任务队列，当一个新任务来时会将它放到任务队列中，等待被处理。因为任务队列对于线程池来说是个共享变量，所以任务队列需要使用互斥锁保证多线程的互斥访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::queue&lt;std::function&lt;void()&gt;&gt; tasks;</span><br><span class="line">std::mutex queueMutex;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><span style="color:blue; background-color:yello; font-size:14pt"><strong>3.互斥锁—— std::mutex  queueMutex</strong></span></p>
+<p>这是一个互斥锁，因为工作线程是需要从任务队列中取出任务执行，所以任务队列对线程池中的线程来说就是共享数据，多线程访问共享数据是需要互斥访问的，互斥需要通过锁机制实现，确保某一时刻只能有一个线程访问任务队列。互斥锁如果被其他线程持有，那么这个线程就会被阻塞，直到互斥锁被释放</p>
+<p><strong>注意：通过mutex.lock()方式获取互斥锁，还需要手动释放锁来避免死锁</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std::mutex mutex</span><br><span class="line">mutex.lock()</span><br><span class="line">/*访问共享变量的代码*/</span><br><span class="line">mutex.unlock()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>为了避免因为忘记手动释放锁导致死锁，可以使用 std::lock_guard 或者 std::unique_lock，这两种加锁方式可以在作用域结束时自动释放锁</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	std::unique_lock&lt;std::mutex&gt; lock(mutex);</span><br><span class="line">	/*访问共享变量的代码*/</span><br><span class="line">&#125;// lock自动析构释放锁</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><span style="color:blue; background-color:yello; font-size:14pt"><strong>4. 条件变量——std::condition_variable condition</strong></span></p>
+<p>这个是条件变量，用于线程池中多线程的同步通信。它和互斥锁配合，当任务队列中没有任务时，工作线程可以通过条件变量进入等待状态，释放互斥锁，让出CPU资源。当有新任务添加到任务队列时，可以听过条件变量通知等待线程，唤醒线程获取互斥锁，从任务队列中取出任务执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">std::condition_variable condition;</span><br><span class="line">std::unique_lock&lt;std::mutex&gt; lock(mutex);</span><br><span class="line">while (tasks.empty()) &#123;</span><br><span class="line">    condition.wait(lock);</span><br><span class="line">&#125;</span><br><span class="line">auto task = std::move(tasks.front());</span><br><span class="line">tasks.pop();</span><br></pre></td></tr></table></figure>
+
+<p>condition.wait(lock)是无条件等待，它会让线程释放互斥锁并进入等待状态，直到其他线程执行 condition.notify_all() 或 condition.notify_one() 时，线程才会被唤醒。</p>
+<blockquote>
+<h3 id="线程池的工作过程"><a href="#线程池的工作过程" class="headerlink" title="线程池的工作过程"></a>线程池的工作过程</h3></blockquote>
+<p>step1：每当有新任务到来时，新任务都会被添加进入任务队列中，再通过条件变量通知线程获取</p>
+<p>step2：创建线程的时候就就让线程去执行一个工作函数，这个工作函数是不断地获取任务队列的互斥锁然后添加</p>
+<blockquote>
+<h3 id="C-实现线程池过程"><a href="#C-实现线程池过程" class="headerlink" title="C++实现线程池过程"></a>C++实现线程池过程</h3></blockquote>
+<h3 id="线程池类构造的大框架"><a href="#线程池类构造的大框架" class="headerlink" title="线程池类构造的大框架"></a><strong>线程池类构造的大框架</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class ThreadPool &#123;</span><br><span class="line">public:</span><br><span class="line">	ThreadPool(size_t corePoolSize,size_t maxPoolSize,</span><br><span class="line">	std::chrono::milliseconds keepAliveTime)；</span><br><span class="line"></span><br><span class="line">	~ThreadPool()；</span><br><span class="line"></span><br><span class="line">	//添加任务到任务队列中</span><br><span class="line">	template&lt;class F, class... Args&gt;</span><br><span class="line">	auto submit(F&amp;&amp; f, Args&amp;&amp;... args)</span><br><span class="line">	</span><br><span class="line">private:</span><br><span class="line">	// 核心参数</span><br><span class="line">	const size_t corePoolSize;           // 核心线程数</span><br><span class="line">	const size_t maxPoolSize;            // 最大线程数</span><br><span class="line">	const std::chrono::milliseconds keepAliveTime; // 空闲线程存活时间</span><br><span class="line"></span><br><span class="line">	// 线程管理</span><br><span class="line">	std::vector&lt;std::thread&gt; threads;    // 工作线程</span><br><span class="line">	std::queue&lt;std::function&lt;void()&gt;&gt; tasks; // 任务队列</span><br><span class="line"></span><br><span class="line">	// 同步原语</span><br><span class="line">	std::mutex queueMutex;</span><br><span class="line">	std::condition_variable condition;</span><br><span class="line"></span><br><span class="line">	// 状态控制</span><br><span class="line">	std::atomic&lt;bool&gt; running;</span><br><span class="line">	std::atomic&lt;size_t&gt; currentThreads;  // 当前线程数</span><br><span class="line">	std::atomic&lt;size_t&gt; idleThreads;     // 空闲线程数</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>构造函数</strong></p>
+<p>线程池的构造函数的主要功能是：初始化核心线程数量（corePoolSize）、最大线程数量（maxPoolSize）、空闲线程存活时间（keepAliveTime）。然后循环创建corePoolSize个核心线程，线程创建后立刻互斥访问任务队列获取任务执行。因为存在corePoolSize、maxPoolSize、keepAliveTime等参数，线程互斥访问任务队列获取任务有以下两种不同的情况。</p>
+<p><strong>情况一：带超时的任务等待（适用于非核心线程）</strong></p>
+<p>最多等待keepAliveTime时间，如果超时且没有任务，进入线程回收判断，如果当前的线程数大于核心线程数，就会进入回收非核心线程阶段</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">if (keepAliveTime.count() &gt; 0) &#123;  // 非核心线程处理逻辑， 带超时的等待</span><br><span class="line">	if (!condition.wait_for(lock, keepAliveTime,</span><br><span class="line">						[this] &#123; return !running || !tasks.empty(); &#125;)) &#123;</span><br><span class="line"></span><br><span class="line">		// 超时且当前线程数超过核心线程数，结束该线程</span><br><span class="line">		if (currentThreads &gt; corePoolSize) &#123;</span><br><span class="line">			--currentThreads;</span><br><span class="line">			--idleThreads;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		continue;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><strong>情况二：无限等待（适用于核心线程）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 无限等待</span><br><span class="line">condition.wait(lock,[this] &#123; return !running || !tasks.empty(); &#125;);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>判断依据</th>
+<th>核心线程</th>
+<th>非核心线程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线程计数</td>
+<td>currentThreads &lt;&#x3D; corePoolSize</td>
+<td>currentThreads &gt; corePoolSize</td>
+</tr>
+<tr>
+<td>等待方式</td>
+<td>无限等待 (<code>wait</code>)</td>
+<td>超时等待 (<code>wait_for</code>)</td>
+</tr>
+<tr>
+<td>退出条件</td>
+<td>仅线程池关闭时退出</td>
+<td>空闲超时且线程数超标时退出</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ol start="3">
+<li><strong>线程执行任务</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">--idleThreads;</span><br><span class="line">if (!running &amp;&amp; tasks.empty()) &#123;</span><br><span class="line">    --currentThreads;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">task = std::move(tasks.front());</span><br><span class="line">tasks.pop();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a><strong>构造函数</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">class ThreadPool &#123;</span><br><span class="line">public:</span><br><span class="line">	ThreadPool(size_t corePoolSize,size_t maxPoolSize,std::chrono::milliseconds keepAliveTime)</span><br><span class="line">		: corePoolSize(corePoolSize),</span><br><span class="line">		maxPoolSize(maxPoolSize),</span><br><span class="line">		keepAliveTime(keepAliveTime),</span><br><span class="line">		running(true),</span><br><span class="line">		currentThreads(0),</span><br><span class="line">		idleThreads(0)</span><br><span class="line">	&#123;</span><br><span class="line">		// 初始化核心线程</span><br><span class="line">		for (size_t i = 0; i &lt; corePoolSize; ++i) &#123;</span><br><span class="line">			addWorkerThread();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	void addWorkerThread() &#123;</span><br><span class="line">		threads.emplace_back([this] &#123;</span><br><span class="line">			while (true) &#123;</span><br><span class="line">				std::function&lt;void()&gt; task;</span><br><span class="line"></span><br><span class="line">				&#123;</span><br><span class="line">					std::unique_lock&lt;std::mutex&gt; lock(queueMutex);</span><br><span class="line"></span><br><span class="line">					++idleThreads;</span><br><span class="line"></span><br><span class="line">					// 等待任务或关闭信号</span><br><span class="line">					if (keepAliveTime.count() &gt; 0) &#123;  // 非核心线程处理逻辑</span><br><span class="line">						// 带超时的等待</span><br><span class="line">						if (!condition.wait_for(lock, keepAliveTime,</span><br><span class="line">							[this] &#123; return !running || !tasks.empty(); &#125;)) &#123;</span><br><span class="line"></span><br><span class="line">							// 超时且当前线程数超过核心线程数，结束该线程</span><br><span class="line">							if (currentThreads &gt; corePoolSize) &#123;</span><br><span class="line">								--currentThreads;</span><br><span class="line">								--idleThreads;</span><br><span class="line">								return;</span><br><span class="line">							&#125;</span><br><span class="line">							continue;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					else &#123;  // 核心线程处理逻辑</span><br><span class="line">						// 无限等待</span><br><span class="line">						condition.wait(lock,	[this] &#123; return !running || !tasks.empty(); &#125;);</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					--idleThreads;</span><br><span class="line"></span><br><span class="line">					// 检查是否需要退出</span><br><span class="line">					if (!running &amp;&amp; tasks.empty()) &#123;</span><br><span class="line">						--currentThreads;</span><br><span class="line">						return;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					// 获取任务</span><br><span class="line">					task = std::move(tasks.front());</span><br><span class="line">					tasks.pop();</span><br><span class="line">				&#125;</span><br><span class="line"></span><br><span class="line">				// 执行任务</span><br><span class="line">				task();</span><br><span class="line">			&#125;</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">		++currentThreads;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>小结</p>
+<p>构造函数主要干三个事</p>
+<ol>
+<li>创建多个线程</li>
+<li>互斥访问任务队列获取任务，判断任务等待逻辑（核心线程、非核心线程）</li>
+<li>执行任务</li>
+</ol>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><p>析构函数释放线程池的资源。</p>
+<p>首先，在一个临界区内（通过std::unique_lock自动管理锁）将stop标志设置为true，表示线程池要停止；然后，通过condition.notify_all()通知所有等待的线程，让它们有机会检查stop标志并退出；最后，通过循环调用thread.join()等待所有线程执行完毕，释放线程资源。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class ThreadPool &#123;</span><br><span class="line">public:</span><br><span class="line">	~ThreadPool() </span><br><span class="line">	&#123;</span><br><span class="line">		shutdown();</span><br><span class="line">	&#125;</span><br><span class="line">	void shutdown() &#123;</span><br><span class="line">		&#123;</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt; lock(queueMutex);</span><br><span class="line">			running = false;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		condition.notify_all();</span><br><span class="line"></span><br><span class="line">		for (std::thread&amp; workerThread : threads) &#123;</span><br><span class="line">			if (workerThread.joinable()) &#123;</span><br><span class="line">				workerThread.join();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="任务提交函数"><a href="#任务提交函数" class="headerlink" title="任务提交函数"></a>任务提交函数</h3><p><code>submit</code> 函数是线程池对外提供的核心接口，用于向线程池提交任务并获取任务的异步结果。使用 C++ 的模板特性和std::function、std::bind来实现任务的封装。std::function&lt;void()&gt;类型的成员变量func用于存储可调用对象，通过std::bind将传入的函数f和参数args绑定成一个无参的可调用对象，赋值给func。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class F, class... Args&gt;</span><br><span class="line">	auto submit(F&amp;&amp; f, Args&amp;&amp;... args)</span><br><span class="line">		-&gt; std::future&lt;typename std::result_of&lt;F(Args...)&gt;::type&gt; &#123;</span><br><span class="line"></span><br><span class="line">		using return_type = typename std::result_of&lt;F(Args...)&gt;::type;</span><br><span class="line"></span><br><span class="line">		auto task = std::make_shared&lt;std::packaged_task&lt;return_type()&gt;&gt;(</span><br><span class="line">			std::bind(std::forward&lt;F&gt;(f), std::forward&lt;Args&gt;(args)...)</span><br><span class="line">			);</span><br><span class="line"></span><br><span class="line">		std::future&lt;return_type&gt; res = task-&gt;get_future();</span><br><span class="line"></span><br><span class="line">		&#123;</span><br><span class="line">			std::unique_lock&lt;std::mutex&gt; lock(queueMutex);</span><br><span class="line"></span><br><span class="line">			if (!running) &#123;</span><br><span class="line">				throw std::runtime_error(&quot;submit on stopped ThreadPool&quot;);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			// 如果当前线程数小于最大线程数且任务队列已满，添加新线程</span><br><span class="line">			if (tasks.size() &gt;= currentThreads - idleThreads &amp;&amp;</span><br><span class="line">				currentThreads &lt; maxPoolSize) &#123;</span><br><span class="line">				addWorkerThread();</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			tasks.emplace([task]() &#123; (*task)(); &#125;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		condition.notify_one();</span><br><span class="line">		return res;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>模板参数</strong></p>
+<p>​	F：任务函数类型</p>
+<p>​	Args…：任务函数的参数类型</p>
+<p><strong>返回值</strong></p>
+<p>​      std::future&lt;typename std::result_of&lt;F(Args…)&gt;::type&gt;：</p>
+<p>​      一个<code>future</code>对象，可用于获取任务的返回值（通过<code>future::get()</code>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class F, class... Args&gt;</span><br><span class="line">auto submit(F&amp;&amp; f, Args&amp;&amp;... args)</span><br><span class="line">    -&gt; std::future&lt;typename std::result_of&lt;F(Args...)&gt;::type&gt;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将传入的函数<code>f</code>和参数<code>args...</code>封装为一个无参函数对象。</p>
+<p>使用<code>std::packaged_task</code>包装该函数对象，用于异步执行</p>
+<p>通过<code>packaged_task::get_future()</code>获取<code>future</code>对象，用于获取任务结果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using return_type = typename std::result_of&lt;F(Args...)&gt;::type;</span><br><span class="line"></span><br><span class="line">auto task = std::make_shared&lt;std::packaged_task&lt;return_type()&gt;&gt;(</span><br><span class="line">    std::bind(std::forward&lt;F&gt;(f), std::forward&lt;Args&gt;(args)...)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">std::future&lt;return_type&gt; res = task-&gt;get_future();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>包含了一个<strong>动态扩容机制</strong>，当前活跃线程数（currentThreads - idleThreads）小于任务队列中的任务数，也就是发生了<strong>任务积压</strong>，且当前线程数小于系统中最大线程上限（maxPoolSize）就扩增新线程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    std::unique_lock&lt;std::mutex&gt; lock(queueMutex);</span><br><span class="line"></span><br><span class="line">    if (!running) &#123;</span><br><span class="line">        throw std::runtime_error(&quot;submit on stopped ThreadPool&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 动态调整线程数的逻辑</span><br><span class="line">    if (tasks.size() &gt;= currentThreads - idleThreads &amp;&amp;</span><br><span class="line">        currentThreads &lt; maxPoolSize) &#123;</span><br><span class="line">        addWorkerThread();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    tasks.emplace([task]() &#123; (*task)(); &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>当任务进入队列后，需要通过 	condition.notify_one() 唤醒线程去执行任务函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">condition.notify_one();</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<h3 id="C-线程池的优化"><a href="#C-线程池的优化" class="headerlink" title="C++ 线程池的优化"></a>C++ 线程池的优化</h3></blockquote>
+<p><span style="color:red; background-color:yello; font-size:15pt"><strong>调整线程数量</strong></span></p>
+<p>线程的上下文切换是需要消耗CPU资源的，线程的数量并不是越多越好，线程的上下文切换需要消耗较多的CPU资源，CPU要将它更多的精力放在执行任务上，增加系统的吞吐量。线程的数量也不能过少，这样会任务队列中任务堆积，任务的响应能力下降。所以如何设置线程数量也是有依据的。</p>
+<p>对于CPU密集型任务：对于CPU密集型任务应当将CPU资源尽可能都给任务的处理，所以线程数量应该尽可能和CPU核心数持平，例如CPU核心数是3个，那么线程数应当在2~4个</p>
+<p>对于I&#x2F;O密集型任务：这类任务在执行的过程中大部分的时间都是在等待I&#x2F;O操作，CPU的利用率比较低，适当增加线程数量充分利用起CPU资源，线程数量可以设置为 CPU 核心数的 2 - 3 倍。</p>
+<p><span style="color:red; background-color:yello; font-size:15pt"><strong>优化任务队列数量</strong></span></p>
+<p>如果系统中只有一个任务队列，线程在互斥访问任务队列取任务时，其他的线程只能阻塞等待，当任务队列中任务较多时，从宏观角度看，就是提交的任务的响应时间很长，严重影响用户体验。根本原因就是一个所有的任务都放在一个队列中，一个队列只有一个互斥锁，想要访问任务队列只能排队获取锁，性能低下。</p>
+<p>可以将系统中的队列优化多个，按照任务的属性进行分配，每个任务队列都有它的互斥锁和条件变量。这想当于将单通道变成多通道，系统的吞吐量就上去了</p>
+<blockquote>
+<h3 id="C-线程池测试"><a href="#C-线程池测试" class="headerlink" title="C++线程池测试"></a>C++线程池测试</h3></blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;chrono&gt;</span><br><span class="line">#include &lt;thread&gt;</span><br><span class="line">#include &quot;ThreadPool.h&quot; </span><br><span class="line"></span><br><span class="line">// 定义一个简单的任务函数</span><br><span class="line">std::mutex coutMutex;</span><br><span class="line">int simpleTask(int num) &#123;</span><br><span class="line">    std::lock_guard&lt;std::mutex&gt; lock(coutMutex);</span><br><span class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</span><br><span class="line">    std::cout &lt;&lt; &quot;Task &quot; &lt;&lt; num &lt;&lt; &quot; executed by thread &quot; &lt;&lt; std::this_thread::get_id() &lt;&lt; std::endl;</span><br><span class="line">    return num; // 返回任务编号</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    // 创建线程池：核心2线程，最大5线程，空闲线程存活1秒</span><br><span class="line">    ThreadPool pool(2, 5, std::chrono::seconds(1));</span><br><span class="line"></span><br><span class="line">    // 提交10个任务</span><br><span class="line">    std::vector&lt;std::future&lt;int&gt;&gt; results;</span><br><span class="line">    for (int i = 0; i &lt; 10; ++i) &#123;</span><br><span class="line">        results.emplace_back(pool.submit(simpleTask, i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 获取结果</span><br><span class="line">    for (auto&amp; result : results) &#123;</span><br><span class="line">        std::cout &lt;&lt; result.get() &lt;&lt; &quot; &quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    // 线程池会在析构时自动关闭</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><img src="/../image/%E7%BA%BF%E7%A8%8B%E6%B1%A0/image-20250516114203351.png" class="lazyload" data-srcset="/../image/%E7%BA%BF%E7%A8%8B%E6%B1%A0/image-20250516114203351.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250516114203351"></p>
+<blockquote>
+<h3 id="C-实现线程池和-Java-实现线程池的区别"><a href="#C-实现线程池和-Java-实现线程池的区别" class="headerlink" title="C++实现线程池和 Java 实现线程池的区别"></a>C++实现线程池和 Java 实现线程池的区别</h3></blockquote>
+<p>因为线程池在项目中应用场景很高，网络上有非常多关于实现线程池的方法，作为一个C++选手，看到很多用 Java 实现线程池的方法，发现 JAVA 可以内置多种拒绝策略、能提供ThreadFactory接口以及工作队列。而C++是需要自行调整 线程数、自行实现拒绝策略、直接创建线程代表线程工厂、C++还需要自己实现逻辑队列</p>
+<ol>
+<li><strong>动态调整</strong>：Java线程池会自动根据负载调整线程数，而C++需要手动实现</li>
+<li><strong>拒绝策略</strong>：Java内置多种拒绝策略，C++需要自行实现</li>
+<li><strong>线程工厂</strong>：Java提供ThreadFactory接口，C++通常直接创建线程</li>
+<li><strong>队列选择</strong>：Java提供多种BlockingQueue实现，C++需要自己实现队列逻辑</li>
+</ol>
+
+  </div>
+  
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-05-16T11:45:30+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：May 16, 2025</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/&title=深入理解C++线程池 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/&title=深入理解C++线程池 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/&title=深入理解C++线程池 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/05/12/mysql%E6%B7%B1%E5%BA%A6%E5%88%86%E9%A1%B5%E5%BD%B1%E5%93%8D%E6%80%A7%E8%83%BD%EF%BC%8C%E6%A0%B9%E6%9C%AC%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%EF%BC%9F/'>
+          <p class='title'>mysql深度分页影响性能，根本原因是什么？如何优化？<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>背景在字节一面中，面试官给了一个深度分页的sql语句，给出优化方案，当时没有回答出来，面试后查询各种资料，终于理解了深度分页对mysql性能的影响，并且自己也做了一个小实验，理解了深度分页的原因...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2761,159 +2901,48 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       
-<section class="widget blogger desktop mobile pjax">
-  <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">luckyzz</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget category desktop pjax">
-    
-  <header>
-    
-      <a href='/blog/categories/'><i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/C/" href="/categories/C/"
-            active-action="action-categoriesC"
-            ><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/mysql/" href="/categories/mysql/"
-            active-action="action-categoriesmysql"
-            ><div class='name'>mysql</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/"
-            active-action="action-categoriesE4B8ADE997B4E4BBB6"
-            ><div class='name'>中间件</div><div class='badge'>(6)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
-            active-action="action-categoriesE6938DE4BD9CE7B3BBE7BB9F"
-            ><div class='name'>操作系统</div><div class='badge'>(5)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"
-            active-action="action-categoriesE7B3BBE7BB9FE69EB6E69E84"
-            ><div class='name'>系统架构</div><div class='badge'>(4)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
-            active-action="action-categoriesE8AEA1E7AE97E69CBAE7BD91E7BB9C"
-            ><div class='name'>计算机网络</div><div class='badge'>(3)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-    
-  
-
-  
-    
-    
-      
-  
-  <section class="widget tagcloud desktop mobile pjax">
-    
-  <header>
-    
-      <a href='/blog/tags/'><i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/%E6%A0%87%E7%AD%BE1/" style="font-size: 14px; color: #999">标签1</a>
-    </div>
-  </section>
-
-
-    
-  
-
   
 
 
 <div class="widget-sticky pjax">
 
+  
+  
+
+
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%91%E5%B1%95%E5%87%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E8%83%8C%E6%99%AF"><span class="toc-text">发展出线程池的背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9C%BA%E5%88%B6"><span class="toc-text">线程池机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">线程池的使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E6%A0%B8%E5%BF%83%E5%8F%82%E6%95%B0"><span class="toc-text">线程池的核心参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%85%B3%E9%94%AE%E9%83%A8%E5%88%86"><span class="toc-text">C++线程池关键部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B"><span class="toc-text">线程池的工作过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%BF%87%E7%A8%8B"><span class="toc-text">C++实现线程池过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%B1%BB%E6%9E%84%E9%80%A0%E7%9A%84%E5%A4%A7%E6%A1%86%E6%9E%B6"><span class="toc-text">线程池类构造的大框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">析构函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E6%8F%90%E4%BA%A4%E5%87%BD%E6%95%B0"><span class="toc-text">任务提交函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-text">C++ 线程池的优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%8B%E8%AF%95"><span class="toc-text">C++线程池测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%92%8C-Java-%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">C++实现线程池和 Java 实现线程池的区别</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+  
+
 </div>
 
 
 <!-- 没有 pjax 占位会报错 万恶的 pjax -->
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
+
+  <div class="pjax">
+    <!-- pjax占位 -->
+  </div>
 
   <div class="pjax">
     <!-- pjax占位 -->
@@ -2941,13 +2970,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -2956,14 +2986,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     // header
     var l_header=document.getElementById("l_header");
     
-    l_header.classList.remove("show");
+    l_header.classList.add("show");
     
     
       // cover
       var cover_wrapper=document.querySelector('#l_cover .cover-wrapper');
       var scroll_down=document.getElementById('scroll-down');
-      cover_wrapper.id="half";
-      cover_wrapper.style.display="";
+      cover_wrapper.id="none";
+      cover_wrapper.style.display="none";
       scroll_down.style.display="none";
     
   
@@ -3461,7 +3491,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/archives/","name":"Archive"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"wordCount":0,"image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/C/","name":"C++"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/05/14/深入理解C-线程池/","name":"深入理解C++线程池"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解C++线程池","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/05/14/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3C-%E7%BA%BF%E7%A8%8B%E6%B1%A0/","wordCount":0,"datePublished":"2025-05-14T01:42:32.000Z","dateModified":"2025-05-16T03:45:30.182Z","articleSection":"C++","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

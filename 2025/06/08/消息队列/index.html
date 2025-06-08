@@ -45,7 +45,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
 <meta property="article:published_time" content="2025-06-08T12:47:26.000Z">
-<meta property="article:modified_time" content="2025-06-08T13:40:32.367Z">
+<meta property="article:modified_time" content="2025-06-08T13:51:25.543Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -1628,7 +1628,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     debug: "env",
     cdn: {"js":{"app":"/js/app.js","parallax":"/js/plugins/parallax.js","rightMenu":"/js/plugins/rightMenu.js","rightMenus":"/js/plugins/rightMenus.js","sites":"/js/plugins/tags/sites.js","friends":"/js/plugins/tags/friends.js","contributors":"/js/plugins/tags/contributors.js","search":"/js/search/hexo.js"},"css":{"style":"/css/style.css"}},
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1654736714924/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1749390223710),
+    lastupdate: new Date(1749390703244),
     sidebar: {
       for_page: ["blogger","category","tagcloud","donate"],
       for_post: ["toc"],
@@ -2561,31 +2561,31 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p>如何让服务端不被大量的客户端请求打垮的同时还能处理掉客户端发送的消息？那么就加一层中间件，这个中间件用于暂存客户端发送的消息，服务端按照自身的处理能力从这个中间件中取出请求。根据消息是先生产的先被消费的特性，很容易想到使用队列去存储消息，可以在服务端的进程中创建一个队列，存储客户端发送的消息。但是这种方式存在较大的安全隐患，一旦服务端的进程崩溃或者重启，那么未消费的消息都会丢失。</p>
 <p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%972.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%972.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列2.drawio"></p>
 <p>为了避免由于服务端进程崩溃或重启导致的消息丢失问题，需要在服务端进程之外去创建一个队列去存储消息</p>
-<p>![消息队列-第 3 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 3 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%973.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%973.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列3.drawio"></p>
 <p>如何提高系统的吞吐量呢？可以增加消息发送的速度和消息消费的速度，这就需要增加多个生产者和多个消费者（发送消息的就是生产者，消费消息的就是消费者）</p>
-<p>![消息队列-第 4 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 4 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%974.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%974.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列4.drawio"></p>
 <p>当消费者和生产者的速度越来越多时，对于共享资源消息队列，在访问时会产生冲突，一般通过加互斥锁的方式实现，只要有人拿到互斥锁那么其他的生产者和消费者都要等待，也就是会出现当生产者和消费者数量超过一定值时反而会使得系统的性能下降，解决方法就是将单个队列扩展成多个队列，生产者按照消息类型放进不同的队列中。如何区分不同队列的特性呢？那么可以为不同的队列创建不同的主题topic，消费者订阅不同的topic 队列，这样就大大降低了对单个消息队列的争抢。</p>
-<p>![消息队列-第 5 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 5 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%975.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%975.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列5.drawio"></p>
 <p>在高并发的情况下，单个消息队列中的消息可能还是会被打满，怎么解决这个问题呢？就是将单个消息队列再次进行拆分，拆分成不同的分区 partition，每个分区由不同的消费者负责。</p>
-<p>![消息队列-第 6 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 6 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%976.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%976.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列6.drawio"></p>
 <p>当所有的partion都存储在一台机器上时，生产者发送消息，消费者消费消息，都会导致  partition 所在的机器CPU 和内存过载，解决办法是什么呢？可以将partion 分散到不同的机器中，就像负载 均衡所做的那样，每一台机器就代表一个 broker，一个broker上有多个partition</p>
-<p>![消息队列-第 7 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 7 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%977.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%977.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列7.drawio"></p>
 <p>但是如果某台服务器宕机了，那么这台服务器上所有的partition都会丢失，也就是消息丢失，为了保证可靠性，可以为每个 broker上的partition创建副本，并且将副本存放到不同的broker 上，以防止单点故障。当主节点宕机时，可以从从节点中选取一个新的主节点，供生产者和消费者存取。</p>
-<p>![消息队列-第 7 页.drawio (1)](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 7 页.drawio (1).png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%978.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%978.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列8"></p>
 <p>那么在极端情况下，可能会发生所有的服务器下线，这就导致所有消息以及消息副本的丢失，所以必须要考虑消息的持久化操作，将消息持久化就是不能将数据存放在断电就消失的内存中，而要存放在硬盘中，所有要将broker中的数据存放在硬盘中，系统长久的运行会产生很多的消息，磁盘空间再大也会有打满的一天，所以要采取一些淘汰策略，将使用过的消息并且今后可能不会再使用的消息永久删除。但是由谁来判断broker的运行状态呢，如果主broker宕机了，由谁来决定选举哪一个broker为新主节点呢？组件一旦多了，就需要一个管理员，就像redis集群中的哨兵节点，kafka的管理员是ZooKeeper，ZooKeeper会定期和kafka集群进行通信，获取kafka 集群的状态</p>
-<p>![消息队列-第 8 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 8 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%979.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%979.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列9.drawio"></p>
 <h2 id="RocketMQ"><a href="#RocketMQ" class="headerlink" title="RocketMQ"></a>RocketMQ</h2><h2 id="RoketMQ消息队列和Kafka的区别？"><a href="#RoketMQ消息队列和Kafka的区别？" class="headerlink" title="RoketMQ消息队列和Kafka的区别？"></a>RoketMQ消息队列和Kafka的区别？</h2><p>RocketMQ 也是将消息分类，然后消费者去订阅 topic进行消费，RocketMQ参考了Kafka的设计思想，但是在架构上做了一些调整，在功能上做了一些增加。</p>
 <p>kafka通过创建多个 topic 对消息分类，为了提高每个topic 的并发性能，将每个topic 分成多个partition，为了防止系统单点故障以及拓展系统的性能，将partition放在不同的 broker 上，为了防止broker故障导致消息丢失，创建broker副本机制，并且使用 ZooKeeper节点协调kafka集群的多个节点。</p>
 <ol>
 <li><p>ZooKeeper是通用的分布式协调服务，功能较多RocketMQ 使用 Nameserver管理分布式节点</p>
 </li>
 <li><p>kafka的partition中存储的是完整的消息，而RocketMQ的 partition中存储的是消息的简要信息，例如消息的偏移 offset，消息的完整信息存放在commitLog中 ，通过 offset定位commitLog中的消息。kafka读取消息只需要读取一次，而RocketMQ需要读取两次</p>
-<p>![消息队列-第 9 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 9 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%9710.drawio.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%9710.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列10.drawio"></p>
 </li>
 <li><p>kafka的每一个partition对应一个文件，文件内部是顺序写，但是 kafka集群中Partion较多，每个 partition的文件随机分布在磁盘的任何位置上，这就导致kafka写文件的会退化成随机写，写性能下降。而RocketMQ将多个topic下的数据全部写到一个文件中CommitLog文件中。</p>
 </li>
 <li><p>kafaka创建多个topic对消息进行分类，RocketMQ不仅支持创建Topic对消息进行分配，还支对消息打上标签。</p>
-<p>![消息队列-第 10 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;消息队列-第 10 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%9711.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%9711.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="消息队列11"></p>
 </li>
 <li><p>RocketMQ支持延时队列，kafka实现延时队列需要程序员自己实现</p>
 </li>
@@ -2599,24 +2599,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <h3 id="文件发送的一般方式"><a href="#文件发送的一般方式" class="headerlink" title="文件发送的一般方式"></a>文件发送的一般方式</h3><p>在说明0拷贝技术性能之前先说明普通发送文件的过程：消息队列将消息持久化到硬盘，将硬盘上的消息发送出去需要用户态调用read（）和write（）函数，read 和 write 是操作系统提供的系统函数，用户态每调用一个系统函数需要经历2次上下文切换，第一次是从用户态陷入内核，第二次是从内核态返回内存中。</p>
 <p>想要将消息发送出去，用户态需要将消息从硬盘中读出来，访问硬盘操作不能让用户态来做，只能让操作系统帮助，用户态调用 read() 函数陷入内核，操作系统将磁盘中的数据读到内核缓冲区，这个搬运过程需要DMA完成，不需要CPU操作，然后将内核缓冲区中的数据拷贝到用户缓冲区中，这个操作需要CPU完成，read（）调用返回后，从内核态回到用户态；然后用户态调用 write（）函数将消息拷贝到socket 缓冲区发送出去， 从用户态又陷入内核中，这个拷贝操作是由CPU完成的，然后操作系统将socket缓冲区中的数据拷贝到网卡的内存中发送出去，这个拷贝操作是由DMA完成的。借用一下小林coding对零拷贝的图解</p>
 <p>总之，消息发送的最终结果就是将磁盘中的数据拷贝到网卡中发送出去，但是将内核缓冲区中的数据拷贝到用户态然后从用户态又拷贝到内核缓冲区中，这个搬来搬去的操作实际上没有什么用处，因为数据拷贝到用户缓冲区中并不会被用户更改，多次的上下文操作和数据拷贝操作，会增加耗时，降低性能。</p>
-<img src="../image/中间件/image-20250605131918615.png" class="lazyload" data-srcset="../image/中间件/image-20250605131918615.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605131918615" style="zoom:67%;" />
-
-
-
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605131918615.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605131918615.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605131918615"></p>
 <h3 id="0拷贝"><a href="#0拷贝" class="headerlink" title="0拷贝"></a>0拷贝</h3><p>0拷贝并不是指没有经过任何一次的拷贝，而是CPU不参与的拷贝，是0 CPU拷贝</p>
 <p>0拷贝有两种方式：mmap+write和sendfile方式</p>
 <h4 id="mmap-write方式"><a href="#mmap-write方式" class="headerlink" title="mmap+write方式"></a>mmap+write方式</h4><p>mmap是内存映射，将内核空间映射到了用户空间，避免了一次将内核空间数据拷贝到内核空间的操作，但是mmap和write都是系统调用，调用它们都需要再经过4次的上下文切换。相比较与一般的文件发送方式，mmap+write方式减少了一次拷贝。借用小林coding的图解</p>
-<img src="../image/中间件/image-20250605204647428.png" class="lazyload" data-srcset="../image/中间件/image-20250605204647428.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605204647428" style="zoom:67%;" />
-
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605204647428.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605204647428.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605204647428"></p>
 <h4 id="sendfile方式"><a href="#sendfile方式" class="headerlink" title="sendfile方式"></a>sendfile方式</h4><p>sendfile方式是将内核缓冲区的中的数据直接拷贝到网卡中发送出去，相比较于一般的文件发送方式可以减少2次拷贝操作，2次上下文切换。借用小林coding的图解</p>
-<img src="../image/中间件/image-20250605204708642.png" class="lazyload" data-srcset="../image/中间件/image-20250605204708642.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605204708642" style="zoom:67%;" />
-
-
-
-
-
-
-
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605204708642.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/image-20250605204708642.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250605204708642"></p>
 <h3 id="为什么kafka使用sendfile，-rocketMQ使用mmap，RocketMQ为什么不能使用-sendfile-呢？"><a href="#为什么kafka使用sendfile，-rocketMQ使用mmap，RocketMQ为什么不能使用-sendfile-呢？" class="headerlink" title="为什么kafka使用sendfile， rocketMQ使用mmap，RocketMQ为什么不能使用 sendfile 呢？"></a>为什么kafka使用sendfile， rocketMQ使用mmap，RocketMQ为什么不能使用 sendfile 呢？</h3><p>区别这两种方式之前先了解一个sendfile和mmap函数的区别</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sendfile</span><br><span class="line">int sendfile(int out_fd, int in_fd, off_t* offset, int count)</span><br><span class="line">num = sendfile(arg1,arg2...)</span><br></pre></td></tr></table></figure>
 
@@ -2649,11 +2638,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </blockquote>
 <p>普通集群模式中，每个RabbitMQ 都是一个完整的实例，都可以进行读写，集群中每个RabbitMQ 中的Exchange都会进行数据同步，但是不会同步 RabbitMQ中的队列的数据</p>
 <p>写操作：将消息写入某个broker的队列中，并不会将发生变化的队列同步到其他broker中的队列中；如果写某个broker中的Exchange，那么会将该Exchange同步到集群中所有其它的broker的Exchange中</p>
-<p>![RabbitMQ-第 2 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;RabbitMQ-第 2 页.drawio.png)</p>
-<p>![RabbitMQ-第 3 页.drawio](E:&#x2F;MyBlog&#x2F;source&#x2F;image&#x2F;中间件&#x2F;RabbitMQ-第 3 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ2.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ2.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="RabbitMQ2"></p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ3.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ3.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="RabbitMQ3"></p>
 <p>**读操作：**如果访问的消息队列信息正好在正在访问的broker中的Exchange中存在，直接返回消息，否则访问该broker中的Exchange，通过Exchange定位到其他的broker中获取队列消息</p>
-<p>![RabbitMQ-第 4 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;RabbitMQ-第 4 页.drawio.png)</p>
-<p>![RabbitMQ-第 4 页.drawio (1)](..&#x2F;image&#x2F;中间件&#x2F;RabbitMQ-第 4 页.drawio (1).png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ4.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ4.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="RabbitMQ4"></p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ5.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ5.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="RabbitMQ5"></p>
 <p>所以可以通过增加broker的数量提高系统的吞吐量和扩展性，但是因为不存在消息副本，会存在一定的风险，当某个broker宕机了，那么这个broker上的所有消息都会丢失，即使每个broker上的Exchange数据一样，也不能通过访问其它的broker上的Exchange去定位要找的数据了</p>
 <blockquote>
 <p>镜像队列集群</p>
@@ -2661,7 +2650,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 <p> 在普通集群模式的基础上，在broker上同步其它broker上的队列，主queue用来读写，从queue来同步主queue，所以从queue也就叫镜像队列，当主queue所在的broker挂了时，从queue就可以上升为主queue。</p>
 <p>写操作：将Exchange和queue数据在其他的broker上同 步</p>
 <p>读操作：消费者若访问的是主queue所在的broker，则直接返回数据，否则当前broker会从主queue所在的broker上读数据，再由当前的broker返回给消费者</p>
-<p>![RabbitMQ-第 5 页.drawio](..&#x2F;image&#x2F;中间件&#x2F;RabbitMQ-第 5 页.drawio.png)</p>
+<p><img src="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ6.png" class="lazyload" data-srcset="/../image/%E4%B8%AD%E9%97%B4%E4%BB%B6/RabbitMQ6.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="RabbitMQ6"></p>
 <p>镜像集群的优点是让系统变的高可用，缺点是，当队列越来越多时，同步操作越来越多，占用较大的带宽。</p>
 <blockquote>
 <p>Quorum队列集群</p>
@@ -2691,7 +2680,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-08T21:40:32+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-08T21:51:25+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：Jun 8, 2025</p>
@@ -3404,7 +3393,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/08/消息队列/","name":"消息队列"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"消息队列","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/08/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/08/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/","wordCount":0,"datePublished":"2025-06-08T12:47:26.000Z","dateModified":"2025-06-08T13:40:32.367Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/08/消息队列/","name":"消息队列"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"消息队列","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/08/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/08/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/","wordCount":0,"datePublished":"2025-06-08T12:47:26.000Z","dateModified":"2025-06-08T13:51:25.543Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

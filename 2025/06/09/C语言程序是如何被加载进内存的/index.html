@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/04/26/redis-如何实现原子性/"/>
+  <link rel="canonical" href="http://example.com/2025/06/09/c语言程序是如何被加载进内存的/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>redis 如何实现原子性 - luckyzz</title>
+  <title>C语言程序是如何被加载进内存的 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis 如何实现原子性">
-<meta property="og:url" content="http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/index.html">
+<meta property="og:title" content="C语言程序是如何被加载进内存的">
+<meta property="og:url" content="http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="上一篇博客说到了 redis 的事务机制，知道了 redis 的事务机制可以保证一组命令可以原子执行，但是不保证这组命令全部执行成功。redis 中也使用了 LUA 脚本保证原子性。 先来看一下 redis 官方对LUA脚本做的解释：LUA是一种脚本语言，通过EVAL命令执行LUA脚本，且LUA脚本具备原子性  执行脚本 EVAL  EVAL 的语法 1EVAL script numkeys [k">
+<meta property="og:description" content="C语言执行过程预处理——&gt;编译——&gt;汇编——&gt;链接 编译成汇编文件，再由汇编文件生成目标文件（待重定位文件）  编译 gcc  -c  -o  kernel&#x2F;main.o   kernel&#x2F;main.c  -c：编译汇编到目标代码，不进行链接 -o：将输出的文件以指定的文件名来存储，得到main.o文件 main.o文件是目标文件，也是待重定位文件，这个文件中">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-26T11:05:09.000Z">
-<meta property="article:modified_time" content="2025-04-27T02:01:30.987Z">
+<meta property="article:published_time" content="2025-06-09T00:50:12.000Z">
+<meta property="article:modified_time" content="2025-06-09T01:14:02.443Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2429,7 +2429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/26/redis-如何实现原子性/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/09/C语言程序是如何被加载进内存的/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2450,7 +2450,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        redis 如何实现原子性
+        C语言程序是如何被加载进内存的
       </h1>
       <div class='new-meta-box'>
         
@@ -2469,10 +2469,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
   <div class='new-meta-item category'>
     <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
-    <a class="category-link" href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a>
+    <a class="category-link" href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
     
       <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
-        <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url"><span itemprop="name">中间件</span></a>
+        <a href="/categories/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" itemprop="url"><span itemprop="name">编译原理</span></a>
       </span>
     
   </div>
@@ -2481,10 +2481,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-04-26T19:05:09+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-09T08:50:12+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Apr 26, 2025</p>
+    <p>发布于：Jun 9, 2025</p>
   </a>
 </div>
 
@@ -2507,61 +2507,68 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <p>上一篇博客说到了 redis 的事务机制，知道了 redis 的事务机制可以保证一组命令可以原子执行，但是不保证这组命令全部执行成功。redis 中也使用了 LUA 脚本保证原子性。</p>
-<p>先来看一下 redis 官方对LUA脚本做的解释：LUA是一种脚本语言，通过EVAL命令执行LUA脚本，且LUA脚本具备原子性</p>
-<p><img src="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426194856318.png" class="lazyload" data-srcset="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426194856318.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426194856318"></p>
-<h2 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h2><blockquote>
-<p><font  color=blue ><strong>EVAL</strong></font></p>
-</blockquote>
-<p>EVAL 的语法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EVAL script numkeys [key [key ...]] [arg [arg ...]]</span><br></pre></td></tr></table></figure>
-
-<p>EVAL：执行LUA脚本</p>
-<p>script：LUA 脚本源码——必填</p>
-<p>numberkeys：输入键名的数量——必填</p>
-<p>key[key….] : 脚本中使用的 redis 键名——选填</p>
-<p>arg[arg…]：传递给脚本的附加参数——选填</p>
-<p><img src="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426201919230.png" class="lazyload" data-srcset="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426201919230.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426201919230"></p>
-<p>EVAL ：执行LUA脚本</p>
-<p>“return ARGV[1]”：LUA脚本，返回第一个附加参数ARGV[1]的值</p>
-<p>0：键名数量为0，表示不操作任何 redis 键</p>
-<p>hello：作为参数传递给脚本，存储在 ARGV[1]中</p>
-<p>当然，我们也可以直接将参数放在LUA脚本中，不需要额外传递参数</p>
-<p><img src="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426202847532.png" class="lazyload" data-srcset="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426202847532.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426202847532"></p>
-<p>也可以指定key值和参数</p>
-<p><img src="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426203057865.png" class="lazyload" data-srcset="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426203057865.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426203057865"></p>
-<p><strong><font color=red>注意：无论是那种写法，为了保证集群模式下能够正确根据键名计算出数据分片的位置，必须要显示指定 键值，不可以通过动态获取的方式获取键名。</font></strong></p>
-<p>动态获取键名的方式不利于维护、不利于路由、不利于原子性的保证</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="脚本和Redis交互"><a href="#脚本和Redis交互" class="headerlink" title="脚本和Redis交互"></a>脚本和Redis交互</h2><blockquote>
-<p><font  color=blue ><strong>redis.call()</strong></font></p>
-</blockquote>
-<p>在LUA脚本中执行命令，如果命令出错，直接抛出错误，中断脚本的执行</p>
-<p>适用场景：需要严格保证命令成功的场景，如扣减库存等</p>
-<p><img src="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426204930144.png" class="lazyload" data-srcset="/../image/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/image-20250426204930144.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250426204930144"></p>
+    <h2 id="C语言执行过程"><a href="#C语言执行过程" class="headerlink" title="C语言执行过程"></a><strong>C语言执行过程</strong></h2><p><em><span style="color:red; background-color:yellow; font-size:15pt"><strong>预处理——&gt;编译——&gt;汇编——&gt;链接</strong></span></em></p>
+<p>编译成汇编文件，再由汇编文件生成<strong>目标文件（待重定位文件）</strong></p>
 <blockquote>
-<p><font  color=blue ><strong>redis.pcall()</strong></font></p>
+<p>编译</p>
+<p><em><strong>gcc  -c  -o  kernel&#x2F;main.o   kernel&#x2F;main.c</strong></em></p>
 </blockquote>
-<p>在 LUA 脚本中执行命令，出错时脚本可以继续执行</p>
-<p>适用场景：需要容错处理的场景</p>
-<h2 id="Redis的部署方式"><a href="#Redis的部署方式" class="headerlink" title="Redis的部署方式"></a>Redis的部署方式</h2><h3 id="单机部署"><a href="#单机部署" class="headerlink" title="单机部署"></a>单机部署</h3><p>多个客户端共用一个redis，所以单机部署的情况下，LUA脚本是一定能保证原子性的。</p>
-<img src="../image/redis-如何实现原子性/redis单机部署-第 1 页.drawio.png" class="lazyload" data-srcset="../image/redis-如何实现原子性/redis单机部署-第 1 页.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="redis单机部署-第 1 页.drawio" style="zoom:67%;" />
-
-<h3 id="主从部署"><a href="#主从部署" class="headerlink" title="主从部署"></a>主从部署</h3><p>redis的主从部署采用了读写分离的方式，只对主服务器读写，对从服务器读，从服务器只接受主服务器的命令，所以主从部署也能保证LUA脚本的原子性</p>
-<img src="../image/redis-如何实现原子性/redis单机部署-第 2 页.drawio.png" class="lazyload" data-srcset="../image/redis-如何实现原子性/redis单机部署-第 2 页.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="redis单机部署-第 2 页.drawio" style="zoom: 67%;" />
-
-<h3 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h3><p>Redis的集群部署，<font color=blue><strong>是将数据分片到不同的redis服务器上</strong></font>，也就是说集群中的每个Redis对客户端来说是既可以读也可以写的，客户端根据操作的键值，通过哈希映射到不同的redis中，所以操作不同的键值可能映射到相同的槽中，这样就不一定能保证原子性了。<strong><font color=red>所以一定要让LUA脚本操作同一个key</font></strong></p>
-<p><strong><font color=blue>注意：redis的集群使用的是数据分片而不是一致性哈希，redis集群的哈希槽一共有 16384个，这是固定的，集群中每个Redis结点都负责一部分哈希槽。CRC16(key) % 16384  来计算键   key  属于哪个槽</font></strong></p>
-<p>例如： redis结点A负责0~5500号的哈希槽</p>
-<p>​			  redis结点B负责5501~11000号哈希槽</p>
-<p>​		      redis结点C负责11001~16384 号哈希槽</p>
-<p>而 key 值是可以大于16384的，所以存在不同的key值可以映射到同一个哈希槽中</p>
-<img src="../image/redis-如何实现原子性/redis单机部署-第 3 页.drawio.png" class="lazyload" data-srcset="../image/redis-如何实现原子性/redis单机部署-第 3 页.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="redis单机部署-第 3 页.drawio" style="zoom:67%;" />
-
-
-
-<h2 id="LUA脚本一定能保证原子性吗"><a href="#LUA脚本一定能保证原子性吗" class="headerlink" title="LUA脚本一定能保证原子性吗"></a>LUA脚本一定能保证原子性吗</h2><p><strong><font color=blue>不能</font></strong></p>
-<p>**原因：**执行LUA脚本是一个原子操作，但是执行结果是否是原子性还取决于Redis的部署方式，Redis的部署方式如果是单机或者主从，那么一定可以保证原子性，如果Redis的部署方式是集群分片的部署方式，那么可能不会原子性。因为集群分片的方式放每个redis的管理一部分哈希槽，Redis集群的哈希槽是固定的，为16384， 而key的值是可以大于 16384的，导致不同的 key 值哈希映射到了相同的槽，这样就不能保证原子性了。</p>
-<p><strong><font color=red>解决方案：保证LUA脚本中涉及的key值都属于同一个哈希槽。</font></strong></p>
+<p>-c：编译汇编到目标代码，不进行链接</p>
+<p>-o：将输出的文件以指定的文件名来存储，得到main.o文件</p>
+<p>main.o文件是目标文件，也是待重定位文件，这个文件中调用的函数和使用的变量都没有安排编址，也没有和其它的目标文件链接成一个可执行文件。</p>
+<p>由于不知道可执行文件由几个目标文件组成，所以目标文件中使用的符号（调用的函数或使用的变量）一律在链接阶段进行编址。</p>
+<blockquote>
+<p>链接</p>
+<p><strong>ld  kernel&#x2F;main.o -Ttext  0xc0001500 -e  main -o  kernel&#x2F;kernel.bin</strong></p>
+</blockquote>
+<p>ld 是链接，将目标文件链接编址</p>
+<p>-Ttext：指定程序的入口地址，表示程序将从哪里开始执行</p>
+<p>-e：指定起始执行的名</p>
+<p>-o：将文件输出为kernel.bin</p>
+<h2 id="目标文件（待重定位文件）"><a href="#目标文件（待重定位文件）" class="headerlink" title="目标文件（待重定位文件）"></a><strong>目标文件（待重定位文件）</strong></h2><p>汇编后生成的目标文件，在该目标文件中，如果引用了其它外部文件中定义的符号（变量或者函数），在编译阶段只能标出一个符号名，该符号的具体地址还不确定，因为还不知道这个符号在哪个外部文件中，该外部文件需要在重定位后才能确定地址，而重定位需要在链接阶段完成的。</p>
+<h2 id="可执行文件"><a href="#可执行文件" class="headerlink" title="可执行文件"></a><strong>可执行文件</strong></h2><p>Windows下可执行文件是：PE</p>
+<p>Linux下可执行文件是：elf（可执行链接格式）</p>
+<h2 id="gcc编译后生成elf文件的头目的是什么"><a href="#gcc编译后生成elf文件的头目的是什么" class="headerlink" title="gcc编译后生成elf文件的头目的是什么"></a><strong>gcc编译后生成elf文件的头目的是什么</strong></h2><p>每个程序是单独存在的，程序的入口地址信息需要和程序绑定，在程序的头文件中写入入口地址，主调函数调用后将其加载到入口地址处，然后跳转过去执行。</p>
+<p>大体上粗糙的看，一个程序被编译链接成可执行文件后，会生成一个文件头，文件头后面才是写的程序。<span style="color:blue; background-color:; font-size:15pt"><em><strong>文件头中指定了程序起始地址和程序的大小</strong></em></span>。文件头中指定的程序的入口地址，也就是这个程序开始执行的地址。操作系统在加载的时候读到文件头信息，知道其入口地址，也获取了该程序的大小，那么就将这个程序载入入口地址为其文件头指定的入口地址，然后跳转过去执行。注意也必须要知道这个程序的大小，因为每个进程都有自己的页表，这个页表包括程序的所有数据（代码段，数据段，堆栈）载入时需要给这个进程按照页表大小的粒度给其分配内存，然后写他的内存的bitmap。</p>
+<p><span style="color:blue; background-color:yellow; font-size:15pt"><em><strong>ELF（Executable and Linkable Format）是Linux下可执行二进制文件</strong></em></span></p>
+<blockquote>
+<p>ELF文件格式</p>
+</blockquote>
+<p>在链接时会给程序编址，也要指定程序的入口地址，为了防止在加载程序时加载地址不要写死，将程序的入口地址写在程序的头文件中，在加载程序的时候读出程序的入口地址，然后将程序加载到入口地址处，然后跳转到程序的入口地址处执行。</p>
+<p><img src="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps15.jpg" class="lazyload" data-srcset="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps15.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"> </p>
+<p>程序头只是元信息，它不是可执行性代码，操作系统将这种具有程序头格式的程序文件从外存读到内存后，从该程序的头文件中读出入口地址，需要跨过程序头直接跳转到入口处执行。</p>
+<p><span style="color:blue; background-color:; font-size:15pt"><strong>ELF header就是用一个固定大小的数据结构存储程序头表（program header table）和节头表（section header），一个可执行文件开头的部分一定是 elf header。</strong></span></p>
+<p><span style="color:blue; background-color:; font-size:15pt"><strong>注意：在elf头中规定了程序的入口地址，指明了操作系统在运行该程序时，将控制权转交到虚拟地址。Elf头在一个文件中的规定位置，其大小也是固定的。Elf头中还有一些重要信息，是用来描述段头表的，段头表也是表，其中存放的是各个段的信息，各个段的信息重要的包含了该段在内存中的大小，该段在内存中的虚拟起始地址。因为elf格式是通过gcc ， ld后生成的，ld连接时就指定了程序的入口地址，ld后生成的文件是在磁盘上的，需要将这个可执行文件（带有文件头的文件）加载到内存中，然后分析文件头中的信息，具体做法是：在elf可执行文件中，将段头表的信息读取出来（主要是段在内存的大小和段在内存的起始虚拟地址），将这个段加载到其指定的位置即可。</strong></span></p>
+<p>ELF Header中规定了文件类型，入口地址，编码方式（大端、小端），体系结构类型，Program Header大小和偏移， sector Header大小和偏移。</p>
+<p>Program Header中描述了位于磁盘上文件中的段（数据段代码段等），说明本段在文件中的偏移，在内存中的虚拟地址，段的大小等。</p>
+<p><img src="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps16.jpg" class="lazyload" data-srcset="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps16.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"> </p>
+<h2 id="ELF的生成过程"><a href="#ELF的生成过程" class="headerlink" title="ELF的生成过程"></a><strong>ELF的生成过程</strong></h2><p><em><strong>*step1：预处理*</strong></em></p>
+<p>处理头文件、宏、注释等，生成 <span style="color:red; background-color:; font-size:15pt"> <strong>.i</strong></span> 文件</p>
+<p><em><strong>*step2：编译*</strong></em></p>
+<p>通过编译器gcc将文件编译成汇编代码， 生成 <span style="color:red; background-color:; font-size:15pt"> <strong>.S</strong> </span>文件</p>
+<p><em><strong>*step3：汇编*</strong></em></p>
+<p>通过汇编器 as 将汇编代码转换为机器指令， 生成目标文件<span style="color:red; background-color:; font-size:15pt"> <strong>.o</strong> </span>文件（可重定位文件）</p>
+<p><em><strong>*step4：链接*</strong></em></p>
+<p>通过链接器  ld  将多个目标文件和库文件，生成 <span style="color:red; background-color:; font-size:15pt"><strong>ELF</strong> </span>文件（可以直接执行的文件）</p>
+<p><span style="color:red; background-color:; font-size:15pt"><em><strong>当多个可重定位文件链接成一个可执行文件时，计算机如何知道程序的入口地址在哪？</strong></em></span>程序内的地址是在链接阶段编址的，所以在链接阶段必须要明确入口地址，连接器规定默认把名为_start的函数作为程序的入口地址，除非特别指定</p>
+<h2 id="操作系统加载ELF文件"><a href="#操作系统加载ELF文件" class="headerlink" title="操作系统加载ELF文件"></a><strong>操作系统加载ELF文件</strong></h2><p><strong>【由链接器生成的ELF文件首先会存储在磁盘上，然后由操作系统在程序执行时将其载入内存】</strong></p>
+<p>step1：系统调用 execve() 将elf文件加载进内存</p>
+<p>step2：解析elf 文件， 读取elf 文件头部（elf header），验证文件类型和权限，检查程序头表（Program Headers），确定需要加载的段，如代码段.text、数据段.data</p>
+<p>step3：分配内存，将代码段和数据段映射到内存指定地址</p>
+<p>step4：如果有动态链接，加载动态库到内存</p>
+<p>step5：设置堆和栈参数</p>
+<p>step6：跳转到入口地址执行</p>
+<p>程序中多个节section经过链接后变成segment，segment就是程序中的代码段、数据段等，多个section组成段。一个程序中的segment和section的大小和数量都是未知的，所以需要一个数据结构描述他们，就像GDT那样。</p>
+<p>程序头表（program header table）：描述程序头</p>
+<p>节头表（section header table）：描述节头</p>
+<p>Elf格式：位于文件最开始位置并且具有固定大小的数据结构，描述程序头表和节头表，它主要作用于链接阶段和运行方面。</p>
+<p><img src="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps17.jpg" class="lazyload" data-srcset="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps17.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="> </p>
+<p>Elf  header结构</p>
+<p><img src="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps18.jpg" class="lazyload" data-srcset="/../image/C%E8%AF%AD%E8%A8%80%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E5%88%B0%E5%86%85%E5%AD%98%E7%9A%84/wps18.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"> </p>
+<h2 id="操作系统加载器是如何加载内核文件的呢？"><a href="#操作系统加载器是如何加载内核文件的呢？" class="headerlink" title="操作系统加载器是如何加载内核文件的呢？"></a>操作系统加载器是如何加载内核文件的呢？</h2><p>Loader加载内核</p>
+<p>Step1：加载内核：把内核文件（kernel.bin）加载到内核缓冲区</p>
+<p>Step2：初始化内核：在分页后将加载进来的elf内核文件安置到相应的虚拟内存中，然后跳过去执行，loader的任务结束。【loader分析elf格式的kernel.bin文件，并将其展开到新的位置，这才是真正的内核】</p>
+<p>****注意：****从磁盘加载进内存的elf格式的kernel.bin文件，需要再次经过loader解析，将其按照elf的内容展开到新的地址空间，展开后的kernel才是真正的内核映像，展开后最初的kernel.bin就没有用了，然而内核是需要放在低1MB内存空间的，所以最初的kernel.bin文件要尽可能放在高位置，因为被覆盖了也没关系，展开后的kernel尽量放在低位置，它可以有足够的空间向上增长</p>
 
   </div>
   
@@ -2586,10 +2593,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-04-27T10:01:30+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-09T09:14:02+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Apr 27, 2025</p>
+    <p>更新于：Jun 9, 2025</p>
   </a>
 </div>
 
@@ -2608,7 +2615,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/&title=redis 如何实现原子性 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/&title=C语言程序是如何被加载进内存的 - luckyzz&summary="
           
           >
           
@@ -2620,7 +2627,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/&title=redis 如何实现原子性 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/&title=C语言程序是如何被加载进内存的 - luckyzz&summary="
           
           >
           
@@ -2632,7 +2639,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/&title=redis 如何实现原子性 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/&title=C语言程序是如何被加载进内存的 - luckyzz&summary="
           
           >
           
@@ -2665,16 +2672,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/04/27/%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81Redis%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>如何保证Redis数据的一致性</p>
-          <p class='content'>背景在前面两篇博客中写到 Redis 实现原子性的两种方式：事务、LUA脚本。在学习 LUA 脚本时，对 LUA 脚本能否完全保证redis的原子性做了分析，得出结论： LUA脚本保证原子性取决...</p>
-        </a>
       
-      
-        <a class='next' href='/2025/04/26/redis-%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E5%92%8C-MySql%E7%9A%84%E4%BA%8B%E5%8A%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/'>
-          <p class='title'>redis 的事务是什么？和 MySql的事务有什么区别<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>字节一面：了解Redis的事务吗？它的命令有哪些？它和MySQL的事务有什么区别？MySQL 事务mysql的事务主要要4个特点，也就是ACID，这是面试常问到的点
-Atomicity（原子性）...</p>
+        <a class='next' href='/2025/06/08/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/'>
+          <p class='title'>消息队列<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>消息队列消息队列是一种中间件，用于在不同系统和组件之间通信，核心功能是解耦生产者和消费者支持【异步处理】、【服务解耦】、【削峰填谷】
+异步处理消息队列的思想是：减少请求等待时间，让服务异步并发处...</p>
         </a>
       
     </div>
@@ -2690,7 +2692,7 @@ Atomicity（原子性）...</p>
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2732,7 +2734,7 @@ Atomicity（原子性）...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC"><span class="toc-text">执行脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC%E5%92%8CRedis%E4%BA%A4%E4%BA%92"><span class="toc-text">脚本和Redis交互</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E7%9A%84%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-text">Redis的部署方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E9%83%A8%E7%BD%B2"><span class="toc-text">单机部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E4%BB%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">主从部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2"><span class="toc-text">集群部署</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LUA%E8%84%9A%E6%9C%AC%E4%B8%80%E5%AE%9A%E8%83%BD%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7%E5%90%97"><span class="toc-text">LUA脚本一定能保证原子性吗</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B"><span class="toc-text">C语言执行过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%96%87%E4%BB%B6%EF%BC%88%E5%BE%85%E9%87%8D%E5%AE%9A%E4%BD%8D%E6%96%87%E4%BB%B6%EF%BC%89"><span class="toc-text">目标文件（待重定位文件）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="toc-text">可执行文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E7%BC%96%E8%AF%91%E5%90%8E%E7%94%9F%E6%88%90elf%E6%96%87%E4%BB%B6%E7%9A%84%E5%A4%B4%E7%9B%AE%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">gcc编译后生成elf文件的头目的是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ELF%E7%9A%84%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B"><span class="toc-text">ELF的生成过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8A%A0%E8%BD%BDELF%E6%96%87%E4%BB%B6"><span class="toc-text">操作系统加载ELF文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8A%A0%E8%BD%BD%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-text">操作系统加载器是如何加载内核文件的呢？</span></a></li></ol>
     </div>
   </section>
 
@@ -3302,7 +3304,7 @@ Atomicity（原子性）...</p>
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/中间件/","name":"中间件"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/04/26/redis-如何实现原子性/","name":"redis 如何实现原子性"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"redis 如何实现原子性","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/04/26/redis-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%80%A7/","wordCount":0,"datePublished":"2025-04-26T11:05:09.000Z","dateModified":"2025-04-27T02:01:30.987Z","articleSection":"中间件","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/编译原理/","name":"编译原理"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/09/C语言程序是如何被加载进内存的/","name":"C语言程序是如何被加载进内存的"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"C语言程序是如何被加载进内存的","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/","wordCount":0,"datePublished":"2025-06-09T00:50:12.000Z","dateModified":"2025-06-09T01:14:02.443Z","articleSection":"编译原理","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

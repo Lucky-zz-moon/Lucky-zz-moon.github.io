@@ -5,8 +5,8 @@
   <meta name="Volantis" content="5.8.0">
   <meta charset="utf-8">
   <!-- SEO相关 -->
-  <meta name="robots" content="noindex,follow">
-  <link rel="canonical" href="http://example.com/tags/"/>
+  
+  <link rel="canonical" href="http://example.com/2025/06/09/深入理解操作系统线程和进程机制/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,17 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>所有标签 - luckyzz</title>
+  <title>深入理解操作系统线程和进程机制 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="所有标签">
-<meta property="og:url" content="http://example.com/tags/index.html">
+  
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解操作系统线程和进程机制">
+<meta property="og:url" content="http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="luckyzz">
+<meta property="og:description" content="线程执行流是什么宏观上：其实就是具有上下文环境的一段代码，可以被调度器调度上处理器执行。执行流是独立的，它拥有自己的栈、寄存器映像、内存等资源，这就是一个执行流的上下文环境。 微观上：是CPU的执行轨迹。 注意：当有线程后，执行流就是调度器的调度单位，就是指线程。 PCB到底是什么PCB是操作系统为每个进程维护的一个数据结构，相当于进程的“身份证”，记录了进程的全部状态和控制信息，操作系统通过PC">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-04-15T15:13:59.868Z">
-<meta property="article:modified_time" content="2025-04-15T15:13:59.868Z">
+<meta property="article:published_time" content="2025-06-09T02:28:44.000Z">
+<meta property="article:modified_time" content="2025-06-10T02:18:53.811Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2357,7 +2359,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     
       <!-- see: /layout/_partial/scripts/_ctrl/coverCtrl.ejs -->
-      <div id="none" class='cover-wrapper tag search' style="display: none;">
+      <div id="none" class='cover-wrapper post search' style="display: none;">
         
   <div class='cover-bg lazyload placeholder' data-bg="https://uy.wzznft.com/i/2025/04/20/u7xkow.jpg"></div>
 
@@ -2425,23 +2427,411 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <div id="safearea">
         <div class="body-wrapper">
           
-
 <div id="l_main" class=''>
+  <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/09/深入理解操作系统线程和进程机制/">
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="luckyzz">
+  </span>
+  <span hidden itemprop="post" itemscope itemtype="http://schema.org/Post">
+    <meta itemprop="name" content="luckyzz">
+    <meta itemprop="description" content="">
+  </span>
   
+
+
+  
+    <span hidden>
+      <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
+    </span>
+  
+  <div class="article-meta" id="top">
     
-      <div class='post-wrapper'>
-        <article id="tag" class="post article white-box reveal shadow floatable blur">
-          <h2>所有标签</h2>
-          <div class="all-tags">
-            
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%87%E7%AD%BE1/" rel="tag">标签1</a><span class="tag-list-count">1</span></li></ul>
-          </div>
-          <br>
+    
+    
+      <h1 class="title" itemprop="name headline">
+        深入理解操作系统线程和进程机制
+      </h1>
+      <div class='new-meta-box'>
+        
           
-        </article>
+            
+<div class='new-meta-item author' itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <a itemprop="url" class='author' href="/" rel="nofollow">
+    <img itemprop="image" src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/apple-touch-icon.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+    <p itemprop="name">请设置文章作者</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  <div class='new-meta-item category'>
+    <i class="fa-solid fa-folder-open fa-fw" aria-hidden="true"></i>
+    <a class="category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+    
+      <span hidden itemprop="about" itemscope itemtype="http://schema.org/Thing">
+        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url"><span itemprop="name">操作系统</span></a>
+      </span>
+    
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-09T10:28:44+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：Jun 9, 2025</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+
+
+          
+        
+        <!-- Custom Files topMeta begin-->
+        
+        <!-- Custom Files topMeta end-->
       </div>
     
+  </div>
+
+
+  <div id="layoutHelper-page-plugins"></div>
+  <div id="post-body" itemprop="articleBody">
+    <h1 id="线程"><a href="#线程" class="headerlink" title="线程"></a><strong>线程</strong></h1><h2 id="执行流是什么"><a href="#执行流是什么" class="headerlink" title="执行流是什么"></a><strong>执行流是什么</strong></h2><p><span style="color:blue; background-color:; font-size:14pt"><strong>宏观上：</strong></span>其实就是具有上下文环境的一段代码，可以被调度器调度上处理器执行。执行流是独立的，它拥有自己的栈、寄存器映像、内存等资源，这就是一个执行流的上下文环境。</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>微观上：</strong></span>是CPU的执行轨迹。</p>
+<p>注意：当有线程后，执行流就是调度器的调度单位，就是指线程。</p>
+<h2 id="PCB到底是什么"><a href="#PCB到底是什么" class="headerlink" title="PCB到底是什么"></a>PCB到底是什么</h2><p>PCB是操作系统为每个进程维护的一个数据结构，相当于进程的“身份证”，记录了进程的全部状态和控制信息，操作系统通过PCB来管理进程的创建、切换、调度和销毁。</p>
+<p>因为PCB是由操作系统管理和调度的，即使是用户进程，其PCB也是从内核物理内存池中申请的，一般系统中一个进程的PCB是整数个物理页。</p>
+<p>将系统中所有的PCB按照一定的顺序存储在一个数据结构中（双向链表，大&#x2F;小堆）中的结构，就是调度表，简单情况下，调度表是PCB的双向链表。</p>
+<p>调度器实际上是扫描PCB双向链表选择执行流上处理器，在选择新的执行流上处理器之前，需要保存当前的执行流的上下文环境，可知在调度器进行任务切换时，一定需要保存当前断点然后加载新任务环境，那么这些断点和新任务环境的数据存放在哪呢？其实这个存放的地址只要操作系统在内核中划分出一块空间存放就行，操作系统还要去维护这段内存，找到执行流对应的存放地址，这个过程还挺麻烦的，不如将执行流的执行环境放在它自己的身份标记里，也就是放在自己的PCB结构中，在调度PCB时就能直接获取存放上下文环境的地址，非常方便，为了便于操作系统快速获取存放地址，将上下文环境直接放在它们PCB的顶端就行，将它们的身份信息放在PCB的底端，当执行流在执行的时候，一定还需要栈存放自己的局部变量参数等，所以，在PCB中间还没用上的那部分作为栈空间。</p>
+<p><strong>PCB的结构信息如下</strong></p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B3.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B3.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="线程和进程3.drawio"></p>
+<blockquote>
+<p>PCB结构体</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/* 进程或线程的状态 */</span><br><span class="line">enum task_status &#123;</span><br><span class="line">   TASK_RUNNING,</span><br><span class="line">   TASK_READY,</span><br><span class="line">   TASK_BLOCKED,</span><br><span class="line">   TASK_WAITING,</span><br><span class="line">   TASK_HANGING,</span><br><span class="line">   TASK_DIED</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">/* 进程或线程的pcb,程序控制块 */</span><br><span class="line">struct task_struct &#123;</span><br><span class="line">   uint32_t* self_kstack;	 // 各内核线程都用自己的内核栈</span><br><span class="line">   enum task_status status;</span><br><span class="line">   uint8_t priority;		 // 线程优先级</span><br><span class="line">   char name[16];</span><br><span class="line">   uint32_t stack_magic;	 // 用这串数字做栈的边界标记,用于检测栈的溢出</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p> <strong>PCB中的栈结构</strong></p>
+</blockquote>
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>intr_stak：</strong></span>中断栈，用于中断发生时，保护程序的（线程或进程）上下文环境，中断发生时栈的保护见《深入理解操作系统中断》那篇文章</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/***********   中断栈intr_stack   ***********</span><br><span class="line"> * 此结构用于中断发生时保护程序(线程或进程)的上下文环境:</span><br><span class="line"> * 进程或线程被外部中断或软中断打断时,会按照此结构压入上下文</span><br><span class="line"> * 寄存器,  intr_exit中的出栈操作是此结构的逆操作</span><br><span class="line"> * 此栈在线程自己的内核栈中位置固定,所在页的最顶端</span><br><span class="line">********************************************/</span><br><span class="line">struct intr_stack &#123;</span><br><span class="line">    uint32_t vec_no;	 // kernel.S 宏VECTOR中push %1压入的中断号</span><br><span class="line">    uint32_t edi;</span><br><span class="line">    uint32_t esi;</span><br><span class="line">    uint32_t ebp;</span><br><span class="line">    uint32_t esp_dummy;	 // 虽然pushad把esp也压入,但esp是不断变化的,所以会被popad忽略</span><br><span class="line">    uint32_t ebx;</span><br><span class="line">    uint32_t edx;</span><br><span class="line">    uint32_t ecx;</span><br><span class="line">    uint32_t eax;</span><br><span class="line">    uint32_t gs;</span><br><span class="line">    uint32_t fs;</span><br><span class="line">    uint32_t es;</span><br><span class="line">    uint32_t ds;</span><br><span class="line"></span><br><span class="line">/* 以下由cpu从低特权级进入高特权级时压入 */</span><br><span class="line">    uint32_t err_code;		 // err_code会被压入在eip之后</span><br><span class="line">    void (*eip) (void);</span><br><span class="line">    uint32_t cs;</span><br><span class="line">    uint32_t eflags;</span><br><span class="line">    void* esp;</span><br><span class="line">    uint32_t ss;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>thread_stack：</strong></span>线程自己的栈，用于保存线程中待执行的函数，主要由eip来保存。thread_stack有两个作用：</p>
+<p>①首次运行时，存储线程运行的函数和参数。</p>
+<p>②线程正常运行时，任务切换时保存寄存器环境。内核调度器也是一个软件，函数调用需要遵守ABI，即intel386硬件体系上所有寄存器都具有全局性，因此在函数调用时需要遵守ABI规定，不论被调函数中是否使用了ebp、ebx、edi、esi这5个寄存器，在被调函数执行完后，这5个寄存器的值不该被改变，因此被调函数必须要为主调函数保护好这几个寄存器的值，将它们保存在自己的栈中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/***********  线程栈thread_stack  ***********</span><br><span class="line"> * 线程自己的栈,用于存储线程中待执行的函数</span><br><span class="line"> * 此结构在线程自己的内核栈中位置不固定,</span><br><span class="line"> * 用在switch_to时保存线程环境。</span><br><span class="line"> * 实际位置取决于实际运行情况。</span><br><span class="line"> ******************************************/</span><br><span class="line">struct thread_stack &#123;</span><br><span class="line">   uint32_t ebp;</span><br><span class="line">   uint32_t ebx;</span><br><span class="line">   uint32_t edi;</span><br><span class="line">   uint32_t esi;</span><br><span class="line"></span><br><span class="line">/* 线程第一次执行时,eip指向待调用的函数kernel_thread </span><br><span class="line">其它时候,eip是指向switch_to的返回地址*/</span><br><span class="line">   void (*eip) (thread_func* func, void* func_arg);</span><br><span class="line"></span><br><span class="line">/*****   以下仅供第一次被调度上cpu时使用   ****/</span><br><span class="line"></span><br><span class="line">/* 参数unused_ret只为占位置充数为返回地址 */</span><br><span class="line">   void (*unused_retaddr);</span><br><span class="line">   thread_func* function;   // 由Kernel_thread所调用的函数名</span><br><span class="line">   void* func_arg;    // 由Kernel_thread所调用的函数所需的参数</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p><strong>PCB低端的身份信息</strong></p>
+</blockquote>
+<p> PCB是进程或线程的身份信息，既然是身份信息一定要有标识进程或线程的基本信息，比如该进程或线程当前0特权级的栈指针，优先级，进程或线程的名称、时间片、pid等</p>
+<p><strong>创建线程时需要填充PCB信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#define PG_SIZE 4096</span><br><span class="line"></span><br><span class="line">/* 由kernel_thread去执行function(func_arg) */</span><br><span class="line">static void kernel_thread(thread_func* function, void* func_arg) &#123;</span><br><span class="line">   function(func_arg); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 初始化线程栈thread_stack,将待执行的函数和参数放到thread_stack中相应的位置 */</span><br><span class="line">void thread_create(struct task_struct* pthread, thread_func function, void* func_arg) &#123;</span><br><span class="line">   /* 先预留中断使用栈的空间,可见thread.h中定义的结构 */</span><br><span class="line">   pthread-&gt;self_kstack -= sizeof(struct intr_stack);</span><br><span class="line"></span><br><span class="line">   /* 再留出线程栈空间,可见thread.h中定义 */</span><br><span class="line">   pthread-&gt;self_kstack -= sizeof(struct thread_stack);</span><br><span class="line">   struct thread_stack* kthread_stack = (struct thread_stack*)pthread-&gt;self_kstack;</span><br><span class="line">   kthread_stack-&gt;eip = kernel_thread;</span><br><span class="line">   kthread_stack-&gt;function = function;</span><br><span class="line">   kthread_stack-&gt;func_arg = func_arg;</span><br><span class="line">   kthread_stack-&gt;ebp = kthread_stack-&gt;ebx = kthread_stack-&gt;esi = kthread_stack-&gt;edi = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 初始化线程基本信息 */</span><br><span class="line">void init_thread(struct task_struct* pthread, char* name, int prio) &#123;</span><br><span class="line">   memset(pthread, 0, sizeof(*pthread));</span><br><span class="line">   strcpy(pthread-&gt;name, name);</span><br><span class="line">   pthread-&gt;status = TASK_RUNNING; </span><br><span class="line">   pthread-&gt;priority = prio;</span><br><span class="line">/* self_kstack是线程自己在内核态下使用的栈顶地址 */</span><br><span class="line">   pthread-&gt;self_kstack = (uint32_t*)((uint32_t)pthread + PG_SIZE);</span><br><span class="line">   pthread-&gt;stack_magic = 0x19870916;	  // 自定义的魔数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 创建一优先级为prio的线程,线程名为name,线程所执行的函数是function(func_arg) */</span><br><span class="line">struct task_struct* thread_start(char* name, int prio, thread_func function, void* func_arg) &#123;</span><br><span class="line">/* pcb都位于内核空间,包括用户进程的pcb也是在内核空间 */</span><br><span class="line">   struct task_struct* thread = get_kernel_pages(1);</span><br><span class="line"></span><br><span class="line">   init_thread(thread, name, prio);</span><br><span class="line">   thread_create(thread, function, func_arg);</span><br><span class="line"></span><br><span class="line">   asm volatile (&quot;movl %0, %%esp; pop %%ebp; pop %%ebx; pop %%edi; pop %%esi; ret&quot; : : &quot;g&quot; (thread-&gt;self_kstack) : &quot;memory&quot;);</span><br><span class="line">   return thread;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="为什么要创建多线程"><a href="#为什么要创建多线程" class="headerlink" title="为什么要创建多线程"></a><strong>为什么要创建多线程</strong></h2><p><span style="color:red; background-color:yellow; font-size:14pt"><em><strong>【主要是提速！】</strong></em></span></p>
+<ol>
+<li><p>假设时间片是n，计算机中有两个进程分别是A进程和B进程，其中A进程创建了3个线程，B进程是单线程进程，那么当A和B都执行完成后，A实际上获得了3n个时间片，B只有n个时间片，A执行的更快。</p>
+</li>
+<li><p>如果一个进程创建了多个线程，那么那些需要等待其它进程提供数据的线程就会被阻塞，例如需要等待用户输入的线程，这样的线程就会被阻塞，而进程中的其它线程可以正常被调度上处理器，这样这个进程只需要等待被阻塞进程执行完就行。如果该进程没有创建线程，那么当遇到需要等待输入的情况时就需要将整个进程都阻塞，显然比创建多线程慢。</p>
+</li>
+</ol>
+<h2 id="任务调度器"><a href="#任务调度器" class="headerlink" title="任务调度器"></a><strong>任务调度器</strong></h2><p>任务调度器本质上是一个软件，它在内核维护一个调度表，使用一定的调度算法将任务放上处理器去运行。这个调度表就是按照一定顺序维护的PCB表。</p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps34.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps34.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<p>常见的调度算法有：先来先服务、短作业优先、高响应比优先、时间片轮转、最高优先级调度算法、多级反馈队列调度算法。</p>
+<p>任务调度器在内核中按照不同的调度算法维护一个或多个调度表，这个调度表本质上就是按照调度算法排好序的双向链表，当系统需要实现任务切换时，调度器将当前任务的现场数据加载到当前任务的PCB中，将当前PCB放回调度链表中，接着任务调度器根据调度算法从调度表中取出对应的PCB，获取该PCB中执行流执行的环境，然后加载到对应的资源中，开始执行。这就完成了任务的切换。</p>
+<p><span style="color:red; background-color:yellow; font-size:14pt"><strong>调度表是全部PCB表按照调度算法排好序的双向链表吗？</strong></span></p>
+<p>调度表宏观上体现的是系统中所有执行流的PCB按照系统使用的调度算法进行排序的双向链表，但是操作系统的内存是有限的，一个执行流的PCB是整数个物理页，一个物理页的大小的4KB，假设系统中一个执行流的PCB数据结构是2个物理页，那么系统中如果有1024个进程，那么调度表就要占8MB了，进程越多，调度表越大。操作系统内存有时候都不够用，需要进行磁盘的换入换出，所以操作系统在实现系统功能的基础上，资源管理所占用的内存当然是越小越好，如果操作系统的调度器维护的是完整的调度表，那么操作系统中每个执行流的PCB数结构至少有2个副本，调度器本质上就是要找到要调用的执行流的PCB，完成现场的保存和加载，所以调度表不需要维护所有执行流的PCB，调度表中的数据元素只要是PCB的虚拟地址就行，在调度器调度执行流的时候，直接根据PCB的地址找到PCB。对于32位的系统，1024个进程，调度链表所占用的实际的物理内存是（4B+4B+4B)×1024 &#x3D; 12KB，大大缩小了占用内存。</p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="线程和进程.drawio"></p>
+<h3 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h3><h4 id="先来先服务"><a href="#先来先服务" class="headerlink" title="先来先服务"></a><strong>先来先服务</strong></h4><p>利于长作业，不利于短作业。</p>
+<p>微观上：创建pcb时，直接将其加入到调度队列的队尾，调度新执行流时，直接区队列的队首</p>
+<h4 id="短作业优先"><a href="#短作业优先" class="headerlink" title="短作业优先"></a><strong>短作业优先</strong></h4><p>利于短作业，不利于长作业</p>
+<p> 微观上：将按照pcb中的执行时间进行排序，每次取队首pcb调度（队头到队尾，执行时间越来越大）</p>
+<h4 id="高响应比优先"><a href="#高响应比优先" class="headerlink" title="高响应比优先"></a><strong>高响应比优先</strong></h4><p>权衡了短作业和长作业<br>$$<br>优先权 &#x3D; （等待时间+要求服务时间）&#x2F;要求服务时间<br>$$</p>
+<h4 id="时间片轮转"><a href="#时间片轮转" class="headerlink" title="时间片轮转"></a><strong>时间片轮转</strong></h4><p>时间片的设置比较重要，太小容易频繁上下文切换，太大演变成了先来先服务算法</p>
+<h4 id="最高优先级调度算法"><a href="#最高优先级调度算法" class="headerlink" title="最高优先级调度算法"></a><strong>最高优先级调度算法</strong></h4><p>给每个进程设置一个优先级，调度时按照优先级调度，但是这可能导致低优先级任务饥饿</p>
+<h4 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a><strong>多级反馈队列调度算法</strong></h4><p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps48.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps48.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<p>设置多个队列，队列的优先级从高到低，优先级越高的时间片越短；</p>
+<p>新的进程放入第一级队列的末尾，按照先来先服务排队等调度，如果在第一级队列规定的时间片没有运行完，就将其转入第二级队列的末尾，按照这个规律直到运行完成；</p>
+<p>如果进程运行时有新的进程进入较高的队列中，停止当前进程并将其放入原队列的末尾，执行较高优先级的进程。</p>
+<h3 id="任务调度器如何保护和加载执行流上下文环境"><a href="#任务调度器如何保护和加载执行流上下文环境" class="headerlink" title="任务调度器如何保护和加载执行流上下文环境"></a><strong>任务调度器如何保护和加载执行流上下文环境</strong></h3><p>进程和线程的上下文环境保存在PCB中，调度线程的时候保存上下文环境在PCB中，然后从要调度的PCB中加载上下文环境到对应的寄存器中。在操作系统中，PCB数据结构占据几个物理页，而一个物理页大小是4KB，PCB中存放了执行流的关键信息，例如pid，父子进程，页表等以及局部变量，所以几个页大小的PCB结构完全可以存放下执行流的上下文环境（上下文环境本质上就是当前CPU的执行状态，而当前CPU的执行的最新状态是存放在寄存器中的）</p>
+<h3 id="以时间轮转算法为例，分析调度的过程"><a href="#以时间轮转算法为例，分析调度的过程" class="headerlink" title="以时间轮转算法为例，分析调度的过程"></a>以时间轮转算法为例，分析调度的过程</h3><p><span style="color:blue; background-color:; font-size:14pt"><em><strong>step1：注册时钟中断处理函数</strong></em></span></p>
+<p>时钟中断处理函数是0x20号中断，由8259A的IR0号引脚接收到的中断。每触发一次时钟中断，时钟中断处理程序就会将当前运行的线程的时间片-1，当时间片 &#x3D; 0时，调用调度器函数，调度器函数将该线程换下处理器，然后重新选择一个线程上处理器。</p>
+<p><span style="color:red; background-color:; font-size:14pt"><em><strong>注意：任务调度一定是由中断触发的</strong></em></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/* 时钟的中断处理函数 */</span><br><span class="line">static void intr_timer_handler(void) &#123;</span><br><span class="line">   struct task_struct* cur_thread = running_thread();</span><br><span class="line"></span><br><span class="line">   ASSERT(cur_thread-&gt;stack_magic == 0x19870916);         // 检查栈是否溢出</span><br><span class="line"></span><br><span class="line">   cur_thread-&gt;elapsed_ticks++;	  // 记录此线程占用的cpu时间嘀</span><br><span class="line">   ticks++;	  //从内核第一次处理时间中断后开始至今的滴哒数,内核态和用户态总共的嘀哒数</span><br><span class="line"></span><br><span class="line">   if (cur_thread-&gt;ticks == 0) &#123;	  // 若进程时间片用完就开始调度新的进程上cpu</span><br><span class="line">      schedule(); </span><br><span class="line">   &#125; else &#123;				  // 将当前进程的时间片-1</span><br><span class="line">      cur_thread-&gt;ticks--;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><span style="color:blue; background-color:; font-size:14pt"><em><strong>step2：实现任务调度函数</strong></em></span></p>
+<p>在内核当中维护一个任务调度表，这个任务调度表是PCB的双向链表。如果当前任务的状态是运行态，说明其时间片到期了，需要将其状态转换成就绪态，重新赋值其时间片，然后将其加入就绪队列的末尾。</p>
+<p>如果当前的任务状态不是运行态，那么重新选择一个任务上处理器，将就绪队列队首的线程调度上处理器，将其就绪态转换成运行态，然后将它从就绪队列中删除。最后调用step3的任务切换函数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/* 实现任务调度 */</span><br><span class="line">void schedule() &#123;</span><br><span class="line"></span><br><span class="line">   ASSERT(intr_get_status() == INTR_OFF);</span><br><span class="line"></span><br><span class="line">   struct task_struct* cur = running_thread(); </span><br><span class="line">   if (cur-&gt;status == TASK_RUNNING) &#123; // 若此线程只是cpu时间片到了,将其加入到就绪队列尾</span><br><span class="line">      ASSERT(!elem_find(&amp;thread_ready_list, &amp;cur-&gt;general_tag));</span><br><span class="line">      list_append(&amp;thread_ready_list, &amp;cur-&gt;general_tag);</span><br><span class="line">      cur-&gt;ticks = cur-&gt;priority;     // 重新将当前线程的ticks再重置为其priority;</span><br><span class="line">      cur-&gt;status = TASK_READY;</span><br><span class="line">   &#125; else &#123; </span><br><span class="line">      /* 若此线程需要某事件发生后才能继续上cpu运行,</span><br><span class="line">      不需要将其加入队列,因为当前线程不在就绪队列中。*/</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   ASSERT(!list_empty(&amp;thread_ready_list));</span><br><span class="line">   thread_tag = NULL;	  // thread_tag清空</span><br><span class="line">/* 将thread_ready_list队列中的第一个就绪线程弹出,准备将其调度上cpu. */</span><br><span class="line">   thread_tag = list_pop(&amp;thread_ready_list);   </span><br><span class="line">   struct task_struct* next = elem2entry(struct task_struct, general_tag, thread_tag);</span><br><span class="line">   next-&gt;status = TASK_RUNNING;</span><br><span class="line">   switch_to(cur, next);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><span style="color:blue; background-color:; font-size:14pt"><em><strong>step3：实现任务切换switch_to函数</strong></em></span></p>
+<p>任务调度是由时钟中断引起的，在中断时需要保存程序的上下文环境，这需要保存任务的全部的寄存器映像，这涉及到中断的压栈过程（如果有特权级转移，需要压入ss_old, esp_old, eflags, cs_old, eip_old，error_code, 4个段寄存器和8个通用寄存器），然后进入中断处理程序；</p>
+<p>中断处理程序一定是在内核态下工作，中断处理程序还没执行完成但是时间片用完了，也会触发调度器去调度别的线程，这就需要保护好内核线程执行的环境。线程本质上执行的是程序，程序调用根据ABI规则，需要由被调函数保护好esi、edi、ebx、ebp这四个寄存器，也就是说无论被调函数有没有使用这四个寄存器，在被调函数调用前和调用执行完成后，这四个寄存器需要保持一致。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">[bits 32]</span><br><span class="line">section .text</span><br><span class="line">global switch_to</span><br><span class="line">switch_to:</span><br><span class="line">   ;栈中此处是返回地址	       </span><br><span class="line">   push esi</span><br><span class="line">   push edi</span><br><span class="line">   push ebx</span><br><span class="line">   push ebp</span><br><span class="line"></span><br><span class="line">   mov eax, [esp + 20]		 ; 得到栈中的参数cur, cur = [esp+20]</span><br><span class="line">   mov [eax], esp                ; 保存栈顶指针esp. task_struct的self_kstack字段,</span><br><span class="line">				 ; self_kstack在task_struct中的偏移为0,</span><br><span class="line">				 ; 所以直接往thread开头处存4字节便可。</span><br><span class="line">;------------------  以上是备份当前线程的环境，下面是恢复下一个线程的环境  ----------------</span><br><span class="line">   mov eax, [esp + 24]		 ; 得到栈中的参数next, next = [esp+24]</span><br><span class="line">   mov esp, [eax]		 ; pcb的第一个成员是self_kstack成员,用来记录0级栈顶指针,</span><br><span class="line">				 ; 用来上cpu时恢复0级栈,0级栈中保存了进程或线程所有信息,包括3级栈指针</span><br><span class="line">   pop ebp</span><br><span class="line">   pop ebx</span><br><span class="line">   pop edi</span><br><span class="line">   pop esi</span><br><span class="line">   ret				 ; 返回到上面switch_to下面的那句注释的返回地址,</span><br><span class="line">				 ; 未由中断进入,第一次执行时会返回到kernel_thread</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B4.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B4.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="线程和进程4.drawio"></p>
+<p><span style="color:red; background-color:; font-size:14pt"><em><strong>总结 ：</strong></em> </span></p>
+<p>****【上下文保护的第一部分】：****保存任务进入中断前的全部寄存器，目的是能让任务恢复到中断前</p>
+<p>****【上下文保护的第二部分】：****保存esi、edi、ebx、ebp这四个寄存器，目的是让任务恢复执行在任务切换发生时尚未切换的内核代码，保证顺利走到退出中断的出口，利用第一部分保存的寄存器彻底恢复任务。</p>
+<h2 id="2种线程实现机制"><a href="#2种线程实现机制" class="headerlink" title="2种线程实现机制"></a><strong>2种线程实现机制</strong></h2><p><span style="color:blue; background-color:; font-size:14pt"><strong>①内核实现线程</strong></span></p>
+<p>由内核维护调度表，某个线程阻塞不会影响到其它线程和进程</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>②用户实现线程</strong></span></p>
+<p>用户维护调度表，内核感知不到线程存在，一旦某个线程阻塞会导致整个进程阻塞</p>
+<p><span style="color:red; background-color:yellow; font-size:14pt"><strong>那这两种机制有什么区别呢？哪种机制更高效呢？</strong></span></p>
+<p>**用户实现线程：**在用户空间实现线程，操作系统是感知不到线程的存在因为内核感知不到线程的存在，所以线程的调度需要在用户空间实现，也就是线程调度表要由用户实现。</p>
+<p>优点是：用户可以根据业务的需要自定义调度算法，更加的灵活，移植性强</p>
+<p>缺点是：操作系统调度器的调度单位是进程，只要一个线程阻塞，那么它所在的进程整体都会被阻塞。</p>
+<p>**内核实现线程：**操作系统可以感知到线程的存在，调度表是由操作系统维护的，当某一个线程被阻塞后，并不会影响这个线程所在进程的其它线程，它对比于在用户空间实现线程，它更能加快进程的执行。</p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B2.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B2.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="线程和进程2.drawio"></p>
+<h1 id="用户进程"><a href="#用户进程" class="headerlink" title="用户进程"></a><strong>用户进程</strong></h1><p><span style="color:blue; background-color:; font-size:14pt"><em><strong>任务</strong></em></span>：程序从文件系统被加载到内存后，位于内存中的程序就是映像，也称为任务。任务和任务的区别在于执行流一整套的上下文资源，包括寄存器映像、地址空间、IO位图等，这些上下文资源恰恰就是TSS结构中的内容，拥有这些资源才算的上是任务。换句话说，完整拥有TSS中的内容的就是一个任务。</p>
+<h2 id="TSS-Task-State-Segment"><a href="#TSS-Task-State-Segment" class="headerlink" title="TSS(Task State Segment)"></a>TSS(Task State Segment)</h2><p>TSS的本质实际上是一个内存段，需要在GDT中注册才能使用，通过TR寄存器（存储的是TSS选择子）在GDT中找到它。</p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps41.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps41.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<p><strong>TSS由程序员提供，CPU维护。</strong></p>
+<p>***程序员提供：***程序员为每一个任务单独定义一个TSS结构</p>
+<p>***CPU维护：***CPU自动用TSS结构做任务的切换，它是CPU原生支持的数据结构，CPU能够直接正确识别其中的所有字段，当任务被换下CPU时，CPU自动将当前寄存器的值存储到当前任务的TSS中；当新任务上CPU时自动从新任务的TSS中找到相应的寄存器值加载到对应的寄存器中。</p>
+<h2 id="TSS结构和选择子"><a href="#TSS结构和选择子" class="headerlink" title="TSS结构和选择子"></a><strong>TSS结构和选择子</strong></h2><p>TSS中的字段基本全是寄存器的名称，这些寄存器就是任务运行中的最新状态。TSS中只有0,1,2三个特权级的栈，仅仅是用来让CPU从低特权级到高特权级使用的。</p>
+<p><em><strong>*TR寄存器中存储的是TSS的选择子，GDTR存储的是GDT的起始地址和表界限，IDTR是中断描述符表的起始地址和表界限*</strong></em></p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps42.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps42.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps43.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/wps43.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">/* 任务状态段tss结构 */</span><br><span class="line">struct tss &#123;</span><br><span class="line">    uint32_t backlink;</span><br><span class="line">    uint32_t* esp0;</span><br><span class="line">    uint32_t ss0;</span><br><span class="line">    uint32_t* esp1;</span><br><span class="line">    uint32_t ss1;</span><br><span class="line">    uint32_t* esp2;</span><br><span class="line">    uint32_t ss2;</span><br><span class="line">    uint32_t cr3;</span><br><span class="line">    uint32_t (*eip) (void);</span><br><span class="line">    uint32_t eflags;</span><br><span class="line">    uint32_t eax;</span><br><span class="line">    uint32_t ecx;</span><br><span class="line">    uint32_t edx;</span><br><span class="line">    uint32_t ebx;</span><br><span class="line">    uint32_t esp;</span><br><span class="line">    uint32_t ebp;</span><br><span class="line">    uint32_t esi;</span><br><span class="line">    uint32_t edi;</span><br><span class="line">    uint32_t es;</span><br><span class="line">    uint32_t cs;</span><br><span class="line">    uint32_t ss;</span><br><span class="line">    uint32_t ds;</span><br><span class="line">    uint32_t fs;</span><br><span class="line">    uint32_t gs;</span><br><span class="line">    uint32_t ldt;</span><br><span class="line">    uint32_t trace;</span><br><span class="line">    uint32_t io_base;</span><br><span class="line">&#125;; </span><br><span class="line">static struct tss tss;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="CPU如何知道TSS切换了？"><a href="#CPU如何知道TSS切换了？" class="headerlink" title="CPU如何知道TSS切换了？"></a><strong>CPU如何知道TSS切换了？</strong></h2><p>使用TR寄存器，TR寄存器始终指向当前正在运行的任务，TR寄存器中存储的是TSS的选择子</p>
+<h2 id="CPU原生任务切换方式"><a href="#CPU原生任务切换方式" class="headerlink" title="CPU原生任务切换方式"></a><strong>CPU原生任务切换方式</strong></h2><p>TSS 是处理器在硬件上原生支持的多任务的一种实现方式，原始处理器厂商提供的一种多任务的切换方案是让每一个任务都关联一个TSS结构，一个任务的最新状态是处理器当前的寄存器状态，寄存器中的值可以存储到TSS结构中，任务切换只需要切换TSS就行。</p>
+<p>在多任务操作系统中，每个任务都会关联一个TSS结构，那么每个TSS结构的位置肯定是不固定的，TSS结构也是一段内存，在任务被换下CPU时，CPU自动将当前任务的资源状态保存到该任务对应的TSS中。CPU通过新任务的TSS选择子加载新任务时，自动将新任务TSS的数据加载到CPU的寄存器中，同时更新TR寄存器为新任务的TSS的选择子。<em><strong>*这些都是CPU硬件原生支持的*</strong></em>，在任务切换的时候只需要更改TR寄存器就可以。这是处理器厂商提供的多任务的切换方式，实际上Linux 系统并没有使用这种任务切换的方式。</p>
+<h2 id="现代操作系统的任务切换方式"><a href="#现代操作系统的任务切换方式" class="headerlink" title="现代操作系统的任务切换方式"></a><strong>现代操作系统的任务切换方式</strong></h2><p>不为每个任务关联一个TSS结构，因为每个TSS结构使用时都需要在GDT中注册，GDT的描述符的个数有上限，当任务多了，就会在GDT中注册很多的TSS描述符，每当增减一个TSS描述符，GDT就需要被重新加载，消耗CPU资源，显然不高效。所以为了满足硬件机制又要提高效率，<span style="color:blue; background-color:; font-size:14pt"><em><strong>Linux的做法是为每个CPU创建一个TSS结构，TR永远指向这一个TSS结构，不再进行切换，GDTR也不会因为TSS频繁加载，TSS结构不做任务的上下文环境保护，<span style="color:red; background-color:yellow; font-size:14pt">它只有一个作用：为0特权级的任务提供栈</span>，在进程进行上下文环境保护时，只需要把TSS中的SS0和esp0更新为新任务的内核栈的段地址和栈指针，上下文环境的保护都压栈了。当CPU从低特权级转向高特权级时（在用户模式下发生中断），CPU自动从TSS中获取0特权级下的栈，然后将上下文环境保存在栈中。</strong></em></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/*在gdt中创建 tss并重新加载gdt*/</span><br><span class="line"></span><br><span class="line">void tss_init()&#123;</span><br><span class="line">	memset(&amp;tss, 0, tss_size);</span><br><span class="line">	tss.ss0 = SELECTOR_K_STACK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*在进行任务切换时，更改tss中的0特权级栈*/</span><br><span class="line"></span><br><span class="line">void update_tss_esp(struct task_struct* pthread)&#123;</span><br><span class="line">	tss.esp0 = (uint32_t*)((uint32_t)pthread + PG_SIZE);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h2 id="如何创建用户进程"><a href="#如何创建用户进程" class="headerlink" title="如何创建用户进程"></a>如何创建用户进程</h2><h3 id="创建页表"><a href="#创建页表" class="headerlink" title="创建页表"></a><strong>创建页表</strong></h3><p>用户进程和线程一样，都有PCB，且线程的PCB和进程的PCB是一样的，唯一的区别是线程的PCB中，页表的虚拟地址为null，进程有自己独立的页表，进程的虚拟地址不为null。每一个进程的地址空间都是4GB的隔离的，所以每个进程都需要维护一个虚拟地址池。</p>
+<h3 id="创建3特权级栈"><a href="#创建3特权级栈" class="headerlink" title="创建3特权级栈"></a><strong>创建3特权级栈</strong></h3><p>处理器在不同的特权级下需要使用不同特权级的栈，PCB的顶端只是用户程序运行在0特权级下的栈，用户程序运行的3特权级下也是需要使用3特权级的栈的。</p>
+<h3 id="进入特权级3"><a href="#进入特权级3" class="headerlink" title="进入特权级3"></a><strong>进入特权级3</strong></h3><p>在用户程序之前，整个程序都是在0特权级下的，操作系统的让处理器的特权级由高到低变换只能通过中断和调用门返回，但是本操作系统中是不使用调用门的，但是用户程序还没有创建谈何从中断返回。从中断返回一定会将进入中断前由硬件自动压栈的部分寄存器以及手动压栈的4个段寄存器和8个通用寄存器全部弹出到相应的寄存器中，这才能全部恢复任务的上下文环境。那么我们利用中断返回指令 iretd指令从中断返回的方式恢复用户级环境，假装现在的0特权级环境是由用户级通过中断进入的，那么就需要在中断栈中先写好用户的上下文环境，等到中断退出时就能进入到用户级环境下了。</p>
+<p>所以进入特权级3的环境下，需要在中断栈中填好3特权级下的信息</p>
+<p>① 在PCB的中断栈中预先准备好3特权级的运行环境，借用一系列pop出栈的操作恢复用户进程的运行环境</p>
+<p>② 从中断退出后处理器的特权级为3特权级，处理器根据中断栈中的CS.RPL 来判断退出中断后要进入的特权级，所以预先填入的CS选择子的RPL&#x3D;3</p>
+<p>③ 退出中断时需要进行特权级检查，为了避免低特权级访问高特权级的资源，需要将栈中的段选择子的RPL设置成用户的CPL，CPU只负责检查，设置是由操作系统做的，所以栈中段寄存器的选择子必须要指向DPL&#x3D;3的内存段</p>
+<p>④ 退出中断后还需要保证操作系统能够继续响应中断，需要将eflag寄存器的IF位置为1 </p>
+<p>⑤ 不允许用户进程直接访问硬件，需要将EFLAGS的IOPL为置0</p>
+<h2 id="创建用户进程的具体过程"><a href="#创建用户进程的具体过程" class="headerlink" title="创建用户进程的具体过程"></a><strong>创建用户进程的具体过程</strong></h2><h3 id="step1：创建进程PCB结构"><a href="#step1：创建进程PCB结构" class="headerlink" title="step1：创建进程PCB结构"></a><strong>step1：创建进程PCB结构</strong></h3><p>①在<span style="color:red; background-color:; font-size:14pt"><strong>内核内存池</strong></span>中申请一页内存作为用户的PCB。进程和线程的唯一区别是，进程有自己的空间，线程没有，也就是说进程有页表，线程没有，而且为了实现进程之间的地址隔离，还要为每一个进程维护一个虚拟地址池</p>
+<p>②初始化PCB下方的进程信息和上面的内核线程栈，在内核线程栈中的eip 初始化为创建进程上下文的函数③，以便在switch_to 的上下文切换中能够让用户进程运行创建进程上下文环境的函数③，并且退出中断恢复特权级3的环境</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/* 进程或线程的pcb,程序控制块 */</span><br><span class="line">struct task_struct &#123;</span><br><span class="line">   uint32_t* self_kstack;	 // 各内核线程都用自己的内核栈</span><br><span class="line">   enum task_status status;</span><br><span class="line">   char name[16];</span><br><span class="line">   uint8_t priority;</span><br><span class="line">   uint8_t ticks;	   // 每次在处理器上执行的时间嘀嗒数</span><br><span class="line"></span><br><span class="line">/* 此任务自上cpu运行后至今占用了多少cpu嘀嗒数,</span><br><span class="line"> * 也就是此任务执行了多久*/</span><br><span class="line">   uint32_t elapsed_ticks;</span><br><span class="line"></span><br><span class="line">/* general_tag的作用是用于线程在一般的队列中的结点 */</span><br><span class="line">   struct list_elem general_tag;				    </span><br><span class="line"></span><br><span class="line">/* all_list_tag的作用是用于线程队列thread_all_list中的结点 */</span><br><span class="line">   struct list_elem all_list_tag;</span><br><span class="line"></span><br><span class="line">   uint32_t* pgdir;              // 进程自己页表的虚拟地址</span><br><span class="line"></span><br><span class="line">   struct virtual_addr userprog_vaddr;   // 用户进程的虚拟地址</span><br><span class="line">   uint32_t stack_magic;	 // 用这串数字做栈的边界标记,用于检测栈的溢出</span><br><span class="line">&#125;; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/* 构建用户进程初始上下文信息 */</span><br><span class="line">void start_process(void* filename_) &#123;</span><br><span class="line">   void* function = filename_;</span><br><span class="line">   struct task_struct* cur = running_thread();</span><br><span class="line">   cur-&gt;self_kstack += sizeof(struct thread_stack);</span><br><span class="line">   struct intr_stack* proc_stack = (struct intr_stack*)cur-&gt;self_kstack;	 </span><br><span class="line">   proc_stack-&gt;edi = proc_stack-&gt;esi = proc_stack-&gt;ebp = proc_stack-&gt;esp_dummy = 0;</span><br><span class="line">   proc_stack-&gt;ebx = proc_stack-&gt;edx = proc_stack-&gt;ecx = proc_stack-&gt;eax = 0;</span><br><span class="line">   proc_stack-&gt;gs = 0;		 // 用户态用不上,直接初始为0</span><br><span class="line">   proc_stack-&gt;ds = proc_stack-&gt;es = proc_stack-&gt;fs = SELECTOR_U_DATA;</span><br><span class="line">   proc_stack-&gt;eip = function;	 // 待执行的用户程序地址</span><br><span class="line">   proc_stack-&gt;cs = SELECTOR_U_CODE;</span><br><span class="line">   proc_stack-&gt;eflags = (EFLAGS_IOPL_0 | EFLAGS_MBS | EFLAGS_IF_1);</span><br><span class="line">   proc_stack-&gt;esp = (void*)((uint32_t)get_a_page(PF_USER, USER_STACK3_VADDR) + PG_SIZE) ;</span><br><span class="line">   proc_stack-&gt;ss = SELECTOR_U_DATA; </span><br><span class="line">   asm volatile (&quot;movl %0, %%esp; jmp intr_exit&quot; : : &quot;g&quot; (proc_stack) : &quot;memory&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="step2：创建用户进程的上下文环境，并退出中断"><a href="#step2：创建用户进程的上下文环境，并退出中断" class="headerlink" title="step2：创建用户进程的上下文环境，并退出中断"></a><strong>step2：创建用户进程的上下文环境，并退出中断</strong></h3><p>①从中断返回进入用户态，将用户进程的上下文环境保存在中断栈中</p>
+<p>②在栈中存储的CS选择子的RPL必须为3</p>
+<p><span style="color:red; background-color:; font-size:14pt"><em><strong>③用户进程使用的栈SS必须指向DPL为3的内存段</strong></em></span></p>
+<p><span style="color:red; background-color:yellow; font-size:14pt"><em><strong>进程的PCB的顶端是进程在0特权级下使用的栈，进程在3特权级下要使用3特权级的栈，且根据进程的4GB的内存分布，0xc0000000~0xffffffff是内核空间，0xc0000000-1是用户空间的最高地址，该地址就是用户进程在3特权级下栈能访问到的最高地址，所以3特权级下栈的地址是0xc0000000，需要在用户内存池中申请一页物理内存，并将这个物理内存和0xc0000000这个虚拟地址进行一个映射。所以用户空间下的栈顶虚拟地址都是0xc0000000，实际的物理地址是用户空间内存池中任意一个空闲的物理页。</strong></em></span></p>
+<p>④eflag的IF位为1，保证在用户态能够触发中断</p>
+<p>⑤eflag的IOPL为为1，禁止用户访问硬件</p>
+<p>⑥将当前的栈设置为中断栈，然后jmp到中断退出口，将提前写入中断中的用户进程的上下文环境的寄存器资源弹出到相应的寄存器中，就实现了进入用户态</p>
+<h3 id="step3：创建用户进程页目录表"><a href="#step3：创建用户进程页目录表" class="headerlink" title="step3：创建用户进程页目录表"></a><strong>step3：创建用户进程页目录表</strong></h3><p>因为用户进程的页目录表是由操作系统管理的，所以需要在<span style="color:red; background-color:; font-size:14pt"><strong>内核的物理池中申请</strong></span></p>
+<p>将内核页表的第768项到第1022项拷贝到用户程序页目录表的第768项~第1022项，第1023项为自己页目录表的物理地址。</p>
+<h3 id="step4：创建用户进程虚拟地址位图"><a href="#step4：创建用户进程虚拟地址位图" class="headerlink" title="step4：创建用户进程虚拟地址位图"></a><strong>step4：创建用户进程虚拟地址位图</strong></h3><p>算一下用户可用空间有多大，需要多大的内存位图去管理，因为用户4GB内存空间，因为0xc0000000~0xffffffff的空间给内核了，可以使用的空闲虚拟内存空间大小为（0xc0000000-USER_VADDR_START），其中USER_VADDR_START是宏定义，linux的用户进程的入口地址一般是0x804800，计算出这些可分配的虚拟地址空间所需要的页表个数是bitmap_pg_cnt，然后在<span style="color:red; background-color:; font-size:14pt"><em><strong>*内核内存池*</strong></em></span>中申请bitmap_pg_cnt个物理页，返回的起始虚拟地址就是进程PCB中虚拟地址池的起始地址。</p>
+<h3 id="step5：将用户进程虚拟地址位图和页表写入其PCB对应的字段"><a href="#step5：将用户进程虚拟地址位图和页表写入其PCB对应的字段" class="headerlink" title="step5：将用户进程虚拟地址位图和页表写入其PCB对应的字段"></a><strong>step5：将用户进程虚拟地址位图和页表写入其PCB对应的字段</strong></h3><h3 id="step6：将进程PCB加入就绪队列，等待调度"><a href="#step6：将进程PCB加入就绪队列，等待调度" class="headerlink" title="step6：将进程PCB加入就绪队列，等待调度"></a><strong>step6：将进程PCB加入就绪队列，等待调度</strong></h3><h2 id="进程调度schedule"><a href="#进程调度schedule" class="headerlink" title="进程调度schedule()"></a><strong>进程调度schedule()</strong></h2><p>Schedule()调度程序在时钟中断处理函数中，当时间片到期了，如果运行状态是运行态，说明时间片到期，将它的状态设置为就绪态，重新插入就绪队列的队尾。然后弹出就绪队列中队首PCB，根据新的PCB是内核线程还是用户进程做不一样的操作：</p>
+<p><em><strong>*【如果新的PCB是用户进程】*</strong></em>，更新页表寄存器CR3为当前运行进程的页目录表，然后更新TSS的esp值为用户进程的0特权级栈，也就是PCB结构最上面的栈指针。</p>
+<p><em><strong>*【如果新的进程是内核线程】*</strong></em>，更新页表寄存器CR3位0x100000（内核的页目录表的物理地址是0x100000），它是内核的页目录表，并且不用更新TSS 的esp值，因为内核态就是0特权级。</p>
+<h2 id="如何实现虚拟地址空间隔离"><a href="#如何实现虚拟地址空间隔离" class="headerlink" title="如何实现虚拟地址空间隔离"></a><strong>如何实现虚拟地址空间隔离</strong></h2><p>每一个用户进程都有自己的页表，CR3寄存器只有一个，每当切换一个任务的时候，都要更新CR3寄存器为当前任务的页表。</p>
+<h1 id="总结：线程和进程的区别以及使用场景"><a href="#总结：线程和进程的区别以及使用场景" class="headerlink" title="总结：线程和进程的区别以及使用场景"></a>总结：线程和进程的区别以及使用场景</h1><h2 id="多进程和多线程资源分配区别"><a href="#多进程和多线程资源分配区别" class="headerlink" title="多进程和多线程资源分配区别"></a><strong>多进程和多线程资源分配区别</strong></h2><ol>
+<li><p>多进程：每个进程都有独立的地址空间，他们在内存中有自己独立的区域来存储代码、数据和堆栈。例如一个进程的全局变量在另一个进程中是不可见的，进程之间的数据交换相对复杂，需要通过进程间通信机制，例如管道、消息队列、共享内存来实现。</p>
+</li>
+<li><p>多线程：线程共享进程的地址空间，线程之间共享全局变量和堆内存等资源，线程之间的数据共享相对简单，但是也有资源竞争等问题，需要同步机制（互斥锁、信号量）来解决。</p>
+</li>
+</ol>
+<h2 id="多进程和多线程调度区别"><a href="#多进程和多线程调度区别" class="headerlink" title="多进程和多线程调度区别"></a><strong>多进程和多线程调度区别</strong></h2><ol>
+<li><p>多进程切换：进程之间的切换开销大，涉及整个地址空间的切换、保存和恢复进程上下文（寄存器值、程序计数器等）</p>
+</li>
+<li><p>多线程切换：线程之间切换相对进程更小，因为线程共享进程的地址空间，只需要切换线程的私有数据（如栈指针、程序计数器等）和保存恢复一些寄存器的值（就是遵守ABI规则的那4个寄存器）</p>
+</li>
+</ol>
+<h2 id="线程和进程的稳定性差异"><a href="#线程和进程的稳定性差异" class="headerlink" title="线程和进程的稳定性差异"></a><strong>线程和进程的稳定性差异</strong></h2><ol>
+<li><p>多进程：一个进程的崩溃通常不会影响其它进程的运行，因为进程之间是地址隔离的。例如邮件服务进程的崩溃不会影响到web服务进程。</p>
+</li>
+<li><p>多线程：线程共享进程的资源空间，一个线程出现问题可能会导致整个进程崩溃，例如死锁，例如一个线程因为内存访问错误而导致整个服务进程退出。可以这么理解，线程是共享进程空间的，如果一个线程出现了问题，相当于一个大家庭中出现了反贼，使得家庭里面的每个成员（线程）变得不再可信，最终导致家庭破裂（进程崩溃）。</p>
+</li>
+</ol>
+<h2 id="进程和线程的使用场景"><a href="#进程和线程的使用场景" class="headerlink" title="进程和线程的使用场景"></a><strong>进程和线程的使用场景</strong></h2><p>****【CPU密集型】：****需要大量计算资源的任务（数学运算、逻辑处理、图像处理、数据压缩等），性能主要受限于CPU的计算能力</p>
+<p>****【I&#x2F;O密集型】：****需要大量输入输出操作（文件读写、网络请求、数据库查询等），性能主要受限于I&#x2F;O设备的速度。</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><em><strong>【多进程适用场景】：</strong></em></span></p>
+<p>CPU密集型任务（图像处理、数据计算等）、且需要高稳定性要求（进程相互独立的，一个进程崩溃了不会影响其它进程）、使用于多核CPU的，能充分利用多核CPU。</p>
+<p><em><strong>*【优点】*</strong></em></p>
+<p>①性能高，进程之间不会相互影响</p>
+<p>②能充分利用多核CPU</p>
+<p>③资源隔离性好</p>
+<p><em><strong>*【缺点】*</strong></em></p>
+<p>①创建进程和切换进程的开销比较大</p>
+<p>②进程间的通信复杂且开销大</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><em><strong>【多线程适用场景】：</strong></em></span></p>
+<p>适用于I&#x2F;O密集型任务（例如网络请求，文件读写等需要等待外部操作的任务）、线程切换开销小，适合需要快速响应的任务、创建线程和切换的开销小，适合需要大量并发但资源有限的场景；</p>
+<p><em><strong>*【优点】*</strong></em></p>
+<p>创建和切换的开销小</p>
+<p>线程之间的通信方便</p>
+<p><em><strong>*【缺点】*</strong></em></p>
+<p>稳定性低，一个线程崩溃可能会影响整个进程</p>
+<p>需要处理线程同步和竞争的问题</p>
+<p>无法充分利用多核CPU</p>
+
+  </div>
   
+  
+    
+    <div class='footer'>
+       <!-- 参考资料、相关资料等 -->
+      
+       <!-- 相关文章 -->
+      
+      <!-- 版权声明组件 -->
+      
+      <!-- 打赏组件 -->
+      
+    </div>
+  
+  
+    
+
+
+  <div class='article-meta' id="bottom">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-10T10:18:53+08:00">
+  <a class='notlink'>
+    <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：Jun 10, 2025</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/&title=深入理解操作系统线程和进程机制 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qq.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/&title=深入理解操作系统线程和进程机制 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/qzone.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
+          
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/&title=深入理解操作系统线程和进程机制 - luckyzz&summary="
+          
+          >
+          
+            <img src="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/logo/128/weibo.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+          
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+    <!-- Custom Files bottomMeta begin -->
+    
+    <!-- Custom Files bottomMeta end -->
+  </div>
+
+
+  
+  
+
+  
+    <div class="prev-next">
+      
+      
+        <a class='next' href='/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/'>
+          <p class='title'>深入理解操作系统的中断机制<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
+          <p class='content'>中断中断机制的本质：来一个中断信号，调用相应的中断处理程序
+中断分类中断分为内部中断和外部中断，内部中断分为异常和软中断，外部中断分为可屏蔽中断和不可屏蔽中断。每个中断都有对应的中断向量号，根据...</p>
+        </a>
+      
+    </div>
+  
+  <!-- Custom Files postEnd begin-->
+  
+  <!-- Custom Files postEnd end-->
+</article>
+
+
+  
+
+
+  <article class="post white-box shadow floatable blur" id="comments">
+    <span hidden>
+      <meta itemprop="discussionUrl" content="/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/index.html#comments">
+    </span>
+    <p ct><i class='fa-solid fa-comments'></i> 评论</p>
+    
+
+    <div id="layoutHelper-comments"></div>
+
+  </article>
+
+
+
+
+
+
 </div>
 <aside id='l_side' itemscope itemtype="http://schema.org/WPSideBar">
   
@@ -2460,9 +2850,19 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
 
 
-  <div class="">
-    <!-- pjax占位 -->
-  </div>
+  <section class="widget toc-wrapper desktop mobile " id="toc-div" >
+    
+  <header>
+    
+      <i class="fa-solid fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">执行流是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PCB%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">PCB到底是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">为什么要创建多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-text">任务调度器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E6%9D%A5%E5%85%88%E6%9C%8D%E5%8A%A1"><span class="toc-text">先来先服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9F%AD%E4%BD%9C%E4%B8%9A%E4%BC%98%E5%85%88"><span class="toc-text">短作业优先</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E5%93%8D%E5%BA%94%E6%AF%94%E4%BC%98%E5%85%88"><span class="toc-text">高响应比优先</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%89%87%E8%BD%AE%E8%BD%AC"><span class="toc-text">时间片轮转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E9%AB%98%E4%BC%98%E5%85%88%E7%BA%A7%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">最高优先级调度算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-text">多级反馈队列调度算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E5%99%A8%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8A%A4%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%89%A7%E8%A1%8C%E6%B5%81%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83"><span class="toc-text">任务调度器如何保护和加载执行流上下文环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E6%97%B6%E9%97%B4%E8%BD%AE%E8%BD%AC%E7%AE%97%E6%B3%95%E4%B8%BA%E4%BE%8B%EF%BC%8C%E5%88%86%E6%9E%90%E8%B0%83%E5%BA%A6%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-text">以时间轮转算法为例，分析调度的过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E7%A7%8D%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-text">2种线程实现机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TSS-Task-State-Segment"><span class="toc-text">TSS(Task State Segment)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TSS%E7%BB%93%E6%9E%84%E5%92%8C%E9%80%89%E6%8B%A9%E5%AD%90"><span class="toc-text">TSS结构和选择子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93TSS%E5%88%87%E6%8D%A2%E4%BA%86%EF%BC%9F"><span class="toc-text">CPU如何知道TSS切换了？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E5%8E%9F%E7%94%9F%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">CPU原生任务切换方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">现代操作系统的任务切换方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B"><span class="toc-text">如何创建用户进程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B5%E8%A1%A8"><span class="toc-text">创建页表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA3%E7%89%B9%E6%9D%83%E7%BA%A7%E6%A0%88"><span class="toc-text">创建3特权级栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E7%89%B9%E6%9D%83%E7%BA%A73"><span class="toc-text">进入特权级3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B"><span class="toc-text">创建用户进程的具体过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1%EF%BC%9A%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8BPCB%E7%BB%93%E6%9E%84"><span class="toc-text">step1：创建进程PCB结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%B9%B6%E9%80%80%E5%87%BA%E4%B8%AD%E6%96%AD"><span class="toc-text">step2：创建用户进程的上下文环境，并退出中断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step3%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E9%A1%B5%E7%9B%AE%E5%BD%95%E8%A1%A8"><span class="toc-text">step3：创建用户进程页目录表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step4%EF%BC%9A%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E4%BD%8D%E5%9B%BE"><span class="toc-text">step4：创建用户进程虚拟地址位图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step5%EF%BC%9A%E5%B0%86%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E4%BD%8D%E5%9B%BE%E5%92%8C%E9%A1%B5%E8%A1%A8%E5%86%99%E5%85%A5%E5%85%B6PCB%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AD%97%E6%AE%B5"><span class="toc-text">step5：将用户进程虚拟地址位图和页表写入其PCB对应的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step6%EF%BC%9A%E5%B0%86%E8%BF%9B%E7%A8%8BPCB%E5%8A%A0%E5%85%A5%E5%B0%B1%E7%BB%AA%E9%98%9F%E5%88%97%EF%BC%8C%E7%AD%89%E5%BE%85%E8%B0%83%E5%BA%A6"><span class="toc-text">step6：将进程PCB加入就绪队列，等待调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6schedule"><span class="toc-text">进程调度schedule()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E9%9A%94%E7%A6%BB"><span class="toc-text">如何实现虚拟地址空间隔离</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%8C%BA%E5%88%AB"><span class="toc-text">多进程和多线程资源分配区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%8C%BA%E5%88%AB"><span class="toc-text">多进程和多线程调度区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%B7%AE%E5%BC%82"><span class="toc-text">线程和进程的稳定性差异</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">进程和线程的使用场景</span></a></li></ol>
+    </div>
+  </section>
 
   
 
@@ -2509,13 +2909,14 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </aside>
 
 
+
           <!--此文件用来存放一些不方便取值的变量-->
 <!--思路大概是将值藏到重加载的区域内-->
 
 <pjax>
 <script>
   window.pdata={}
-  pdata.ispage=false;
+  pdata.ispage=true;
   pdata.commentPath="";
   pdata.commentPlaceholder="";
   pdata.commentConfig={};
@@ -3029,7 +3430,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"所有标签","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/tags/index.html"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/tags/index.html","wordCount":0,"datePublished":"2025-04-15T15:13:59.868Z","dateModified":"2025-04-15T15:13:59.868Z","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/09/深入理解操作系统线程和进程机制/","name":"深入理解操作系统线程和进程机制"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解操作系统线程和进程机制","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/","wordCount":0,"datePublished":"2025-06-09T02:28:44.000Z","dateModified":"2025-06-10T02:18:53.811Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 

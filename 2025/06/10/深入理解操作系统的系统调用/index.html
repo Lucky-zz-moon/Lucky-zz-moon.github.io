@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
-  <link rel="canonical" href="http://example.com/2025/06/09/深入理解操作系统的中断机制/"/>
+  <link rel="canonical" href="http://example.com/2025/06/10/深入理解操作系统的系统调用/"/>
   <!-- 渲染优化 -->
     <meta http-equiv='x-dns-prefetch-control' content='on' />
       <link rel='dns-prefetch' href='https://unpkg.com'>
@@ -33,19 +33,19 @@
 
   <!-- feed -->
   <!-- 页面元数据 -->
-  <title>深入理解操作系统的中断机制 - luckyzz</title>
+  <title>深入理解操作系统的系统调用 - luckyzz</title>
   <meta name="keywords" content="null">
   <meta desc name="description" content="luckyzz - lucky zz - luckyzz">
   
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解操作系统的中断机制">
-<meta property="og:url" content="http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:title" content="深入理解操作系统的系统调用">
+<meta property="og:url" content="http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="luckyzz">
-<meta property="og:description" content="中断中断机制的本质：来一个中断信号，调用相应的中断处理程序 中断分类中断分为内部中断和外部中断，内部中断分为异常和软中断，外部中断分为可屏蔽中断和不可屏蔽中断。每个中断都有对应的中断向量号，根据中断向量号调用相应的中断处理函数，理想情况下为每一个可屏蔽的外部中断在CPU上都接一个引脚，但是理论上外设是无上限的，必然扩大了CPU的大小，所以只在CPU上接两个引脚用于外部中断（可屏蔽、不可屏蔽），中断">
+<meta property="og:description" content="系统调用有了操作系统后，程序员写的程序已经不能称之为一个完整的程序了，因为操作系统帮我们做了很多事，我们在写一个只有一个输出语句的main程序时，虽然代码只有一行，但是实际运行却不止一行。因为我们输出语句调用了库函数，而这个库函数是编程语言统一规定的，只要在相同的编程环境中，程序员都可以使用，避免程序员重复造轮子，极大方便了开发。 库函数实际上就是操作系统实现一个功能对程序员开放的接口，只要传">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
-<meta property="article:published_time" content="2025-06-09T01:15:34.000Z">
-<meta property="article:modified_time" content="2025-06-09T02:20:29.898Z">
+<meta property="article:published_time" content="2025-06-10T02:50:45.000Z">
+<meta property="article:modified_time" content="2025-06-10T12:53:29.399Z">
 <meta property="article:author" content="lucky zz">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png">
@@ -2429,7 +2429,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
 <div id="l_main" class=''>
   <article itemscope itemtype="http://schema.org/Article" class="article post white-box reveal md shadow floatable blur article-type-post" id="post" itemscope itemprop="blogPost">
-  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/09/深入理解操作系统的中断机制/">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/10/深入理解操作系统的系统调用/">
   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
     <meta itemprop="name" content="luckyzz">
   </span>
@@ -2450,7 +2450,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
     
       <h1 class="title" itemprop="name headline">
-        深入理解操作系统的中断机制
+        深入理解操作系统的系统调用
       </h1>
       <div class='new-meta-box'>
         
@@ -2481,10 +2481,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
           
         
           
-            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-09T09:15:34+08:00">
+            <div class="new-meta-item date" itemprop="dateCreated datePublished" datetime="2025-06-10T10:50:45+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：Jun 9, 2025</p>
+    <p>发布于：Jun 10, 2025</p>
   </a>
 </div>
 
@@ -2507,89 +2507,87 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
 
   <div id="layoutHelper-page-plugins"></div>
   <div id="post-body" itemprop="articleBody">
-    <h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a><strong>中断</strong></h1><p><span style="color:red; background-color:; font-size:14pt"><strong>中断机制的本质：来一个中断信号，调用相应的中断处理程序</strong></span></p>
-<h2 id="中断分类"><a href="#中断分类" class="headerlink" title="中断分类"></a>中断分类</h2><p>中断分为内部中断和外部中断，内部中断分为异常和软中断，外部中断分为可屏蔽中断和不可屏蔽中断。每个中断都有对应的中断向量号，根据中断向量号调用相应的中断处理函数，理想情况下为每一个可屏蔽的外部中断在CPU上都接一个引脚，但是理论上外设是无上限的，必然扩大了CPU的大小，所以只在CPU上接两个引脚用于外部中断（可屏蔽、不可屏蔽），中断代理连接可屏蔽引脚，它在外设和CPU之间，用于仲裁外设中断并且分配中断向量号。</p>
-<p><strong>1. 外部中断（中断源必须是硬件）</strong></p>
-<p>​	可屏蔽中断（可通过eflag寄存器的IF位设置中断，中断号由中断代理提供）</p>
-<p>​	不可屏蔽中断（中断向量号由CPU提供，统一为2）</p>
-<p><strong>2.内部中断（不受eflag寄存器的IF位影响）</strong></p>
-<p>​	软中断（中断向量号由软件提供）:Int 8位立即数：系统调用命令，8位可以表示256个中断</p>
-<p>​	异常（中断向量号由CPU提供）</p>
-<p><span style="color:blue; background-color:; font-size:14pt"><strong>针对外部中断，CPU提供了两个引脚，根据中断的紧急程度从不同的引脚进</strong></span></p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/image-20250609092136170.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/image-20250609092136170.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250609092136170"></p>
-<p>Intel支持256个中断，0<del>19是已经定义的异常，20</del>31是保留，所以自定义创建中断向量，中断向量号要从32开始</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps20.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps20.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<h2 id="中断使用的相关寄存器"><a href="#中断使用的相关寄存器" class="headerlink" title="中断使用的相关寄存器"></a><strong>中断使用的相关寄存器</strong></h2><p><span style="color:red; background-color:; font-size:14pt"><strong>EFLAGS</strong></span>：X86架构CPU中一个重要的状态寄存器，主要用于存储处理器状态和控制信息：IF位（Interrupt Enable Flag）：控制CPU允许响应【可屏蔽中断】。IF&#x3D;0屏蔽所有的可屏蔽中断，IF&#x3D;1，通过中断代理选择性屏蔽外设</p>
-<p><span style="color:red; background-color:; font-size:14pt"><strong>SS，ESP</strong> </span>：栈寄存器，因为中断涉及特权级变化，处理器在不同的特权级下使用不同的特权级栈</p>
-<p><span style="color:red; background-color:; font-size:14pt"><strong>CS，EIP</strong></span>：中断是段间远转移，中断返回需要找到入口</p>
-<h2 id="中断描述符表"><a href="#中断描述符表" class="headerlink" title="中断描述符表"></a><strong>中断描述符表</strong></h2><p>中断向量表是实模式下的表，中断描述符表是保护模式下的表； </p>
-<p><span style="color:blue; background-color:; font-size:14pt"><em><strong>中断向量表位置固定大小固定，中断描述符表位置不固定，需要使用硬件寄存器存储中断描述符表的存储地址</strong></em></span></p>
-<p>中断描述符表的存放地址不受限制，操作系统需要知道中断描述符表的存放地址，使用中断描述符表寄存器IDT（Interrupt Descriptor Table Register）存储中断描述表的地址。<span style="color:blue; background-color:; font-size:14pt"><em><strong>中断描述符表寄存器是存放在CPU中的寄存器</strong></em>。</span></p>
-<p>一个中断描述符用8B表示，16位的表界限可以表示8192个中断描述符，但是处理器只支持256个中断，中断号 0~255，其余中断描述符不可用。</p>
-<p>![中断机制.drawio (1)](..&#x2F;image&#x2F;深入理解操作系统的中断机制&#x2F;中断机制.drawio (1).png)</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B62.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B62.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="中断机制2.drawio"></p>
-<p><span style="color:red; background-color:; font-size:14pt"><strong>注意：中断描述符中的DPL既不直接指向中断描述符所在的8字节内存特权级，也不直接只向中断程序所在的内存的特权级。</strong></span>它的作用是控制出发该中断或异常所需的特权级下限。在可屏蔽中断中，DPL&#x3D;0，在系统调用时，DPL&#x3D;3，因为系统调用是用户程序通过int 8位立即数触发的，访问0x80中断向量号对应的中断处理函数时，处理器处于CPL&#x3D;3下。</p>
-<h2 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a><strong>中断处理过程</strong></h2><p><strong>（注意：CPU外部中断由中断代理接收，经中断代理处理后将中断向量号发送给CPU，异常和软中断以及灾难性错误是直接可以获取中断向量号的，不需要中断代理发送）。</strong></p>
-<p><span style="color:blue; background-color:; font-size:14pt"><strong>step1：定位中断描述符</strong></span></p>
-<p>当CPU收到中断向量号后，在中断描述符表中索引，中断描述符的地址是IDTR的基址加上中断向量号*8。</p>
-<p><img src="file:///C:\Users\张秋月\AppData\Local\Temp\ksohtml40480\wps23.jpg" class="lazyload" data-srcset="file:///C:\Users\张秋月\AppData\Local\Temp\ksohtml40480\wps23.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"> </p>
-<p><span style="color:blue; background-color:; font-size:14pt"><strong>step2：特权级检查</strong></span></p>
-<p>引用通过中断门描述符可以调用中断处理函数，进入内核态。当前特权级必须在中断门描述符的DPL和目标代码段的DPL特权级之间。因为中断是提供中断向量号的，是个整数，它没有RPL</p>
-<p><span style="color:blue; background-color:; font-size:14pt"><strong>step3：执行中断处理函数</strong></span></p>
-<p>先保存程序的上下文环境，将中断门描述符代码段选择子加载到代码段寄存器CS中，把中断门描述符中的中断处理程序的偏移地址加载到EIP寄存器中。<span style="color:red; background-color:; font-size:14pt"><strong>这里存在一个非常重要的压栈过程！！！</strong></span></p>
-<p><span style="color:blue; background-color:; font-size:14pt"><strong>step4：从中断返回</strong></span></p>
-<p>从中断返回指令是<em><strong>iret</strong></em>，从栈中弹出相应的数据到寄存器（cs,eip,eflags等），并根据特权级是否变化判断是否需要恢复旧栈，也就是说是否需要将栈中位于SS_old和ESP_old位置弹出到寄存器ss和esp中</p>
-<h2 id="中断执行的压栈过程"><a href="#中断执行的压栈过程" class="headerlink" title="中断执行的压栈过程"></a><strong>中断执行的压栈过程</strong></h2><p>通过中断向量号在中断描述符表中找到中断描述，会进行特权检查，然后将中断描述符中的代码段选择子和中断处理程序在目标代码段中的偏移量分别加载到CS 和 EIP中。不同特权级下处理器要使用不用的特权级的栈。</p>
-<p>如果需要向更高特权级转移：在TSS结构中找到同中断处理程序相同的特权级的栈，在这个新栈下保存旧栈的SS和ESP，分别记作SS_old和ESP_old；然后压入EFLAGS寄存器，再压入CS_old和EIP_old，对于有错误码的还要压入错误码ERROR_CODE（****<em>一般有错误码的是在0~32之间的异常，外部中断和int软中断不会产生错误码*</em>***）</p>
-<p>![中断机制3.drawio ](..&#x2F;image&#x2F;深入理解操作系统的中断机制&#x2F;中断机制3.drawio .png)</p>
-<p>![中断机制-第 4 页.drawio](..&#x2F;image&#x2F;深入理解操作系统的中断机制&#x2F;中断机制-第 4 页.drawio.png)</p>
-<p><span style="color:blue; background-color:; font-size:14pt">注意：中断描述符表其实就是中断函数起始地址的数组，当中断信号来时，中断信号的本质就是中断描述符表中的索引，根据索引找到对应的中断函数处理，在代码中使用地址数组存储中断处理函数的起始地址，这涉及C程序调用，需要保护进程的上下文，所以在硬件自动保存SS_old、ESP_old、EFLAGS、CS_old、EIP_old、ERROR_CODE后还需要压入寄存器环境，包括4（ds，es，fs，gs）个段寄存器和8个通用寄存器（EAX, EXC，EDX，EBX，ESP，EBP，ESI，EDI）</span></p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B65.drawio.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B65.drawio.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="中断机制5.drawio"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">[bits 32]</span><br><span class="line">%define ERROR_CODE nop		 ; 若在相关的异常中cpu已经自动压入了错误码,为保持栈中格式统一,这里不做操作.</span><br><span class="line">%define ZERO push 0		 ; 若在相关的异常中cpu没有压入错误码,为了统一栈中格式,就手工压入一个0</span><br><span class="line"></span><br><span class="line">extern idt_table		 ;idt_table是C中注册的中断处理程序数组</span><br><span class="line"></span><br><span class="line">section .data</span><br><span class="line">global intr_entry_table</span><br><span class="line">intr_entry_table:</span><br><span class="line"></span><br><span class="line">%macro VECTOR 2</span><br><span class="line">section .text</span><br><span class="line">intr%1entry:		 ; 每个中断处理程序都要压入中断向量号,所以一个中断类型一个中断处理程序，自己知道自己的中断向量号是多少</span><br><span class="line"></span><br><span class="line">   %2				 ; 中断若有错误码会压在eip后面 </span><br><span class="line">; 以下是保存上下文环境</span><br><span class="line">   push ds</span><br><span class="line">   push es</span><br><span class="line">   push fs</span><br><span class="line">   push gs</span><br><span class="line">   pushad			 ; PUSHAD指令压入32位寄存器,其入栈顺序是: EAX,ECX,EDX,EBX,ESP,EBP,ESI,EDI</span><br><span class="line"></span><br><span class="line">   ; 如果是从片上进入的中断,除了往从片上发送EOI外,还要往主片上发送EOI </span><br><span class="line">   mov al,0x20                   ; 中断结束命令EOI</span><br><span class="line">   out 0xa0,al                   ; 向从片发送</span><br><span class="line">   out 0x20,al                   ; 向主片发送</span><br><span class="line"></span><br><span class="line">   push %1			 ; 不管idt_table中的目标程序是否需要参数,都一律压入中断向量号,调试时很方便</span><br><span class="line">   call [idt_table + %1*4]       ; 调用idt_table中的C版本中断处理函数</span><br><span class="line">   jmp intr_exit</span><br><span class="line"></span><br><span class="line">section .data</span><br><span class="line">   dd    intr%1entry	 ; 存储各个中断入口程序的地址，形成intr_entry_table数组</span><br><span class="line">%endmacro</span><br><span class="line"></span><br><span class="line">section .text</span><br><span class="line">global intr_exit</span><br><span class="line">intr_exit:	     </span><br><span class="line">; 以下是恢复上下文环境</span><br><span class="line">   add esp, 4			   ; 跳过中断号</span><br><span class="line">   popad</span><br><span class="line">   pop gs</span><br><span class="line">   pop fs</span><br><span class="line">   pop es</span><br><span class="line">   pop ds</span><br><span class="line">   add esp, 4			   ; 跳过error_code</span><br><span class="line">   iretd</span><br><span class="line"></span><br><span class="line">VECTOR 0x00,ZERO</span><br><span class="line">VECTOR 0x01,ZERO</span><br><span class="line">VECTOR 0x02,ZERO</span><br><span class="line">VECTOR 0x03,ZERO </span><br><span class="line">VECTOR 0x04,ZERO</span><br><span class="line">VECTOR 0x05,ZERO</span><br><span class="line">VECTOR 0x06,ZERO</span><br><span class="line">VECTOR 0x07,ZERO </span><br><span class="line">VECTOR 0x08,ERROR_CODE</span><br><span class="line">VECTOR 0x09,ZERO</span><br><span class="line">VECTOR 0x0a,ERROR_CODE</span><br><span class="line">VECTOR 0x0b,ERROR_CODE </span><br><span class="line">VECTOR 0x0c,ZERO</span><br><span class="line">VECTOR 0x0d,ERROR_CODE</span><br><span class="line">VECTOR 0x0e,ERROR_CODE</span><br><span class="line">VECTOR 0x0f,ZERO </span><br><span class="line">VECTOR 0x10,ZERO</span><br><span class="line">VECTOR 0x11,ERROR_CODE</span><br><span class="line">VECTOR 0x12,ZERO</span><br><span class="line">VECTOR 0x13,ZERO </span><br><span class="line">VECTOR 0x14,ZERO</span><br><span class="line">VECTOR 0x15,ZERO</span><br><span class="line">VECTOR 0x16,ZERO</span><br><span class="line">VECTOR 0x17,ZERO </span><br><span class="line">VECTOR 0x18,ERROR_CODE</span><br><span class="line">VECTOR 0x19,ZERO</span><br><span class="line">VECTOR 0x1a,ERROR_CODE</span><br><span class="line">VECTOR 0x1b,ERROR_CODE </span><br><span class="line">VECTOR 0x1c,ZERO</span><br><span class="line">VECTOR 0x1d,ERROR_CODE</span><br><span class="line">VECTOR 0x1e,ERROR_CODE</span><br><span class="line">VECTOR 0x1f,ZERO </span><br><span class="line">VECTOR 0x20,ZERO</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <span style="color:red; background-color:; font-size:14pt">
+
+<h1 id="系统调用"><a href="#系统调用" class="headerlink" title="系统调用"></a>系统调用</h1><p>有了操作系统后，程序员写的程序已经不能称之为一个完整的程序了，因为操作系统帮我们做了很多事，我们在写一个只有一个输出语句的main程序时，虽然代码只有一行，但是实际运行却不止一行。因为我们输出语句调用了库函数，而这个库函数是编程语言统一规定的，只要在相同的编程环境中，程序员都可以使用，避免程序员重复造轮子，极大方便了开发。</p>
+<p>库函数实际上就是操作系统实现一个功能对程序员开放的接口，只要传入参数就可以执行，操作系统就是那个默默付出的人。如果没有系统调用，我们想要在屏幕上输出一个文字需要做很多的工作，因为屏幕属于系统共享资源，归操作系统管理，用户想要直接控制屏幕首先要将用户态下的代码段和数据段的选择子都修改为内核态下的选择子，进入内核态后获取文本适配器的内存地址、获取光标信息、设置文字模式、是否清屏等等，如果每实现一个功能就要完整写一遍这个逻辑那还得了，一定会逼疯程序员的。</p>
+<p>操作系统为了让程序员更加注重功能逻辑上的开发在背后默默做了很多事情，操作系统提供了很多系统调用的接口，一方面避免重复造轮子，提升开发效率；另一方面很好的保护了计算机资源，让计算机资源合理分配。</p>
+<p>在开发的过程当中更多的是关注与一个函数怎么使用，传什么样的参数等，但是很少去关注这个函数背后的实现原理，打开一个源码看起来就会头大，所以系统调用更像是黑盒，传入他需要的参数就能返回我想要的结果。那么系统调用的背后逻辑到底是怎么实现的呢？</p>
+<h2 id="Linux系统调用的做法"><a href="#Linux系统调用的做法" class="headerlink" title="Linux系统调用的做法"></a><strong>Linux系统调用的做法</strong></h2><p>Linux的系统调用是通过中断门实现的，通过软中断int指令发送中断信号。Linux只占用一个中断向量号，就是0x80，为了区分调用哪个系统调用，通过在eax寄存器中写入子功能号确定。<span style="color:red; background-color:; font-size:14pt"><em><strong>执行int 0x80时处于用户态，所以0x80中断号对应的中断描述符的DPL &#x3D; 3.</strong></em></span></p>
+<p>Linux的系统调用只有0x80号才能触发是因为操作系统中有非常多的系统调用，如果每个系统调用都需要占用一个中断号，intel支持的256个向量号根本不够用。所以Linux采用int 0x80触发系统调用，使用eax提供具体的系统调用子功能号。创建一个地址数组，按序存放系统调用的函数地址，通过eax索引这个系统调用数组去执行。</p>
+<p><strong>Linux系统下的部分系统调用编号及对应的系统函数</strong></p>
+<p> <img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/image-20250610113147839.png" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/image-20250610113147839.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="image-20250610113147839"></p>
+<h2 id="系统调用的实现"><a href="#系统调用的实现" class="headerlink" title="系统调用的实现"></a><strong>系统调用的实现</strong></h2><h3 id="流程逻辑实现"><a href="#流程逻辑实现" class="headerlink" title="流程逻辑实现"></a><strong>流程逻辑实现</strong></h3><p>①用中断门实现系统调用，仿照Linux用0x80号中断作为系统调用的入口</p>
+<p>②在IDT中安装0x80号中断号对应的中断描述符，在这个中断描述符中注册系统调用对应的中断处理例程</p>
+<p>②建立系统调用子功能表syscall_table和系统调用的子功能号，利用eax中的子功能号索引syscall_table（eax的值就是syscall_table数组的索引下标）</p>
+<p>③用宏实现用户空间系统调用接口_syscall，最大支持3个参数的系统调用。寄存器传参，eax为子功能号，ebx保存第一个参数，ecx保存第二个参数，edx保存第三个参数。</p>
+<p>④如果函数有返回值，也会存储在eax中返回的</p>
+<h3 id="具体过程实现"><a href="#具体过程实现" class="headerlink" title="具体过程实现"></a><strong>具体过程实现</strong></h3><p><span style="color:blue; background-color:; font-size:14pt"><strong>1. 增加0x80号中断描述符</strong></span></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#define IDT_DESC_CNT 0x81      // 目前总共支持的中断数</span><br><span class="line"></span><br><span class="line">/*中断门描述符结构体*/</span><br><span class="line">struct gate_desc &#123;</span><br><span class="line">   uint16_t    func_offset_low_word;</span><br><span class="line">   uint16_t    selector;</span><br><span class="line">   uint8_t     dcount;   //此项为双字计数字段，是门描述符中的第4字节。此项固定值，不用考虑</span><br><span class="line">   uint8_t     attribute;</span><br><span class="line">   uint16_t    func_offset_high_word;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 创建中断门描述符 */</span><br><span class="line">static void make_idt_desc(struct gate_desc* p_gdesc, uint8_t attr, intr_handler function) &#123; </span><br><span class="line">   p_gdesc-&gt;func_offset_low_word = (uint32_t)function &amp; 0x0000FFFF;</span><br><span class="line">   p_gdesc-&gt;selector = SELECTOR_K_CODE;</span><br><span class="line">   p_gdesc-&gt;dcount = 0;</span><br><span class="line">   p_gdesc-&gt;attribute = attr;</span><br><span class="line">   p_gdesc-&gt;func_offset_high_word = ((uint32_t)function &amp; 0xFFFF0000) &gt;&gt; 16;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*初始化中断描述符表*/</span><br><span class="line">static void idt_desc_init(void) &#123;</span><br><span class="line">   int i, lastindex = IDT_DESC_CNT - 1;</span><br><span class="line">   for (i = 0; i &lt; IDT_DESC_CNT; i++) &#123;</span><br><span class="line">      make_idt_desc(&amp;idt[i], IDT_DESC_ATTR_DPL0, intr_entry_table[i]); </span><br><span class="line">   &#125;</span><br><span class="line">/* 单独处理系统调用,系统调用对应的中断门dpl为3,</span><br><span class="line"> * 中断处理程序为单独的syscall_handler */</span><br><span class="line">   make_idt_desc(&amp;idt[lastindex], IDT_DESC_ATTR_DPL3, syscall_handler);</span><br><span class="line">   put_str(&quot;   idt_desc_init done\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/* 完成一般中断处理函数注册及异常名称注册 */</span><br><span class="line">static void exception_init(void) &#123;			    // 完成一般中断处理函数注册及异常名称注册</span><br><span class="line">   int i;</span><br><span class="line">   for (i = 0; i &lt; IDT_DESC_CNT; i++) &#123;</span><br><span class="line"></span><br><span class="line">/* idt_table数组中的函数是在进入中断后根据中断向量号调用的,</span><br><span class="line"> * 见kernel/kernel.S的call [idt_table + %1*4] */</span><br><span class="line">      idt_table[i] = general_intr_handler;		    // 默认为general_intr_handler。</span><br><span class="line">							    // 以后会由register_handler来注册具体处理函数。</span><br><span class="line">      intr_name[i] = &quot;unknown&quot;;				    // 先统一赋值为unknown </span><br><span class="line">   &#125;</span><br><span class="line">   intr_name[0] = &quot;#DE Divide Error&quot;;</span><br><span class="line">   intr_name[1] = &quot;#DB Debug Exception&quot;;</span><br><span class="line">   intr_name[2] = &quot;NMI Interrupt&quot;;</span><br><span class="line">   intr_name[3] = &quot;#BP Breakpoint Exception&quot;;</span><br><span class="line">   intr_name[4] = &quot;#OF Overflow Exception&quot;;</span><br><span class="line">   intr_name[5] = &quot;#BR BOUND Range Exceeded Exception&quot;;</span><br><span class="line">   intr_name[6] = &quot;#UD Invalid Opcode Exception&quot;;</span><br><span class="line">   intr_name[7] = &quot;#NM Device Not Available Exception&quot;;</span><br><span class="line">   intr_name[8] = &quot;#DF Double Fault Exception&quot;;</span><br><span class="line">   intr_name[9] = &quot;Coprocessor Segment Overrun&quot;;</span><br><span class="line">   intr_name[10] = &quot;#TS Invalid TSS Exception&quot;;</span><br><span class="line">   intr_name[11] = &quot;#NP Segment Not Present&quot;;</span><br><span class="line">   intr_name[12] = &quot;#SS Stack Fault Exception&quot;;</span><br><span class="line">   intr_name[13] = &quot;#GP General Protection Exception&quot;;</span><br><span class="line">   intr_name[14] = &quot;#PF Page-Fault Exception&quot;;</span><br><span class="line">   // intr_name[15] 第15项是intel保留项，未使用</span><br><span class="line">   intr_name[16] = &quot;#MF x87 FPU Floating-Point Error&quot;;</span><br><span class="line">   intr_name[17] = &quot;#AC Alignment Check Exception&quot;;</span><br><span class="line">   intr_name[18] = &quot;#MC Machine-Check Exception&quot;;</span><br><span class="line">   intr_name[19] = &quot;#XF SIMD Floating-Point Exception&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>2. 增加0x80号中断处理程序</strong></span></p>
+<p>在中断描述符表IDT中安装0x80号中断对应的中断描述符，因为调用int 0x80时仍然处于用户态，所以中断描述符的DPL要为3。注册0x80号中断向量对应的中断处理程序，0x80号中断处理程序的名称记为syscall_handler</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">;;;;;;;;;;;;;;;;   0x80号中断   ;;;;;;;;;;;;;;;;</span><br><span class="line">[bits 32]</span><br><span class="line">extern syscall_table</span><br><span class="line">section .text</span><br><span class="line">global syscall_handler</span><br><span class="line">syscall_handler:</span><br><span class="line">;1 保存上下文环境</span><br><span class="line">   push 0			    ; 压入0, 使栈中格式统一</span><br><span class="line"></span><br><span class="line">   push ds</span><br><span class="line">   push es</span><br><span class="line">   push fs</span><br><span class="line">   push gs</span><br><span class="line">   pushad			    ; PUSHAD指令压入32位寄存器，其入栈顺序是:</span><br><span class="line">				    ; EAX,ECX,EDX,EBX,ESP,EBP,ESI,EDI </span><br><span class="line">				 </span><br><span class="line">   push 0x80			    ; 此位置压入0x80也是为了保持统一的栈格式</span><br><span class="line"></span><br><span class="line">;2 为系统调用子功能传入参数</span><br><span class="line">   push edx			    ; 系统调用中第3个参数</span><br><span class="line">   push ecx			    ; 系统调用中第2个参数</span><br><span class="line">   push ebx			    ; 系统调用中第1个参数</span><br><span class="line"></span><br><span class="line">;3 调用子功能处理函数</span><br><span class="line">   call [syscall_table + eax*4]	    ; 编译器会在栈中根据C函数声明匹配正确数量的参数</span><br><span class="line">   add esp, 12			    ; 跨过上面的三个参数</span><br><span class="line"></span><br><span class="line">;4 将call调用后的返回值存入待当前内核栈中eax的位置</span><br><span class="line">   mov [esp + 8*4], eax	</span><br><span class="line">   jmp intr_exit		    ; intr_exit返回,恢复上下文</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="中断执行完后的弹栈过程"><a href="#中断执行完后的弹栈过程" class="headerlink" title="中断执行完后的弹栈过程"></a><strong>中断执行完后的弹栈过程</strong></h2><p>****iret****指令是中断执行的最后一个指令，负责把栈中的数据都弹出到对应的寄存器中，它是压栈过程的逆过程-。当执行iret指令时必须保证ss_old或者ss指向的是EIP，如果有错误码需要手动跳过</p>
-<h2 id="中断执行的特权级"><a href="#中断执行的特权级" class="headerlink" title="中断执行的特权级"></a><strong>中断执行的特权级</strong></h2><p>中断处理都是在0特权级下执行的，因为中断的发生多半是因为外部硬件发生了某种状况或者发生了不可抗力的原因导致必须要通知CPU，在大多数情况下，CPU只有处于0特权级才能访问硬件。</p>
-<h2 id="可屏蔽中断代理—8259A"><a href="#可屏蔽中断代理—8259A" class="headerlink" title="可屏蔽中断代理—8259A"></a><strong>可屏蔽中断代理—8259A</strong></h2><p>****<em>注意：8259A中断代理位于主板上的南桥芯片中，不需要为它的引脚指定外部连接设备，比如IR0引脚就是时钟中断，这由内部电路实现，咱们只需要直接操作8259A就行，不用担心这些外设是否已经连接上8259A的引脚*</em>***</p>
-<p>8259A用于管理和控制可屏蔽中断，表现在屏蔽外设中断，对它们实行优先级判决，向CPU提供中断向量号一个8259A 芯片只能管理 8 个中断，为了支持 Intel的256个中断，需要对8259A进行级联，个人PC中也只有2个8259A芯片</p>
-<p>Intel支持256个中断，意味着中断向量号要256个，但是2个8259A芯片只能支持17个中断，如何支持256个？因为****<em>中断向量号 &#x3D; 起始中断向量号+IRQ接口向量号*</em>***。</p>
-<p>本次项目中使用到的8259A中断是IRQ0时钟中断和IRQ1键盘中断，系统调用是通过软中断0x80和eax子功能号实现的。</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps29.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps29.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<h3 id="8259A编程本质"><a href="#8259A编程本质" class="headerlink" title="8259A编程本质"></a><strong>8259A编程本质</strong></h3><p>8259A是可编程的中断代理，它的内部有两组寄存器，一组是初始化命令寄存器组，用来确定是否需要级联，设置起始中断向量号，设置中断结束模式；另一组寄存器是操作命令字，用来设置中断屏蔽和中断结束结束的工作模式</p>
-<h3 id="8259A芯片的内部结构"><a href="#8259A芯片的内部结构" class="headerlink" title="8259A芯片的内部结构"></a><strong>8259A芯片的内部结构</strong></h3><p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps30.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps30.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<h3 id="一个中断信号来时，8259A芯片做了什么？"><a href="#一个中断信号来时，8259A芯片做了什么？" class="headerlink" title="一个中断信号来时，8259A芯片做了什么？"></a><strong>一个中断信号来时，8259A芯片做了什么？</strong></h3><p>****【step1】****8259A 首先检查IMR中是否屏蔽了来自该IRQ接口中断信号，1：屏蔽，就将该信号丢弃， 进step2</p>
-<p>****【step2】****将该中断信号存入 IRR 寄存器中</p>
-<p><em><strong>*【step3】*</strong></em> PR 寄存器在IRR寄存器中取一个优先级最大的中断信号（判断方法：IRQ接口号越低，优先级越大）</p>
-<p><em><strong>*【step4】*</strong></em> 8259A 向CPU发送 INTR信号</p>
-<p>****【step5】****CPU 接收到中断信号后，将当前指令执行完向8259A发送一个中断响应信号， 8259A收到中断响应信号后将该中断从 IRR 寄存器中去除</p>
-<p><em><strong>*【step6】*</strong></em> CPU通过INTA给8259A发送信号，获取中断对用的中断向量号， 8259A将由外设发出的中断信号分配一个向量号（注意： 外设只知道发送中断信号，但是不知道自己的中断向量号）</p>
-<h2 id="中断框架"><a href="#中断框架" class="headerlink" title="中断框架"></a><strong>中断框架</strong></h2><p>中断中很多都是硬件支持的。中断描述符表寄存器IDTR是硬件支持的，TSS结构也是硬件支持的，进入中断时的上下文环境保护是需要压栈的，而要压入哪个栈中是由TSS提供的，TSS数据结构是由程序员构造由CPU直接使用的，进入中断找到正确的栈以及中断的压栈过程和弹栈过程都是硬件支持的。<em><strong>*对于操作系统开发人员来说，主要做的就是 ① 构造好IDT， ②提供中断向量号*</strong></em></p>
-<h2 id="如何通过8259A实现中断处理，实现的是哪个外部可屏蔽中断处理？"><a href="#如何通过8259A实现中断处理，实现的是哪个外部可屏蔽中断处理？" class="headerlink" title="如何通过8259A实现中断处理，实现的是哪个外部可屏蔽中断处理？"></a><strong>如何通过8259A实现中断处理，实现的是哪个外部可屏蔽中断处理？</strong></h2><p>Step1：用汇编语言实现中断处理程序</p>
-<p>Step2：创建中断描述符表IDT</p>
-<p>Step3：实现IO端口，8259A和任何硬件的控制都需要端口</p>
-<p>Step4：设置8259A</p>
-<p>Step5：加载IDT，开启中断</p>
-<h2 id="时钟中断"><a href="#时钟中断" class="headerlink" title="时钟中断"></a><strong>时钟中断</strong></h2><p><em><strong>*时钟分为内部时钟和外部时钟*</strong></em></p>
-<p>内部时钟由位于主板上的晶体振荡器产生，经过分频后就是主板的外频，将外频×倍数&#x3D;主频。处理器执行指令的时钟周期都是基于主频的。内部时钟是无法改变的。</p>
-<p>外部时钟指处理器和外部设备之间通信采用的一种时序，外部时钟和内部时钟是两套独立运行的定时体系，但是要依据内部时钟设置外部时钟。</p>
-<p><em><strong>*设置外部时钟有两种方式*</strong></em></p>
-<p><em><strong>*【方式一】*</strong></em>：软件实现，while空轮转，通过消耗时钟周期实现的</p>
-<p><em><strong>*【方式二】*</strong></em>：硬件实现，即用定时器设计（使用8253芯片实现）</p>
-<p>定时器到达所计数的时间，发送一个定时信号，硬件定时器是不占用处理器时间的。计数器根据时钟脉冲信号计数</p>
-<h3 id="可编程计数器8253"><a href="#可编程计数器8253" class="headerlink" title="可编程计数器8253"></a><strong>可编程计数器8253</strong></h3><p>可编程计数器8253芯片内部结构如下，它有3个独立的计数器，本操作系统中只使用了计数器0，计数器0专门用来产生时钟信号，这个时钟信号就是连接在8259A芯片的IR0引脚上</p>
-<p>注意：代码并没有指定8253的输出引脚要接在8259A的IR0引脚上，因为8259A位于南桥芯片的主板上，它的引脚的连接已经直接由内部硬件电路写好了，不需要重新安装，不需要担心外设是否和它连上，也就是说8253发出信号的时候，一定会被8259A的IR0引脚接收到</p>
-<p>下图是8253的内部结构图，对8253的编程主要是对其控制字寄存器进行编程，设定它的工作模式以及设置寄存器初值来设定其发出信号的频率</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps31.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps31.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<h2 id="键盘中断"><a href="#键盘中断" class="headerlink" title="键盘中断"></a><strong>键盘中断</strong></h2><p>键盘中断由8259A 的IRQ1接收</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps32.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps32.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<p><em><strong>*在键盘上按下一个键后，操作系统的工作流程是什么？*</strong></em></p>
-<p>键盘是一个独立的设备，在这个设备的内部，存在一个键盘编码器芯片8048，每当键盘上发生按键操作，它就向****键盘控制器8042****报告哪个按键被按下，按键是否被弹起。键盘控制器位于主机内的主板上（大体上应该在南桥芯片中），它接收来自键盘编码器的按键信息，解码后保存，向中断代理8259A发送中断信号。</p>
-<p><em><strong>*8048是键盘编码器芯片*</strong></em>，它监控键盘上的按键操作，通码：按键被按下，断码：按键被弹起；所以一个键的扫描码是通码+断码。8048、8042、8259A他们是独立的处理器，都有自己独立的寄存器和内存，关系如下图：</p>
-<p><img src="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps33.jpg" class="lazyload" data-srcset="/../image/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/wps33.jpg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="img"></p>
-<p><strong>8042、前面的计数器，他们都是集成在主板内的南桥芯片中，8042是键盘控制器，也就是键盘的IO接口，它是键盘的代理，因为8042和处理器都位于主机的内部，所以可以通过端口直接通信</strong></p>
-<h3 id="8048芯片做了什么工作？"><a href="#8048芯片做了什么工作？" class="headerlink" title="8048芯片做了什么工作？"></a><strong>8048芯片做了什么工作？</strong></h3><p>8048监控键盘上什么键被按下，什么键被放开。键盘扫描码有三套，常用第二套，兼容第一套。键盘扫描码是对键盘的编码，每个一键都有对应的通码和断码，<span style="color:blue; background-color:; font-size:14pt"><strong>当某个键被按下时，</strong></span>8048向8042发送第一套按键扫描码的按键的通码，8048收到通码后将其转换成第一套键盘扫描码对应的通码，然后存放在自己的缓存区中，向中断代理8259A发送中断信号，随后处理器执行中断处理程序，中断处理程序从8042的缓存区中获取数据然后执行相应的操作，例如在显示器上展示；<span style="color:blue; background-color:; font-size:14pt"><strong>如果按键持续不松手</strong></span>，那么8048会持续向8042发送按键通码，8042每次将其转换成第二套扫描码的通码，然后向中断代理发送中断信号，然后执行相应的中断处理程序；当按键松开时，8048按照第二套扫描码给8042发送断码，8042接收到将其转换成第一套按键扫描码的断码并存储在自己的缓冲区中，然后向中断代理发送中断信号，断码执行的中断处理函数是忽略。<span style="color:blue; background-color:; font-size:14pt"><strong>所以每按一个键至少产生2次中断。</strong></span></p>
-<h3 id="8042做了什么？"><a href="#8042做了什么？" class="headerlink" title="8042做了什么？"></a><strong>8042做了什么？</strong></h3><p>8042是集成在主机的南桥芯片中主机可以通过端口直接和它进行通信，8042又是独立的芯片，它有自己的寄存器和内存，他有4个8位寄存器（输出缓冲区寄存器、输入缓冲区寄存器、状态寄存器、控制寄存器），处理器可以通过它实现对8048的工作方式，然后让8048的工作成果通过8042回传给处理器。在本操作系统中，8042接收8048的数据，将这个数据按照第一扫描码进行解码放进自己的缓冲区中，然后发出中断信号给中断代理8259A，处理器获取8042缓冲区中的字符扫描码，执行中断处理函数</p>
+<p><span style="color:blue; background-color:; font-size:14pt"> <strong>2.创建中断处理程序syscall_handler</strong></span></p>
+<p>***【保存上下文环境】：***因为系统调用由中断触发，中断号是0x80，执行系统调用是在0x80号中断处理程序中调用执行的，所以在syscall_handler中要保护程序的上下文环境（进程&#x2F;线程的上下文环境），保存的有4个段寄存器和8个通用寄存器。执行流被中断时需要进行断点保护操作，保存什么数据在哪存放看《深入理解中断机制》那篇文章。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>***【压入系统调用参数】：***系统调用时是需要参数的，而Linux下的系统调用参数传递使用的是寄存器而不是栈，原因在上面已解释。所以在syscall_handler中还要压入参数（ebx存放第一个参数，ecx存放第二个参数，edx存放第三个参数）。</p>
+<p>***【调用系统调用具体函数】：***创建一个地址数组，这个地址数组中存放的是每种系统调用的具体函数，通过eax子功能号索引对应的系统调用函数去执行。</p>
+<p>***【恢复上下文环境】：***执行完成后退出中断，恢复上下文环境（将4个段寄存器+8个通用寄存器全部弹出到对应的寄存器中）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmp intr_exit		    ; intr_exit返回,恢复上下文</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>3.创建系统调用程序</strong></span></p>
+<p>创建系统调用处理数组，void* syscall_table[syscall_nr]，然后创建系统调用对应的函数，例如创建sys_getpid()系统调用，将sys_getpid注册到syscall_table中。其中syscall_nr表示最大支持的系统调用子功能个数。</p>
+<p><span style="color:blue; background-color:; font-size:14pt"><strong>4.在用户程序中实现系统调用</strong></span></p>
+<p>创建用户系统调用接口，实际上就是对sys_getpid()的封装。</p>
+<p>例如：uint32_t getpid(){</p>
+<p>&#x2F;&#x2F;使用宏定义实现系统调用</p>
+<p>return _syscall0(SYS_GETPID);  </p>
+<p>}</p>
+<p><span style="color:red; background-color:yellow; font-size:16pt"><strong>总结：以获取进程pid为例子创建系统调用为例其详细的系统调用过程</strong></span></p>
+<ol>
+<li><p>创建中断门描述符，DPL&#x3D;3，让用户程序通过int 8位立即数调用</p>
+</li>
+<li><p>创建中断处理程序：保存程序的上下文环境（第一部分：进入中断时由硬件自动保存断点； 第二部分，手动压入程序的上下文环境，包括4个段寄存器和8个通用寄存器），在中断处理程序中通过call [系统调用处理数组syscall_table起始地址* 子功能号eax*4]</p>
+</li>
+<li><p>创建系统调用函数：</p>
+</li>
+</ol>
+<p>uint32_t sys_getpid(void){  return running_thread()-&gt;pid }</p>
+<ol start="4">
+<li>添加系统调用子功能号</li>
+</ol>
+<p>  enum SYSCALL_NR {</p>
+<p>​    SYS_GETPID;</p>
+<p>  }</p>
+<ol start="5">
+<li>将系统函数注册到系统子数组中</li>
+</ol>
+<p>  syscall_table[SYS_GETPID] &#x3D; sys_getpid;</p>
+<ol start="6">
+<li>创建用户接口</li>
+</ol>
+<p> <em><strong>*通过宏定义系统调用*</strong></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#define _syscall0(NUMBER)(&#123;</span><br><span class="line">    // 定义一个局部变量 retval，用于存储系统调用的返回值</span><br><span class="line">int retval;  </span><br><span class="line"></span><br><span class="line">asm volatile(</span><br><span class="line">    // 触发软中断 0x80，进入内核态执行系统调用</span><br><span class="line">       &quot;int $0x80&quot;</span><br><span class="line">       // 输出部分：将 eax 寄存器的值存储到 retval 中</span><br><span class="line">       :&quot;=a&quot;(retval) </span><br><span class="line"></span><br><span class="line">        // 输入部分：将系统调用号 NUMBER 放入 eax 寄存器</span><br><span class="line">       :&quot;a&quot;(NUMBER)  </span><br><span class="line"></span><br><span class="line">        // 破坏部分：告诉编译器内存可能被修改</span><br><span class="line">       :&quot;memory&quot;        </span><br><span class="line">    );</span><br><span class="line">    retval;  // 返回 retval 的值</span><br><span class="line">&#125;)</span><br><span class="line">   uint32_t getpid()&#123;</span><br><span class="line">       return _syscall0(SYS_GETPID);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Linux的系统调用使用的是栈还是寄存器"><a href="#Linux的系统调用使用的是栈还是寄存器" class="headerlink" title="Linux的系统调用使用的是栈还是寄存器"></a><strong>Linux的系统调用使用的是栈还是寄存器</strong></h2><p>使用的是寄存器。</p>
+<p>eax用来保存子功能号</p>
+<p>ebx保存第一个参数</p>
+<p>ecx保存第二个参数</p>
+<p>esi保存第三个参数</p>
+<p>因为寄存器快：根据C调用约定（调用者把参数从右向左的顺序压入栈中，并且由调用者清理堆栈中的参数 ），系统调用所用的参数会被压入用户栈中，当执行0x80后，陷入内核态，此时需要使用0特权级的栈，但系统调用使用的参数还在用户栈中，为了获取用户栈地址，还得在特权级栈中获取进入中断时处理器自动压入的ss_old和esp_old，然后再次从用户栈中获取系统调用参数。这比直接使用寄存器要慢很多。</p>
 
   </div>
   
@@ -2614,10 +2612,10 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-09T10:20:29+08:00">
+          <div class="new-meta-item date" itemprop="dateModified" datetime="2025-06-10T20:53:29+08:00">
   <a class='notlink'>
     <i class="fa-solid fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：Jun 9, 2025</p>
+    <p>更新于：Jun 10, 2025</p>
   </a>
 </div>
 
@@ -2636,7 +2634,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/&title=深入理解操作系统的中断机制 - luckyzz&summary="
+          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/&title=深入理解操作系统的系统调用 - luckyzz&summary="
           
           >
           
@@ -2648,7 +2646,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/&title=深入理解操作系统的中断机制 - luckyzz&summary="
+          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/&title=深入理解操作系统的系统调用 - luckyzz&summary="
           
           >
           
@@ -2660,7 +2658,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
           
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/&title=深入理解操作系统的中断机制 - luckyzz&summary="
+          target="_blank" href="http://service.weibo.com/share/share.php?url=http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/&title=深入理解操作系统的系统调用 - luckyzz&summary="
           
           >
           
@@ -2693,20 +2691,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   
     <div class="prev-next">
       
-        <a class='prev' href='/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/'>
-          <p class='title'><i class="fa-solid fa-chevron-left" aria-hidden="true"></i>深入理解操作系统线程和进程机制</p>
+      
+        <a class='next' href='/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%BA%BF%E7%A8%8B%E5%92%8C%E8%BF%9B%E7%A8%8B%E6%9C%BA%E5%88%B6/'>
+          <p class='title'>深入理解操作系统线程和进程机制<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
           <p class='content'>线程执行流是什么宏观上：其实就是具有上下文环境的一段代码，可以被调度器调度上处理器执行。执行流是独立的，它拥有自己的栈、寄存器映像、内存等资源，这就是一个执行流的上下文环境。
 微观上：是CPU的...</p>
-        </a>
-      
-      
-        <a class='next' href='/2025/06/09/C%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E6%98%AF%E5%A6%82%E4%BD%95%E8%A2%AB%E5%8A%A0%E8%BD%BD%E8%BF%9B%E5%86%85%E5%AD%98%E7%9A%84/'>
-          <p class='title'>C语言程序是如何被加载进内存的<i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>C语言执行过程预处理——&gt;编译——&gt;汇编——&gt;链接
-编译成汇编文件，再由汇编文件生成目标文件（待重定位文件）
-
-编译
-gcc  -c  -o  kernel&#x2F;main...</p>
         </a>
       
     </div>
@@ -2722,7 +2711,7 @@ gcc  -c  -o  kernel&#x2F;main...</p>
 
   <article class="post white-box shadow floatable blur" id="comments">
     <span hidden>
-      <meta itemprop="discussionUrl" content="/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/index.html#comments">
+      <meta itemprop="discussionUrl" content="/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html#comments">
     </span>
     <p ct><i class='fa-solid fa-comments'></i> 评论</p>
     
@@ -2764,7 +2753,7 @@ gcc  -c  -o  kernel&#x2F;main...</p>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%88%86%E7%B1%BB"><span class="toc-text">中断分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E4%BD%BF%E7%94%A8%E7%9A%84%E7%9B%B8%E5%85%B3%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">中断使用的相关寄存器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%8F%8F%E8%BF%B0%E7%AC%A6%E8%A1%A8"><span class="toc-text">中断描述符表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-text">中断处理过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%89%A7%E8%A1%8C%E7%9A%84%E5%8E%8B%E6%A0%88%E8%BF%87%E7%A8%8B"><span class="toc-text">中断执行的压栈过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%89%A7%E8%A1%8C%E5%AE%8C%E5%90%8E%E7%9A%84%E5%BC%B9%E6%A0%88%E8%BF%87%E7%A8%8B"><span class="toc-text">中断执行完后的弹栈过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%89%A7%E8%A1%8C%E7%9A%84%E7%89%B9%E6%9D%83%E7%BA%A7"><span class="toc-text">中断执行的特权级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E4%BB%A3%E7%90%86%E2%80%948259A"><span class="toc-text">可屏蔽中断代理—8259A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8259A%E7%BC%96%E7%A8%8B%E6%9C%AC%E8%B4%A8"><span class="toc-text">8259A编程本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8259A%E8%8A%AF%E7%89%87%E7%9A%84%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-text">8259A芯片的内部结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%B8%AD%E6%96%AD%E4%BF%A1%E5%8F%B7%E6%9D%A5%E6%97%B6%EF%BC%8C8259A%E8%8A%AF%E7%89%87%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">一个中断信号来时，8259A芯片做了什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%A1%86%E6%9E%B6"><span class="toc-text">中断框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E9%80%9A%E8%BF%878259A%E5%AE%9E%E7%8E%B0%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%EF%BC%8C%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%98%AF%E5%93%AA%E4%B8%AA%E5%A4%96%E9%83%A8%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%EF%BC%9F"><span class="toc-text">如何通过8259A实现中断处理，实现的是哪个外部可屏蔽中断处理？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E4%B8%AD%E6%96%AD"><span class="toc-text">时钟中断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E7%BC%96%E7%A8%8B%E8%AE%A1%E6%95%B0%E5%99%A88253"><span class="toc-text">可编程计数器8253</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E4%B8%AD%E6%96%AD"><span class="toc-text">键盘中断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8048%E8%8A%AF%E7%89%87%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%E5%B7%A5%E4%BD%9C%EF%BC%9F"><span class="toc-text">8048芯片做了什么工作？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8042%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">8042做了什么？</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%9A%84%E5%81%9A%E6%B3%95"><span class="toc-text">Linux系统调用的做法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">系统调用的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="toc-text">流程逻辑实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E8%BF%87%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-text">具体过程实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E6%A0%88%E8%BF%98%E6%98%AF%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">Linux的系统调用使用的是栈还是寄存器</span></a></li></ol>
     </div>
   </section>
 
@@ -3334,7 +3323,7 @@ gcc  -c  -o  kernel&#x2F;main...</p>
 </script>
 
 
-  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/09/深入理解操作系统的中断机制/","name":"深入理解操作系统的中断机制"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解操作系统的中断机制","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/09/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6/","wordCount":0,"datePublished":"2025-06-09T01:15:34.000Z","dateModified":"2025-06-09T02:20:29.898Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
+  <script type="application/ld+json">[{"@context":"http://schema.org","@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},{"@context":"http://schema.org","@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","sameAs":["https://github.com/volantis-x"],"description":""},{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"http://example.com/","name":"luckyzz"}},{"@type":"ListItem","position":2,"item":{"@id":"http://example.com/categories/操作系统/","name":"操作系统"}},{"@type":"ListItem","position":3,"item":{"@id":"http://example.com/2025/06/10/深入理解操作系统的系统调用/","name":"深入理解操作系统的系统调用"}}]},{"@context":"http://schema.org","@type":"WebSite","name":"luckyzz","url":"http://example.com/","keywords":null,"description":"","author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/","description":""},"publisher":{"@type":"Organization","name":"luckyzz","url":"http://example.com/","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"potentialAction":{"@type":"SearchAction","name":"Site Search","target":{"@type":"EntryPoint","urlTemplate":"http://example.com?s={search_term_string}"},"query-input":"required name=search_term_string"}},{"@context":"http://schema.org","@type":"BlogPosting","headline":"深入理解操作系统的系统调用","description":"","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/"},"author":{"@type":"Person","name":"lucky zz","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png"},"url":"http://example.com/"},"publisher":{"@type":"Organization","name":"luckyzz","logo":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}},"url":"http://example.com/2025/06/10/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/","wordCount":0,"datePublished":"2025-06-10T02:50:45.000Z","dateModified":"2025-06-10T12:53:29.399Z","articleSection":"操作系统","image":{"@type":"ImageObject","url":"https://unpkg.com/volantis-static@0.0.1654736714924/media/org.volantis/blog/favicon/android-chrome-192x192.png","width":192,"height":192}}]</script>
 
 
 
